@@ -1,6 +1,6 @@
-# Azure Integration Hub
+# Hammad's Azure Integration Hub
 
-My personal **single source of truth** for Azure integration & app services:
+My personal **single source of truth** for Azure integration & app services (not an official Microsoft site):
 
 - **API Management** — gateway architecture, policy pipeline, AI Gateway (Azure OpenAI / AI Foundry, MCP), tiers, self-hosted gateway
 - **Logic Apps** — Standard vs Consumption, connectors, B2B/EDI, AI agent workflows

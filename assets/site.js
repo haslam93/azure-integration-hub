@@ -28,7 +28,7 @@
     const brand = document.createElement("a");
     brand.className = "brand";
     brand.href = "index.html";
-    brand.innerHTML = '<span class="logo">Az</span><span>Azure Integration Hub</span>';
+    brand.innerHTML = '<span class="logo">Az</span><span>Hammad&#8217;s Azure Integration Hub</span>';
     inner.appendChild(brand);
 
     const nav = document.createElement("nav");
@@ -64,7 +64,7 @@
     const footer = document.createElement("footer");
     footer.className = "site-footer";
     footer.innerHTML =
-      'Azure Integration Hub &mdash; personal single source of truth. Auto-refreshed weekly from ' +
+      'Hammad&#8217;s Azure Integration Hub &mdash; personal single source of truth. Auto-refreshed weekly from ' +
       '<a href="https://azure.microsoft.com/updates/" target="_blank" rel="noopener">Azure Updates</a>. ' +
       'Not an official Microsoft site.';
     document.body.appendChild(footer);
