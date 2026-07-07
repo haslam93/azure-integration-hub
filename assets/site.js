@@ -114,7 +114,13 @@
     "event-hubs": "Event Hubs",
     "app-service": "App Service",
     "ai-foundry": "AI Foundry",
+    architecture: "Architecture",
     general: "Integration",
+  };
+
+  const SOURCE_LABELS = {
+    "architecture-center": "Architecture Center",
+    accelerator: "Accelerator",
   };
 
   function statusPill(status) {
@@ -147,10 +153,13 @@
       const services = (e.services || ["general"])
         .map((s) => '<span class="pill">' + (SERVICE_LABELS[s] || s) + "</span>")
         .join("");
+      const source = SOURCE_LABELS[e.source]
+        ? '<span class="pill source">' + SOURCE_LABELS[e.source] + "</span>"
+        : "";
       div.innerHTML =
         '<div class="meta">' +
         '<span>' + d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" }) + "</span>" +
-        services + statusPill(e.status) +
+        services + statusPill(e.status) + source +
         "</div>" +
         "<h3>" + (e.link ? '<a href="' + e.link + '" target="_blank" rel="noopener">' + e.title + "</a>" : e.title) + "</h3>" +
         "<p>" + (e.summary || "") + "</p>";

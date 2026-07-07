@@ -19,7 +19,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Refresh changelog from Azure Updates RSS
+      - name: Sync changelog from Azure Updates, Architecture Center & accelerators
         id: refresh
         run: python scripts/update_changelog.py
 
@@ -32,7 +32,7 @@ jobs:
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             git add data/changelog.json
-            git commit -m "chore: weekly Azure updates changelog sync"
+            git commit -m "chore: weekly multi-source changelog sync (Azure Updates + Architecture Center + accelerators)"
             git push
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
@@ -42,7 +42,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          TITLE="Content refresh: $(date -u +%Y-%m-%d) — ${{ steps.refresh.outputs.new_count }} new Azure update(s)"
+          TITLE="Content refresh: $(date -u +%Y-%m-%d) — ${{ steps.refresh.outputs.new_count }} new item(s) from Azure Updates / Architecture Center / accelerators"
           URL=$(gh issue create \
             --title "$TITLE" \
             --body-file new_updates.md \

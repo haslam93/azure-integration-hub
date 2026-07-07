@@ -123,14 +123,15 @@
       <pre class="mermaid">
 flowchart LR
     A[GitHub Actions<br/>weekly cron] --> B[update_changelog.py]
-    B --> C[Azure Updates RSS feed]
-    C --> B
+    S1[Azure Updates RSS<br/>capabilities · GA · previews] --> B
+    S2[Architecture Center feed<br/>new & updated patterns] --> B
+    S3[Accelerator repo releases<br/>landing zones · AI Gateway labs] --> B
     B --> D[data/changelog.json]
     B --> E[GitHub Issue:<br/>content refresh needed]
     D --> F[GitHub Pages site<br/>changelog + homepage]
-    E --> G[Copilot / me:<br/>update service pages,<br/>patterns, capabilities]
+    E --> G[Copilot / me:<br/>update service pages,<br/>patterns, diagrams]
       </pre>
-      <div class="caption">A weekly workflow pulls the official Azure Updates feed, refreshes the changelog automatically, and opens an issue summarizing what changed so the deep-dive pages get updated too.</div>
+      <div class="caption">A weekly workflow pulls three official sources — Azure Updates, the Azure Architecture Center what's-new feed, and accelerator repo releases — refreshes the changelog automatically, and opens an issue so the deep-dive pages and patterns get updated too.</div>
     </div>
 
   </div>

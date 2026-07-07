@@ -25,7 +25,7 @@
 
     <p class="eyebrow">Architecture</p>
     <h1>Integration architecture patterns</h1>
-    <p class="lede">The patterns that keep showing up in modern Azure integration work — each with the services involved and a reference diagram. Updated as new patterns emerge (see <a href="changelog.html">changelog</a>).</p>
+    <p class="lede">The patterns that keep showing up in modern Azure integration work — each grounded in official guidance from the <a href="https://learn.microsoft.com/azure/architecture/patterns/" target="_blank" rel="noopener">Azure Architecture Center cloud design patterns catalog</a> and its reference architectures, with the services involved and a reference diagram. New guidance from the Architecture Center feeds the <a href="changelog.html">changelog</a> weekly and gets folded in here. Deployable reference implementations live in the <a href="#accelerators">official accelerators</a> below.</p>
 
     <h2 id="ai-gateway">1 · AI Gateway (GenAI front door)</h2>
     <p><strong>Services:</strong> APIM · Azure OpenAI / AI Foundry · App Insights. <strong>Problem:</strong> uncontrolled model access, invisible token spend, 429 cascades, agents holding raw keys.</p>
@@ -40,7 +40,7 @@ flowchart LR
       </pre>
       <div class="caption">One governed endpoint for every model; cost attribution and failover are platform concerns, not app concerns.</div>
     </div>
-    <p>Full detail on the <a href="apim.html#ai-gateway">APIM page</a>.</p>
+    <p>Full detail on the <a href="apim.html#ai-gateway">APIM page</a>. <span class="updated-stamp">Official guidance: <a href="https://learn.microsoft.com/azure/architecture/example-scenario/ai/generative-ai-gateway" target="_blank" rel="noopener">GenAI gateway reference architecture</a> · <a href="https://github.com/Azure-Samples/AI-Gateway" target="_blank" rel="noopener">AI-Gateway labs</a></span></p>
 
     <h2 id="agent-tools">2 · Governed agent tools (MCP hub)</h2>
     <p><strong>Services:</strong> APIM · AI Foundry Agent Service · Functions · Logic Apps. <strong>Problem:</strong> agents need real enterprise actions without scattering credentials.</p>
@@ -54,6 +54,7 @@ flowchart LR
       </pre>
       <div class="caption">Existing APIs become agent tools through the gateway — governance follows the tool, not the agent.</div>
     </div>
+    <p class="updated-stamp">Official guidance: <a href="https://learn.microsoft.com/azure/api-management/export-rest-mcp-server" target="_blank" rel="noopener">Expose APIs as MCP servers</a> · <a href="https://learn.microsoft.com/azure/architecture/patterns/gateway-offloading" target="_blank" rel="noopener">Gateway Offloading pattern</a></p>
 
     <h2 id="api-led">3 · API-led connectivity</h2>
     <p><strong>Services:</strong> APIM (workspaces/products) · everything behind it. <strong>Problem:</strong> point-to-point spaghetti between systems, teams blocked on each other.</p>
@@ -82,6 +83,7 @@ flowchart TB
       </pre>
       <div class="caption">Three reusable layers, each an APIM product with its own contract, owners and policies; teams federate via workspaces.</div>
     </div>
+    <p class="updated-stamp">Official guidance: <a href="https://learn.microsoft.com/azure/architecture/best-practices/api-design" target="_blank" rel="noopener">API design best practices</a> · <a href="https://github.com/Azure/apim-landing-zone-accelerator" target="_blank" rel="noopener">APIM landing zone accelerator</a></p>
 
     <h2 id="event-driven">4 · Event-driven architecture</h2>
     <p><strong>Services:</strong> Event Grid · Service Bus · Functions · Container Apps. <strong>Problem:</strong> tight coupling and synchronous chains that fail together.</p>
@@ -97,6 +99,7 @@ flowchart LR
       </pre>
       <div class="caption">Grid routes facts; the bus guarantees work; compute scales with the backlog. Producers know nothing about consumers.</div>
     </div>
+    <p class="updated-stamp">Official guidance: <a href="https://learn.microsoft.com/azure/architecture/guide/architecture-styles/event-driven" target="_blank" rel="noopener">Event-driven architecture style</a> · <a href="https://learn.microsoft.com/azure/architecture/patterns/publisher-subscriber" target="_blank" rel="noopener">Publisher-Subscriber pattern</a></p>
 
     <h2 id="async-request-reply">5 · Async request-reply</h2>
     <p><strong>Services:</strong> APIM · Functions/Durable · Service Bus. <strong>Problem:</strong> operations that outlive an HTTP timeout.</p>
@@ -120,6 +123,7 @@ sequenceDiagram
       </pre>
       <div class="caption">202 + status endpoint: the canonical way to put long-running work behind a synchronous API.</div>
     </div>
+    <p class="updated-stamp">Official guidance: <a href="https://learn.microsoft.com/azure/architecture/patterns/async-request-reply" target="_blank" rel="noopener">Asynchronous Request-Reply pattern</a></p>
 
     <h2 id="saga">6 · Saga (distributed transactions)</h2>
     <p><strong>Services:</strong> Durable Functions or Logic Apps · Service Bus. <strong>Problem:</strong> multi-service transactions with no 2PC.</p>
@@ -134,6 +138,7 @@ flowchart LR
       </pre>
       <div class="caption">Every step has a compensator; the orchestrator guarantees either full completion or full compensation.</div>
     </div>
+    <p class="updated-stamp">Official guidance: <a href="https://learn.microsoft.com/azure/architecture/patterns/saga" target="_blank" rel="noopener">Saga design pattern</a> · <a href="https://learn.microsoft.com/azure/architecture/patterns/compensating-transaction" target="_blank" rel="noopener">Compensating Transaction pattern</a></p>
 
     <h2 id="strangler">7 · Strangler fig modernization</h2>
     <p><strong>Services:</strong> APIM · Functions/Container Apps · legacy system. <strong>Problem:</strong> replacing a monolith without a big-bang cutover.</p>
@@ -147,6 +152,7 @@ flowchart LR
       </pre>
       <div class="caption">The gateway owns the contract; routes flip from legacy to new one at a time, invisibly to clients.</div>
     </div>
+    <p class="updated-stamp">Official guidance: <a href="https://learn.microsoft.com/azure/architecture/patterns/strangler-fig" target="_blank" rel="noopener">Strangler Fig pattern</a> · <a href="https://learn.microsoft.com/azure/architecture/patterns/anti-corruption-layer" target="_blank" rel="noopener">Anti-Corruption Layer pattern</a></p>
 
     <h2 id="claim-check">8 · Claim check &amp; load leveling</h2>
     <p><strong>Services:</strong> Service Bus · Blob Storage · Functions. <strong>Problem:</strong> large payloads and bursty traffic overwhelming consumers.</p>
@@ -160,6 +166,7 @@ flowchart LR
       </pre>
       <div class="caption">The bus carries claim tickets, not payloads; the queue absorbs bursts so workers process at a sustainable rate.</div>
     </div>
+    <p class="updated-stamp">Official guidance: <a href="https://learn.microsoft.com/azure/architecture/patterns/claim-check" target="_blank" rel="noopener">Claim-Check pattern</a> · <a href="https://learn.microsoft.com/azure/architecture/patterns/queue-based-load-leveling" target="_blank" rel="noopener">Queue-Based Load Leveling pattern</a></p>
 
     <h2 id="rag">9 · Serverless RAG pipeline</h2>
     <p><strong>Services:</strong> Blob Storage · Event Grid · Functions · AI Search · APIM · Azure OpenAI / AI Foundry. <strong>Problem:</strong> grounding LLM answers in enterprise documents that change daily.</p>
@@ -177,6 +184,7 @@ flowchart LR
       </pre>
       <div class="caption">Event-driven ingestion keeps the index fresh with zero polling; every model call still flows through the AI Gateway for token governance.</div>
     </div>
+    <p class="updated-stamp">Official guidance: <a href="https://learn.microsoft.com/azure/architecture/ai-ml/architecture/baseline-openai-e2e-chat" target="_blank" rel="noopener">Baseline OpenAI end-to-end chat architecture</a> · <a href="https://learn.microsoft.com/azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide" target="_blank" rel="noopener">RAG solution design guide</a></p>
 
     <h2 id="multi-agent">10 · Multi-agent enterprise automation</h2>
     <p><strong>Services:</strong> AI Foundry Agent Service · Logic Apps agent workflows · APIM (MCP) · Container Apps dynamic sessions · Service Bus. <strong>Problem:</strong> automating a business process end-to-end where multiple specialized agents must plan, act on enterprise systems, and run code — safely.</p>
@@ -196,6 +204,7 @@ flowchart TB
       </pre>
       <div class="caption">Specialized agents divide the work; APIM keeps every tool call governed; risky code runs in isolated sandboxes; Service Bus provides the audit trail and human-in-the-loop escape hatch.</div>
     </div>
+    <p class="updated-stamp">Official guidance: <a href="https://learn.microsoft.com/azure/architecture/ai-ml/guide/ai-agent-design-patterns" target="_blank" rel="noopener">AI agent orchestration patterns</a> · <a href="https://github.com/Azure-Samples/AI-Gateway" target="_blank" rel="noopener">AI-Gateway labs (MCP + agents)</a></p>
 
     <h2 id="hybrid">11 · Hybrid integration platform</h2>
     <p><strong>Services:</strong> APIM self-hosted gateway · Logic Apps Standard (hybrid) · Service Bus · Azure Arc. <strong>Problem:</strong> factories, hospitals or sovereign environments where data must stay local but governance must stay central.</p>
@@ -220,6 +229,7 @@ flowchart LR
       </pre>
       <div class="caption">Traffic and data stay on-site; policy, config and observability stay central; Service Bus bridges cloud and edge asynchronously so outages don't lose work.</div>
     </div>
+    <p class="updated-stamp">Official guidance: <a href="https://learn.microsoft.com/azure/api-management/self-hosted-gateway-overview" target="_blank" rel="noopener">Self-hosted gateway overview</a> · <a href="https://github.com/Azure/Integration-Services-Landing-Zone-Accelerator" target="_blank" rel="noopener">Integration Services landing zone accelerator</a></p>
 
     <h2 id="iot-streaming">12 · Real-time IoT telemetry &amp; alerting</h2>
     <p><strong>Services:</strong> Event Grid (MQTT) · Event Hubs · Stream Analytics / Fabric · Functions · Service Bus. <strong>Problem:</strong> millions of device signals needing both real-time reaction and historical analytics.</p>
@@ -237,6 +247,7 @@ flowchart LR
       </pre>
       <div class="caption">One ingestion fabric, two lanes: the firehose streams to analytics while critical events take the guaranteed-delivery lane to action.</div>
     </div>
+    <p class="updated-stamp">Official guidance: <a href="https://learn.microsoft.com/azure/event-grid/mqtt-overview" target="_blank" rel="noopener">Event Grid MQTT broker</a> · <a href="https://learn.microsoft.com/azure/architecture/guide/architecture-styles/big-data" target="_blank" rel="noopener">Stream processing architectures</a></p>
 
     <h2 id="multi-region">13 · Global multi-region API platform</h2>
     <p><strong>Services:</strong> Front Door · APIM (multi-region) · Container Apps / App Service · Cosmos DB. <strong>Problem:</strong> serving a global audience with low latency and surviving a regional outage.</p>
@@ -253,6 +264,52 @@ flowchart TB
     G1 -.one management plane.- G2
       </pre>
       <div class="caption">Front Door steers users to the nearest healthy region; APIM Premium replicates gateways under one control plane; Cosmos DB keeps state consistent across regions.</div>
+    </div>
+    <p class="updated-stamp">Official guidance: <a href="https://learn.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region" target="_blank" rel="noopener">Multi-region web app reference architecture</a> · <a href="https://learn.microsoft.com/azure/architecture/patterns/geodes" target="_blank" rel="noopener">Geode pattern</a></p>
+
+    <h2 id="accelerators">Official accelerators &amp; reference implementations</h2>
+    <p>Microsoft-maintained GitHub repos with deployable IaC (Bicep/Terraform), reference implementations and labs for these patterns. Their releases are tracked automatically in the <a href="changelog.html">changelog</a>.</p>
+    <div class="card-grid">
+      <a class="card" href="https://github.com/Azure/apim-landing-zone-accelerator" target="_blank" rel="noopener">
+        <div class="card-kicker">Azure/apim-landing-zone-accelerator</div>
+        <h3>APIM landing zone accelerator</h3>
+        <p>Enterprise-grade APIM deployment: network topology, private endpoints, APIOps CI/CD, and GenAI gateway scenarios aligned with the landing zone design areas.</p>
+      </a>
+      <a class="card" href="https://github.com/Azure/Integration-Services-Landing-Zone-Accelerator" target="_blank" rel="noopener">
+        <div class="card-kicker">Azure/Integration-Services-Landing-Zone-Accelerator</div>
+        <h3>Integration Services landing zone</h3>
+        <p>Reference implementation for AIS at enterprise scale — Logic Apps, Service Bus, APIM and storage wired together with identity, networking and monitoring done right.</p>
+      </a>
+      <a class="card" href="https://github.com/Azure-Samples/AI-Gateway" target="_blank" rel="noopener">
+        <div class="card-kicker">Azure-Samples/AI-Gateway</div>
+        <h3>AI-Gateway labs</h3>
+        <p>Hands-on labs for every APIM GenAI policy: token limiting/metering, semantic caching, load balancing, MCP servers, agent integration — the fastest way to try the AI Gateway pattern.</p>
+      </a>
+      <a class="card" href="https://github.com/Azure-Samples/ai-hub-gateway-solution-accelerator" target="_blank" rel="noopener">
+        <div class="card-kicker">Azure-Samples/ai-hub-gateway-solution-accelerator</div>
+        <h3>AI Hub Gateway accelerator</h3>
+        <p>Production-grade central AI API gateway: multi-tenant OpenAI access, usage tracking and chargeback dashboards, deployable end to end.</p>
+      </a>
+      <a class="card" href="https://github.com/Azure/aca-landing-zone-accelerator" target="_blank" rel="noopener">
+        <div class="card-kicker">Azure/aca-landing-zone-accelerator</div>
+        <h3>Container Apps landing zone</h3>
+        <p>Secure-baseline internal environment for Container Apps: hub-spoke networking, private ingress, Dapr, and zone redundancy as IaC.</p>
+      </a>
+      <a class="card" href="https://github.com/Azure/appservice-landing-zone-accelerator" target="_blank" rel="noopener">
+        <div class="card-kicker">Azure/appservice-landing-zone-accelerator</div>
+        <h3>App Service landing zone</h3>
+        <p>Reference implementations for secure App Service deployments — multi-tenant and ASE variants with networking, WAF and deployment slots.</p>
+      </a>
+      <a class="card" href="https://github.com/Azure/AI-Landing-Zones" target="_blank" rel="noopener">
+        <div class="card-kicker">Azure/AI-Landing-Zones</div>
+        <h3>AI landing zones</h3>
+        <p>Enterprise-scale foundation for AI workloads — Foundry, networking, governance and security guardrails that the AI Gateway and agent patterns plug into.</p>
+      </a>
+      <a class="card" href="https://github.com/Azure/logicapps" target="_blank" rel="noopener">
+        <div class="card-kicker">Azure/logicapps</div>
+        <h3>Logic Apps samples</h3>
+        <p>Official Logic Apps repo: agent workflow samples, templates and product team examples for Standard and Consumption.</p>
+      </a>
     </div>
 
     <h2 id="choosing">Choosing compute &amp; orchestration quickly</h2>

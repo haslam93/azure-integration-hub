@@ -1,6 +1,67 @@
 {
-  "lastUpdated": "2026-07-07T11:42:31+00:00",
+  "lastUpdated": "2026-07-07T12:12:57+00:00",
   "entries": [
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/ai-ml/architecture/baseline-microsoft-foundry-chat",
+      "date": "2026-06-18",
+      "title": "Updated architecture guidance: Baseline Microsoft Foundry Chat Reference Architecture",
+      "summary": "Learn how to build network-secured, highly available, and zone-redundant enterprise chat applications by using Microsoft Foundry tools and Azure App Service.",
+      "link": "https://learn.microsoft.com/azure/architecture/ai-ml/architecture/baseline-microsoft-foundry-chat",
+      "services": [
+        "app-service"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/ai-ml/architecture/baseline-microsoft-foundry-landing-zone",
+      "date": "2026-06-18",
+      "title": "Updated architecture guidance: Baseline Microsoft Foundry Chat Reference Architecture in an Azure Landing Zone",
+      "summary": "Learn about deploying the baseline Microsoft Foundry, Foundry Agent Service, Azure OpenAI in Foundry Models, and Azure App Service chat architecture in an Azure landing zone.",
+      "link": "https://learn.microsoft.com/azure/architecture/ai-ml/architecture/baseline-microsoft-foundry-landing-zone",
+      "services": [
+        "app-service",
+        "ai-foundry"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/ai-ml/guide/rag/rag-chunking-phase",
+      "date": "2026-06-18",
+      "title": "Updated architecture guidance: Develop a RAG Solution - Chunking Phase",
+      "summary": "Learn about the various chunking strategies, like boundary based, custom code, and document analysis models.",
+      "link": "https://learn.microsoft.com/azure/architecture/ai-ml/guide/rag/rag-chunking-phase",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/ai-ml/guide/rag/rag-enrichment-phase",
+      "date": "2026-06-18",
+      "title": "Updated architecture guidance: Develop a RAG Solution - Chunk Enrichment Phase",
+      "summary": "Learn how to augment your chunks with metadata like title, summary, keywords, and entities, and learn common cleaning methods that can improve vector matches.",
+      "link": "https://learn.microsoft.com/azure/architecture/ai-ml/guide/rag/rag-enrichment-phase",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/ai-ml/guide/rag/rag-generate-embeddings",
+      "date": "2026-06-18",
+      "title": "Updated architecture guidance: Develop a RAG Solution - Generate Embeddings Phase",
+      "summary": "Learn how embeddings work, how to choose an embedding model, and how your embedding model can affect your vector search results.",
+      "link": "https://learn.microsoft.com/azure/architecture/ai-ml/guide/rag/rag-generate-embeddings",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
     {
       "id": "562497",
       "date": "2026-06-16",
@@ -12,6 +73,90 @@
       ],
       "status": "preview",
       "source": "azure-updates"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/rate-limiting-pattern",
+      "date": "2026-06-14",
+      "title": "New architecture guidance: Rate Limiting Pattern",
+      "summary": "Control the rate at which your application sends requests to a service so that you stay within the service's throttling limits and overall capacity.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/rate-limiting-pattern",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/networking/guide/sd-wan-integration-hub-spoke-network-topologies",
+      "date": "2026-06-12",
+      "title": "New architecture guidance: SD-WAN Integration with Azure Hub-and-Spoke Network Topologies",
+      "summary": "Learn how to integrate SD-WAN with Azure hub-and-spoke networks by using Route Server, ExpressRoute, and network virtual appliances (NVAs) for hybrid connectivity.",
+      "link": "https://learn.microsoft.com/azure/architecture/networking/guide/sd-wan-integration-hub-spoke-network-topologies",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/queue-based-load-leveling",
+      "date": "2026-06-12",
+      "title": "New architecture guidance: Queue-Based Load Leveling Pattern",
+      "summary": "Learn how to smooth intermittent heavy loads by using a queue that acts as a buffer between a task and the service that it invokes.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/queue-based-load-leveling",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/ai-ml/idea/multiple-agent-workflow-automation",
+      "date": "2026-06-12",
+      "title": "Updated architecture guidance: Build a Multiple-Agent Workflow Automation Solution by using Microsoft Agent Framework",
+      "summary": "Learn how to design and deploy scalable multi‑agent automation infrastructure by using Microsoft Agent Framework, Azure Container Apps, and Foundry Tools.",
+      "link": "https://learn.microsoft.com/azure/architecture/ai-ml/idea/multiple-agent-workflow-automation",
+      "services": [
+        "container-apps"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/solution-ideas/articles/analytics-service-bus",
+      "date": "2026-06-11",
+      "title": "Updated architecture guidance: Real-Time Analytics with Azure Service Bus and Microsoft Fabric",
+      "summary": "Learn how to use Microsoft Fabric with Azure Service Bus for near real-time solutions at enterprise scale in production environments.",
+      "link": "https://learn.microsoft.com/azure/architecture/solution-ideas/articles/analytics-service-bus",
+      "services": [
+        "service-bus"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/example-scenario/ai/extract-object-text",
+      "date": "2026-06-10",
+      "title": "Updated architecture guidance: Extract text from objects using Power Automate and AI Builder",
+      "summary": "Use AI Builder and Azure Document Intelligence in Foundry Tools in a Power Automate workflow to extract text from images, for indexing and retrieval.",
+      "link": "https://learn.microsoft.com/azure/architecture/example-scenario/ai/extract-object-text",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/example-scenario/forensics/index",
+      "date": "2026-06-10",
+      "title": "Updated architecture guidance: Computer Forensics Chain of Custody in Azure",
+      "summary": "Learn how to create an infrastructure and workflow to help ensure a valid digital evidence chain of custody (CoC) for computer forensics in Azure.",
+      "link": "https://learn.microsoft.com/azure/architecture/example-scenario/forensics/index",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
     },
     {
       "id": "565171",
@@ -39,6 +184,18 @@
       "source": "azure-updates"
     },
     {
+      "id": "https://learn.microsoft.com/azure/architecture/ai-ml/architecture/automate-document-classification-durable-functions",
+      "date": "2026-06-03",
+      "title": "Updated architecture guidance: Automate Document Classification in Azure",
+      "summary": "Learn how to use the durable functions feature of Azure Functions as an automated document processing pipeline to classify documents by type.",
+      "link": "https://learn.microsoft.com/azure/architecture/ai-ml/architecture/automate-document-classification-durable-functions",
+      "services": [
+        "functions"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
       "id": "563716",
       "date": "2026-06-03",
       "title": "[In preview] Public Preview: Agent-to-agent (A2A) support for Prompt agents and Hosted agents in Foundry",
@@ -49,6 +206,54 @@
       ],
       "status": "preview",
       "source": "azure-updates"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/gatekeeper",
+      "date": "2026-06-02",
+      "title": "New architecture guidance: Gatekeeper Pattern",
+      "summary": "Learn how to use the Gatekeeper pattern to protect applications and services by using a dedicated host instance as a broker to validate requests and data.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/gatekeeper",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/gateway-aggregation",
+      "date": "2026-06-02",
+      "title": "New architecture guidance: Gateway Aggregation Pattern",
+      "summary": "Learn about the Gateway Aggregation pattern, which uses a gateway to aggregate many individual requests into a single request.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/gateway-aggregation",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/strangler-fig",
+      "date": "2026-06-02",
+      "title": "Updated architecture guidance: Strangler Fig Pattern",
+      "summary": "Learn how to incrementally migrate a legacy system by gradually replacing specific pieces of functionality with new applications and services.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/strangler-fig",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/example-scenario/mainframe/integrate-ibm-message-queues-azure",
+      "date": "2026-06-02",
+      "title": "Updated architecture guidance: Integrate IBM mainframe and midrange message queues with Azure",
+      "summary": "This example describes a data-first approach to middleware integration that enables IBM message queues (MQs).",
+      "link": "https://learn.microsoft.com/azure/architecture/example-scenario/mainframe/integrate-ibm-message-queues-azure",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
     },
     {
       "id": "563197",
@@ -510,6 +715,691 @@
       "source": "azure-updates"
     },
     {
+      "id": "https://learn.microsoft.com/azure/architecture/ai-ml/architecture/basic-microsoft-foundry-chat",
+      "date": "2026-06-01",
+      "title": "Updated architecture guidance: Basic Microsoft Foundry Chat Reference Architecture",
+      "summary": "Establish foundational knowledge for how to build and deploy enterprise chat applications by using Microsoft Foundry and Azure App Service.",
+      "link": "https://learn.microsoft.com/azure/architecture/ai-ml/architecture/basic-microsoft-foundry-chat",
+      "services": [
+        "app-service"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/aws-professional/compute",
+      "date": "2026-06-01",
+      "title": "Updated architecture guidance: Compare AWS and Azure Compute Services",
+      "summary": "Compare the compute services in Azure and Amazon Web Services (AWS). Explore the differences in virtual machines (VMs), containers, and serverless technologies.",
+      "link": "https://learn.microsoft.com/azure/architecture/aws-professional/compute",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/anti-corruption-layer",
+      "date": "2026-05-29",
+      "title": "New architecture guidance: Anti-Corruption Layer Pattern",
+      "summary": "Learn about the Anti-Corruption Layer pattern. Implement a facade or adapter layer between a modern application and a legacy system.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/anti-corruption-layer",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/throttling",
+      "date": "2026-05-29",
+      "title": "New architecture guidance: Throttling Pattern",
+      "summary": "Control the resources that an application instance, tenant, or service consumes so that the system continues to meet service-level objectives (SLOs) under load.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/throttling",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/best-practices/data-partitioning-strategies",
+      "date": "2026-05-29",
+      "title": "Updated architecture guidance: Data partitioning strategies",
+      "summary": "View guidance on separating data partitions to be managed and accessed separately in different services, such as Azure AI Search, Azure storage queues, and more.",
+      "link": "https://learn.microsoft.com/azure/architecture/best-practices/data-partitioning-strategies",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/solution-ideas/articles/ai-agents-at-scale",
+      "date": "2026-05-27",
+      "title": "New architecture guidance: Dynamic AI Agents at Scale Pattern",
+      "summary": "Learn how to dynamically select and orchestrate AI agents from a pool by using Microsoft Foundry, Azure AI Search, and Azure OpenAI to build multiagent systems.",
+      "link": "https://learn.microsoft.com/azure/architecture/solution-ideas/articles/ai-agents-at-scale",
+      "services": [
+        "ai-foundry"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/microservices/ci-cd",
+      "date": "2026-05-22",
+      "title": "New architecture guidance: CI/CD for Microservices",
+      "summary": "Learn about continuous integration and continuous delivery (CI/CD) for microservices, including challenges and recommended approaches.",
+      "link": "https://learn.microsoft.com/azure/architecture/microservices/ci-cd",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/expressroute-vpn-failover",
+      "date": "2026-05-22",
+      "title": "Updated architecture guidance: Connect an On-Premises Network to Azure by Using ExpressRoute with VPN Failover",
+      "summary": "Learn how to connect an on-premises network to an Azure virtual network by using ExpressRoute with a virtual private network (VPN) gateway failover.",
+      "link": "https://learn.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/expressroute-vpn-failover",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/ai-ml/guide/azure-openai-gateway-multi-backend",
+      "date": "2026-05-20",
+      "title": "New architecture guidance: Use a Gateway in Front of Multiple Azure OpenAI Deployments or Instances",
+      "summary": "Learn how to add a gateway in front of multiple Azure OpenAI model deployments or instances.",
+      "link": "https://learn.microsoft.com/azure/architecture/ai-ml/guide/azure-openai-gateway-multi-backend",
+      "services": [
+        "ai-foundry"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/example-scenario/devops/automated-api-deployments-apiops",
+      "date": "2026-05-20",
+      "title": "Updated architecture guidance: Automate API Deployments by Using APIOps",
+      "summary": "Use APIOps and Azure API Management to build and deploy APIs. This solution provides self-service tools, auditing, policy enforcement, and early feedback.",
+      "link": "https://learn.microsoft.com/azure/architecture/example-scenario/devops/automated-api-deployments-apiops",
+      "services": [
+        "apim"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/ai-ml/architecture/baseline-microsoft-foundry-chat",
+      "date": "2026-05-15",
+      "title": "Updated architecture guidance: Baseline Microsoft Foundry Chat Reference Architecture",
+      "summary": "Learn how to build network-secured, highly available, and zone-redundant enterprise chat applications by using Microsoft Foundry tools and Azure App Service.",
+      "link": "https://learn.microsoft.com/azure/architecture/ai-ml/architecture/baseline-microsoft-foundry-chat",
+      "services": [
+        "app-service"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/ai-ml/architecture/basic-microsoft-foundry-chat",
+      "date": "2026-05-13",
+      "title": "Updated architecture guidance: Basic Microsoft Foundry Chat Reference Architecture",
+      "summary": "Establish foundational knowledge for how to build and deploy enterprise chat applications by using Microsoft Foundry and Azure App Service.",
+      "link": "https://learn.microsoft.com/azure/architecture/ai-ml/architecture/basic-microsoft-foundry-chat",
+      "services": [
+        "app-service"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/ai-ml/guide/ai-agent-design-patterns",
+      "date": "2026-05-12",
+      "title": "Updated architecture guidance: AI Agent Orchestration Patterns",
+      "summary": "Learn about fundamental orchestration patterns for AI agent architectures, including sequential, concurrent, group chat, handoff, and magentic patterns.",
+      "link": "https://learn.microsoft.com/azure/architecture/ai-ml/guide/ai-agent-design-patterns",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/example-scenario/infrastructure/wordpress-app-service",
+      "date": "2026-05-06",
+      "title": "Updated architecture guidance: WordPress on App Service",
+      "summary": "Learn how to use Azure Front Door, Azure App Service, and other Azure services to deploy a highly scalable and secure installation of WordPress.",
+      "link": "https://learn.microsoft.com/azure/architecture/example-scenario/infrastructure/wordpress-app-service",
+      "services": [
+        "app-service"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/example-scenario/quantum/quantum-computing-integration-with-classical-apps",
+      "date": "2026-05-05",
+      "title": "Updated architecture guidance: Quantum computing integration with classical apps",
+      "summary": "Learn how to use Azure Quantum to implement hybrid quantum applications",
+      "link": "https://learn.microsoft.com/azure/architecture/example-scenario/quantum/quantum-computing-integration-with-classical-apps",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/external-configuration-store",
+      "date": "2026-04-30",
+      "title": "New architecture guidance: External Configuration Store Pattern",
+      "summary": "Review the External Configuration Store pattern, which moves configuration information out of the application deployment package to a centralized location.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/external-configuration-store",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/ai-ml/idea/intelligent-apps-image-processing",
+      "date": "2026-04-30",
+      "title": "Updated architecture guidance: Image classification on Azure",
+      "summary": "Learn how to build image classification into your applications by using Azure services such as Azure AI Content Understanding and Azure Functions.",
+      "link": "https://learn.microsoft.com/azure/architecture/ai-ml/idea/intelligent-apps-image-processing",
+      "services": [
+        "functions"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/ai-ml/guide/azure-openai-gateway-guide",
+      "date": "2026-04-30",
+      "title": "Updated architecture guidance: Access Foundry Models and Other Language Models Through a Gateway",
+      "summary": "Understand how implementing a gateway helps manage access to Azure OpenAI and other language models more securely and efficiently.",
+      "link": "https://learn.microsoft.com/azure/architecture/ai-ml/guide/azure-openai-gateway-guide",
+      "services": [
+        "ai-foundry"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/ai-ml/openai/architecture/call-center-openai-analytics",
+      "date": "2026-04-30",
+      "title": "Updated architecture guidance: Extract and Analyze Call Center Data by Using Azure OpenAI, Speech Services, and Language Services",
+      "summary": "Learn how to extract insights from customer conversations at a call center by using Foundry Tools and Azure OpenAI.",
+      "link": "https://learn.microsoft.com/azure/architecture/ai-ml/openai/architecture/call-center-openai-analytics",
+      "services": [
+        "ai-foundry"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/deployment-stamp",
+      "date": "2026-04-29",
+      "title": "New architecture guidance: Deployment Stamps Pattern",
+      "summary": "Learn about the Deployment Stamps pattern, which deploys many independent copies (known as stamps, service units, or scale units) of application components.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/deployment-stamp",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/example-scenario/networking/split-brain-dns",
+      "date": "2026-04-29",
+      "title": "Updated architecture guidance: Use a Split-Brain DNS Configuration to Host a Web App",
+      "summary": "Implement a split-brain DNS configuration to differentiate traffic treatment based on DNS and whether a client originates from the internet or a corporate network.",
+      "link": "https://learn.microsoft.com/azure/architecture/example-scenario/networking/split-brain-dns",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/microservices/design/compute-options",
+      "date": "2026-04-24",
+      "title": "Updated architecture guidance: Choose a Compute Option for Microservices",
+      "summary": "Choose an Azure compute platform for a microservices architecture. Compare options based on interservice communication, independent scaling, and deployability.",
+      "link": "https://learn.microsoft.com/azure/architecture/microservices/design/compute-options",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/example-scenario/certificate-lifecycle/index",
+      "date": "2026-04-22",
+      "title": "Updated architecture guidance: Certificate Life Cycle Management on Azure",
+      "summary": "Learn how to create an infrastructure and workflow to automate the renewal process for certificates issued by a nonintegrated certification authority (CA).",
+      "link": "https://learn.microsoft.com/azure/architecture/example-scenario/certificate-lifecycle/index",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/guide/testing/load-testing/load-testing-with-custom-plugins",
+      "date": "2026-04-22",
+      "title": "Updated architecture guidance: Azure Load Testing with Custom Plugins for Event Hubs and IoT Hub to Simulate Device Behaviors",
+      "summary": "Learn how to design KPIs and develop a dashboard for Azure Load Testing with custom JMeter plugins to simulate device behaviors.",
+      "link": "https://learn.microsoft.com/azure/architecture/guide/testing/load-testing/load-testing-with-custom-plugins",
+      "services": [
+        "event-hubs"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/compensating-transaction",
+      "date": "2026-04-20",
+      "title": "New architecture guidance: Compensating Transaction Pattern",
+      "summary": "Use the Compensating Transaction pattern to undo work when a step of an eventually consistent operation fails in distributed systems.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/compensating-transaction",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/data-guide/technology-choices/fabric-deployment-patterns",
+      "date": "2026-04-20",
+      "title": "New architecture guidance: Choose a Microsoft Fabric Deployment Pattern",
+      "summary": "Evaluate four Microsoft Fabric deployment patterns to structure capacities, workspaces, and items based on your requirements.",
+      "link": "https://learn.microsoft.com/azure/architecture/data-guide/technology-choices/fabric-deployment-patterns",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/event-sourcing",
+      "date": "2026-04-20",
+      "title": "Updated architecture guidance: Event Sourcing Pattern",
+      "summary": "Learn how to use an append-only store to record the full series of events that describe actions taken on data in a domain.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/event-sourcing",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/reference-architectures/enterprise-integration/basic-enterprise-integration",
+      "date": "2026-04-20",
+      "title": "Updated architecture guidance: Basic Enterprise Integration on Azure",
+      "summary": "Learn how to implement a basic enterprise integration architecture on Azure by using Azure Logic Apps and Azure API Management.",
+      "link": "https://learn.microsoft.com/azure/architecture/reference-architectures/enterprise-integration/basic-enterprise-integration",
+      "services": [
+        "apim",
+        "logic-apps"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/asynchronous-request-reply",
+      "date": "2026-04-20",
+      "title": "Updated architecture guidance: Asynchronous Request-Reply Pattern",
+      "summary": "Learn how to decouple back-end processing from front-end hosts by using asynchronous operations and HTTP polling for long-running tasks.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/asynchronous-request-reply",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/example-scenario/forensics/index",
+      "date": "2026-04-13",
+      "title": "Updated architecture guidance: Computer Forensics Chain of Custody in Azure",
+      "summary": "Learn how to create an infrastructure and workflow to help ensure a valid digital evidence chain of custody (CoC) for computer forensics in Azure.",
+      "link": "https://learn.microsoft.com/azure/architecture/example-scenario/forensics/index",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/ai-ml/architecture/baseline-microsoft-foundry-chat",
+      "date": "2026-04-09",
+      "title": "Updated architecture guidance: Baseline Microsoft Foundry Chat Reference Architecture",
+      "summary": "Learn how to build network-secured, highly available, and zone-redundant enterprise chat applications by using Microsoft Foundry tools and Azure App Service.",
+      "link": "https://learn.microsoft.com/azure/architecture/ai-ml/architecture/baseline-microsoft-foundry-chat",
+      "services": [
+        "app-service"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/ai-ml/architecture/basic-microsoft-foundry-chat",
+      "date": "2026-04-09",
+      "title": "Updated architecture guidance: Basic Microsoft Foundry Chat Reference Architecture",
+      "summary": "Establish foundational knowledge for how to build and deploy enterprise chat applications by using Microsoft Foundry and Azure App Service.",
+      "link": "https://learn.microsoft.com/azure/architecture/ai-ml/architecture/basic-microsoft-foundry-chat",
+      "services": [
+        "app-service"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/networking/guide/cross-tenant-secure-access-private-endpoints",
+      "date": "2026-04-06",
+      "title": "New architecture guidance: Cross-tenant Secure Access to Apps by Using Private Endpoints",
+      "summary": "Restrict inbound traffic to a web app or function app. Use private endpoints in Azure to give consumer tenants secure access to provider tenant apps.",
+      "link": "https://learn.microsoft.com/azure/architecture/networking/guide/cross-tenant-secure-access-private-endpoints",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/competing-consumers",
+      "date": "2026-04-03",
+      "title": "New architecture guidance: Competing Consumers Pattern",
+      "summary": "Learn how the Competing Consumers pattern supports multiple concurrent consumers processing messages received on the same messaging channel.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/competing-consumers",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/example-scenario/infrastructure/multi-tier-app-disaster-recovery",
+      "date": "2026-04-03",
+      "title": "Updated architecture guidance: Multitier Web Application Built for High Availability and Disaster Recovery",
+      "summary": "Learn how to create a resilient multitier web application built for high availability and disaster recovery on Azure by using VMs.",
+      "link": "https://learn.microsoft.com/azure/architecture/example-scenario/infrastructure/multi-tier-app-disaster-recovery",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/sharding",
+      "date": "2026-04-02",
+      "title": "New architecture guidance: Sharding Pattern",
+      "summary": "Use the Sharding design pattern to divide a data store into horizontal partitions or shards to improve scalability and performance in distributed systems.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/sharding",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/compute-resource-consolidation",
+      "date": "2026-04-02",
+      "title": "New architecture guidance: Compute Resource Consolidation Pattern",
+      "summary": "Use the Compute Resource Consolidation design pattern to consolidate multiple tasks or operations into one computational unit.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/compute-resource-consolidation",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/choreography",
+      "date": "2026-04-02",
+      "title": "New architecture guidance: Choreography Pattern",
+      "summary": "Learn how to set up services to decide when and how to process a business operation, instead of depending on a central orchestrator.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/choreography",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/solution-ideas/articles/analytics-service-bus",
+      "date": "2026-04-02",
+      "title": "Updated architecture guidance: Real-Time Analytics with Azure Service Bus and Microsoft Fabric",
+      "summary": "Learn how to use Microsoft Fabric with Azure Service Bus for near real-time solutions at enterprise scale in production environments.",
+      "link": "https://learn.microsoft.com/azure/architecture/solution-ideas/articles/analytics-service-bus",
+      "services": [
+        "service-bus"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/example-scenario/apps/apim-api-scenario",
+      "date": "2026-03-31",
+      "title": "Updated architecture guidance: Migrate a Web App by Using Azure API Management",
+      "summary": "Review an example scenario in which an e-commerce company in the travel industry uses Azure API Management to migrate a legacy web application.",
+      "link": "https://learn.microsoft.com/azure/architecture/example-scenario/apps/apim-api-scenario",
+      "services": [
+        "apim"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/microservices/design/patterns",
+      "date": "2026-03-30",
+      "title": "New architecture guidance: Design Patterns for Microservices",
+      "summary": "Learn about design patterns that address common microservices challenges like data consistency, cross-service communication, failure isolation, and legacy integration.",
+      "link": "https://learn.microsoft.com/azure/architecture/microservices/design/patterns",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/best-practices/background-jobs",
+      "date": "2026-03-30",
+      "title": "Updated architecture guidance: Best Practices for Background Jobs",
+      "summary": "Learn best practices for designing background jobs on Azure, including hosting options, reliability, and scaling for event-driven and scheduled jobs.",
+      "link": "https://learn.microsoft.com/azure/architecture/best-practices/background-jobs",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/event-sourcing",
+      "date": "2026-03-27",
+      "title": "New architecture guidance: Event Sourcing Pattern",
+      "summary": "Learn how to use an append-only store to record the full series of events that describe actions taken on data in a domain.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/event-sourcing",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/example-scenario/mainframe/process-batch-transactions",
+      "date": "2026-03-27",
+      "title": "Updated architecture guidance: High-volume batch transaction processing",
+      "summary": "Use Azure Kubernetes Service (AKS) and Azure Service Bus to implement high-volume batch transaction processing.",
+      "link": "https://learn.microsoft.com/azure/architecture/example-scenario/mainframe/process-batch-transactions",
+      "services": [
+        "service-bus"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/ambassador",
+      "date": "2026-03-19",
+      "title": "New architecture guidance: Ambassador Pattern",
+      "summary": "Learn about the ambassador pattern, which creates helper services that send network requests on behalf of a consumer service or application.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/ambassador",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/bulkhead",
+      "date": "2026-03-17",
+      "title": "New architecture guidance: Bulkhead Pattern",
+      "summary": "Learn about the Bulkhead pattern, which isolates elements of an application into pools so that if one fails, the others continue to function.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/bulkhead",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/solution-ideas/articles/compute-get-started",
+      "date": "2026-03-12",
+      "title": "New architecture guidance: Get Started with Compute Architecture Design",
+      "summary": "Learn about Azure compute technologies, from virtual machines to serverless functions. Review guidance, solution ideas, and reference architectures.",
+      "link": "https://learn.microsoft.com/azure/architecture/solution-ideas/articles/compute-get-started",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/high-availability/traffic-manager-application-gateway",
+      "date": "2026-03-11",
+      "title": "New architecture guidance: Multiregion Load Balancing",
+      "summary": "Learn how to build an Azure system that serves web and non-web workloads with resilient multitier applications in multiple Azure regions.",
+      "link": "https://learn.microsoft.com/azure/architecture/high-availability/traffic-manager-application-gateway",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/guide/architecture-styles/event-driven",
+      "date": "2026-03-06",
+      "title": "Updated architecture guidance: Event-Driven Architecture Style",
+      "summary": "Explore the benefits, challenges, and best practices for event-driven architectures on Azure.",
+      "link": "https://learn.microsoft.com/azure/architecture/guide/architecture-styles/event-driven",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/asynchronous-request-reply",
+      "date": "2026-03-05",
+      "title": "New architecture guidance: Asynchronous Request-Reply Pattern",
+      "summary": "Learn how to decouple back-end processing from front-end hosts by using asynchronous operations and HTTP polling for long-running tasks.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/asynchronous-request-reply",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/publisher-subscriber",
+      "date": "2026-03-05",
+      "title": "New architecture guidance: Publisher-Subscriber Pattern",
+      "summary": "Use an intermediary message broker or event bus to decouple senders from consumers and distribute messages to interested subscribers asynchronously.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/publisher-subscriber",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/solution-ideas/articles/analytics-service-bus",
+      "date": "2026-03-05",
+      "title": "Updated architecture guidance: Real-Time Analytics with Azure Service Bus and Microsoft Fabric",
+      "summary": "Learn how to use Microsoft Fabric with Azure Service Bus for near real-time solutions at enterprise scale in production environments.",
+      "link": "https://learn.microsoft.com/azure/architecture/solution-ideas/articles/analytics-service-bus",
+      "services": [
+        "service-bus"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/best-practices/data-partitioning-strategies",
+      "date": "2026-03-04",
+      "title": "Updated architecture guidance: Data partitioning strategies",
+      "summary": "View guidance on separating data partitions to be managed and accessed separately in different services, such as Azure AI Search, Azure storage queues, and more.",
+      "link": "https://learn.microsoft.com/azure/architecture/best-practices/data-partitioning-strategies",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/best-practices/host-name-preservation",
+      "date": "2026-03-03",
+      "title": "New architecture guidance: Host Name Preservation",
+      "summary": "Learn how to preserve the original HTTP host name between a reverse proxy and its back-end web application in common Azure services.",
+      "link": "https://learn.microsoft.com/azure/architecture/best-practices/host-name-preservation",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/example-scenario/integration/app-gateway-internal-api-management-function",
+      "date": "2026-03-03",
+      "title": "Updated architecture guidance: Azure API Management Landing Zone Architecture",
+      "summary": "Learn about a secure enterprise API management architecture that uses Azure Application Gateway, API Management, and CI/CD pipeline deployment.",
+      "link": "https://learn.microsoft.com/azure/architecture/example-scenario/integration/app-gateway-internal-api-management-function",
+      "services": [
+        "apim"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/example-scenario/hybrid/secure-hybrid-messaging-client",
+      "date": "2026-03-02",
+      "title": "Updated architecture guidance: Enhanced-security hybrid messaging for client access",
+      "summary": "Enhance your security in a client access scenario by using Microsoft Entra multifactor authentication.",
+      "link": "https://learn.microsoft.com/azure/architecture/example-scenario/hybrid/secure-hybrid-messaging-client",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/example-scenario/hybrid/secure-hybrid-messaging-mobile",
+      "date": "2026-03-02",
+      "title": "Updated architecture guidance: Enhanced-security hybrid messaging for mobile access",
+      "summary": "Enhance your security in a mobile access scenario by using Microsoft Entra multifactor authentication.",
+      "link": "https://learn.microsoft.com/azure/architecture/example-scenario/hybrid/secure-hybrid-messaging-mobile",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
       "id": "seed-apim-mcp",
       "date": "2025-05-19",
       "title": "APIM can expose REST APIs as remote MCP servers (preview)",
@@ -536,6 +1426,18 @@
       "source": "seed"
     },
     {
+      "id": "https://github.com/Azure/appservice-landing-zone-accelerator/releases/tag/v1.0.3",
+      "date": "2024-11-20",
+      "title": "Accelerator release: appservice-landing-zone-accelerator — v1.0.3",
+      "summary": "New release in the official Azure/appservice-landing-zone-accelerator accelerator repository.",
+      "link": "https://github.com/Azure/appservice-landing-zone-accelerator/releases/tag/v1.0.3",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "accelerator"
+    },
+    {
       "id": "seed-functions-flex-ga",
       "date": "2024-11-19",
       "title": "Azure Functions Flex Consumption plan generally available",
@@ -559,6 +1461,42 @@
       ],
       "status": "ga",
       "source": "seed"
+    },
+    {
+      "id": "https://github.com/Azure/appservice-landing-zone-accelerator/releases/tag/v1.0.2",
+      "date": "2024-10-01",
+      "title": "Accelerator release: appservice-landing-zone-accelerator — v1.0.2: fix diagnotics changes (#180)",
+      "summary": "New release in the official Azure/appservice-landing-zone-accelerator accelerator repository.",
+      "link": "https://github.com/Azure/appservice-landing-zone-accelerator/releases/tag/v1.0.2",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "accelerator"
+    },
+    {
+      "id": "https://github.com/Azure/appservice-landing-zone-accelerator/releases/tag/v1.0.1",
+      "date": "2024-10-01",
+      "title": "Accelerator release: appservice-landing-zone-accelerator — v1.0.1",
+      "summary": "New release in the official Azure/appservice-landing-zone-accelerator accelerator repository.",
+      "link": "https://github.com/Azure/appservice-landing-zone-accelerator/releases/tag/v1.0.1",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "accelerator"
+    },
+    {
+      "id": "https://github.com/Azure/appservice-landing-zone-accelerator/releases/tag/v1.0.0",
+      "date": "2024-10-01",
+      "title": "Accelerator release: appservice-landing-zone-accelerator — v1.0.0",
+      "summary": "New release in the official Azure/appservice-landing-zone-accelerator accelerator repository.",
+      "link": "https://github.com/Azure/appservice-landing-zone-accelerator/releases/tag/v1.0.0",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "accelerator"
     },
     {
       "id": "seed-apim-genai-policies",
@@ -597,6 +1535,174 @@
       ],
       "status": "ga",
       "source": "seed"
+    },
+    {
+      "id": "https://github.com/Azure/aca-landing-zone-accelerator/releases/tag/V2.1.0",
+      "date": "2023-11-04",
+      "title": "Accelerator release: aca-landing-zone-accelerator — V2.1.0",
+      "summary": "New release in the official Azure/aca-landing-zone-accelerator accelerator repository.",
+      "link": "https://github.com/Azure/aca-landing-zone-accelerator/releases/tag/V2.1.0",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "accelerator"
+    },
+    {
+      "id": "https://github.com/Azure/aca-landing-zone-accelerator/releases/tag/V2.0.0",
+      "date": "2023-09-05",
+      "title": "Accelerator release: aca-landing-zone-accelerator — V2.0.0",
+      "summary": "New release in the official Azure/aca-landing-zone-accelerator accelerator repository.",
+      "link": "https://github.com/Azure/aca-landing-zone-accelerator/releases/tag/V2.0.0",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "accelerator"
+    },
+    {
+      "id": "https://github.com/Azure/aca-landing-zone-accelerator/releases/tag/V1.1.0",
+      "date": "2023-08-31",
+      "title": "Accelerator release: aca-landing-zone-accelerator — V1.1.0",
+      "summary": "New release in the official Azure/aca-landing-zone-accelerator accelerator repository.",
+      "link": "https://github.com/Azure/aca-landing-zone-accelerator/releases/tag/V1.1.0",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "accelerator"
+    },
+    {
+      "id": "https://github.com/Azure/aca-landing-zone-accelerator/releases/tag/V1.0.0",
+      "date": "2023-08-31",
+      "title": "Accelerator release: aca-landing-zone-accelerator — V1.0.0",
+      "summary": "New release in the official Azure/aca-landing-zone-accelerator accelerator repository.",
+      "link": "https://github.com/Azure/aca-landing-zone-accelerator/releases/tag/V1.0.0",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "accelerator"
+    },
+    {
+      "id": "https://github.com/Azure/logicapps/releases/tag/1.21.13",
+      "date": "2023-06-09",
+      "title": "Accelerator release: logicapps — NuGet version 1.21.13 | Bundle version 1.21.13 Latest",
+      "summary": "New release in the official Azure/logicapps accelerator repository.",
+      "link": "https://github.com/Azure/logicapps/releases/tag/1.21.13",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "accelerator"
+    },
+    {
+      "id": "https://github.com/Azure/logicapps/releases/tag/1.19.5",
+      "date": "2023-05-25",
+      "title": "Accelerator release: logicapps — NuGet version 1.19.5 | Bundle version 1.19.5 Latest",
+      "summary": "New release in the official Azure/logicapps accelerator repository.",
+      "link": "https://github.com/Azure/logicapps/releases/tag/1.19.5",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "accelerator"
+    },
+    {
+      "id": "https://github.com/Azure/logicapps/releases/tag/1.15.24",
+      "date": "2023-04-27",
+      "title": "Accelerator release: logicapps — NuGet version 1.15.24 | Bundle version 1.15.24",
+      "summary": "New release in the official Azure/logicapps accelerator repository.",
+      "link": "https://github.com/Azure/logicapps/releases/tag/1.15.24",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "accelerator"
+    },
+    {
+      "id": "https://github.com/Azure/logicapps/releases/tag/1.11.15",
+      "date": "2023-04-12",
+      "title": "Accelerator release: logicapps — NuGet version 1.11.15 | Bundle version 1.11.15",
+      "summary": "New release in the official Azure/logicapps accelerator repository.",
+      "link": "https://github.com/Azure/logicapps/releases/tag/1.11.15",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "accelerator"
+    },
+    {
+      "id": "https://github.com/Azure/logicapps/releases/tag/1.8.9",
+      "date": "2023-04-12",
+      "title": "Accelerator release: logicapps — NuGet version 1.8.9 | Bundle version 1.8.9",
+      "summary": "New release in the official Azure/logicapps accelerator repository.",
+      "link": "https://github.com/Azure/logicapps/releases/tag/1.8.9",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "accelerator"
+    },
+    {
+      "id": "https://github.com/Azure/logicapps/releases/tag/v1.3.7",
+      "date": "2023-02-02",
+      "title": "Accelerator release: logicapps — NuGet version 1.3.7",
+      "summary": "New release in the official Azure/logicapps accelerator repository.",
+      "link": "https://github.com/Azure/logicapps/releases/tag/v1.3.7",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "accelerator"
+    },
+    {
+      "id": "https://github.com/Azure/logicapps/releases/tag/1.3.8",
+      "date": "2022-12-29",
+      "title": "Accelerator release: logicapps — 1.3.8",
+      "summary": "New release in the official Azure/logicapps accelerator repository.",
+      "link": "https://github.com/Azure/logicapps/releases/tag/1.3.8",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "accelerator"
+    },
+    {
+      "id": "https://github.com/Azure/logicapps/releases/tag/1.2.18",
+      "date": "2022-11-10",
+      "title": "Accelerator release: logicapps — NuGet version 1.2.18 | Bundle version 1.2.18",
+      "summary": "New release in the official Azure/logicapps accelerator repository.",
+      "link": "https://github.com/Azure/logicapps/releases/tag/1.2.18",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "accelerator"
+    },
+    {
+      "id": "https://github.com/Azure/logicapps/releases/tag/1.2.7",
+      "date": "2022-08-30",
+      "title": "Accelerator release: logicapps — NuGet version 1.2.7 | Bundle version 1.2.11",
+      "summary": "New release in the official Azure/logicapps accelerator repository.",
+      "link": "https://github.com/Azure/logicapps/releases/tag/1.2.7",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "accelerator"
+    },
+    {
+      "id": "https://github.com/Azure/logicapps/releases/tag/1.2.9",
+      "date": "2022-07-11",
+      "title": "Accelerator release: logicapps — NuGet version 1.2.9 | Bundle version 1.2.5",
+      "summary": "New release in the official Azure/logicapps accelerator repository.",
+      "link": "https://github.com/Azure/logicapps/releases/tag/1.2.9",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "accelerator"
     }
   ]
 }
