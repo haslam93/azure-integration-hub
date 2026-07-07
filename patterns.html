@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Architecture Patterns — Azure Integration Hub</title>
+<meta name="description" content="Latest Azure integration architecture patterns: AI gateway, API-led connectivity, event-driven architecture, async request-reply, saga, strangler fig — with diagrams.">
+<script>
+  (() => {
+    const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+    let stored = null;
+    try { stored = localStorage.getItem("cpTheme"); } catch (e) {}
+    const theme = param || stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", theme);
+  })();
+</script>
+<link rel="stylesheet" href="assets/site.css">
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.3/dist/mermaid.min.js"></script>
+<script src="assets/site.js" defer></script>
+</head>
+<body>
+<main class="page">
+  <aside class="toc" data-auto></aside>
+  <div class="content">
+
+    <p class="eyebrow">Architecture</p>
+    <h1>Integration architecture patterns</h1>
+    <p class="lede">The patterns that keep showing up in modern Azure integration work — each with the services involved and a reference diagram. Updated as new patterns emerge (see <a href="changelog.html">changelog</a>).</p>
+
+    <h2 id="ai-gateway">1 · AI Gateway (GenAI front door)</h2>
+    <p><strong>Services:</strong> APIM · Azure OpenAI / AI Foundry · App Insights. <strong>Problem:</strong> uncontrolled model access, invisible token spend, 429 cascades, agents holding raw keys.</p>
+    <div class="diagram">
+      <pre class="mermaid">
+flowchart LR
+    APPS[Apps · copilots · agents] --> APIM[APIM AI Gateway<br/>token limits · metrics ·<br/>semantic cache · content safety]
+    APIM -->|priority 1| PTU[Azure OpenAI PTU]
+    APIM -->|spillover| PAYG[Azure OpenAI PAYG]
+    APIM --> OSS[Foundry open models<br/>on Container Apps GPU]
+    APIM --> AI[App Insights<br/>tokens per team]
+      </pre>
+      <div class="caption">One governed endpoint for every model; cost attribution and failover are platform concerns, not app concerns.</div>
+    </div>
+    <p>Full detail on the <a href="apim.html#ai-gateway">APIM page</a>.</p>
+
+    <h2 id="agent-tools">2 · Governed agent tools (MCP hub)</h2>
+    <p><strong>Services:</strong> APIM · AI Foundry Agent Service · Functions · Logic Apps. <strong>Problem:</strong> agents need real enterprise actions without scattering credentials.</p>
+    <div class="diagram">
+      <pre class="mermaid">
+flowchart LR
+    AG[Foundry agents ·<br/>GitHub Copilot · MCP clients] --> APIM[APIM<br/>MCP server façade<br/>Entra auth · rate limits · tracing]
+    APIM --> API1[Existing REST APIs]
+    APIM --> FN[Functions MCP tools]
+    APIM --> LA[Logic Apps workflows<br/>as tools]
+      </pre>
+      <div class="caption">Existing APIs become agent tools through the gateway — governance follows the tool, not the agent.</div>
+    </div>
+
+    <h2 id="api-led">3 · API-led connectivity</h2>
+    <p><strong>Services:</strong> APIM (workspaces/products) · everything behind it. <strong>Problem:</strong> point-to-point spaghetti between systems, teams blocked on each other.</p>
+    <div class="diagram">
+      <pre class="mermaid">
+flowchart TB
+    subgraph XP[Experience APIs]
+        X1[Mobile BFF]
+        X2[Partner API]
+    end
+    subgraph PR[Process APIs]
+        P1[Order process]
+        P2[Customer 360]
+    end
+    subgraph SYS[System APIs]
+        S1[SAP façade]
+        S2[CRM façade]
+        S3[Warehouse façade]
+    end
+    X1 --> P1
+    X2 --> P1
+    X1 --> P2
+    P1 --> S1
+    P1 --> S3
+    P2 --> S2
+      </pre>
+      <div class="caption">Three reusable layers, each an APIM product with its own contract, owners and policies; teams federate via workspaces.</div>
+    </div>
+
+    <h2 id="event-driven">4 · Event-driven architecture</h2>
+    <p><strong>Services:</strong> Event Grid · Service Bus · Functions · Container Apps. <strong>Problem:</strong> tight coupling and synchronous chains that fail together.</p>
+    <div class="diagram">
+      <pre class="mermaid">
+flowchart LR
+    SRC[Producers<br/>apps · Azure services · MQTT] --> EG[Event Grid<br/>route + filter]
+    EG -->|critical commands| SB[(Service Bus<br/>guaranteed delivery)]
+    EG -->|reactive| FN[Functions]
+    SB --> W[Container Apps workers<br/>KEDA scale on depth]
+    FN --> DS[(Downstream systems)]
+    W --> DS
+      </pre>
+      <div class="caption">Grid routes facts; the bus guarantees work; compute scales with the backlog. Producers know nothing about consumers.</div>
+    </div>
+
+    <h2 id="async-request-reply">5 · Async request-reply</h2>
+    <p><strong>Services:</strong> APIM · Functions/Durable · Service Bus. <strong>Problem:</strong> operations that outlive an HTTP timeout.</p>
+    <div class="diagram">
+      <pre class="mermaid">
+sequenceDiagram
+    participant C as Client
+    participant G as APIM
+    participant F as Function (starter)
+    participant O as Orchestration / queue worker
+    C->>G: POST /reports
+    G->>F: forward
+    F->>O: enqueue / start orchestration
+    F-->>C: 202 Accepted + Location: /reports/status/123
+    loop until done
+        C->>G: GET /reports/status/123
+        G-->>C: 200 running (Retry-After)
+    end
+    C->>G: GET /reports/status/123
+    G-->>C: 302 → result URI
+      </pre>
+      <div class="caption">202 + status endpoint: the canonical way to put long-running work behind a synchronous API.</div>
+    </div>
+
+    <h2 id="saga">6 · Saga (distributed transactions)</h2>
+    <p><strong>Services:</strong> Durable Functions or Logic Apps · Service Bus. <strong>Problem:</strong> multi-service transactions with no 2PC.</p>
+    <div class="diagram">
+      <pre class="mermaid">
+flowchart LR
+    O[Orchestrator<br/>Durable Function / Logic App] --> A[Reserve inventory]
+    A --> B[Charge payment]
+    B --> C[Create shipment]
+    C -->|fail| CC[Compensate: refund payment]
+    CC --> CA[Compensate: release inventory]
+      </pre>
+      <div class="caption">Every step has a compensator; the orchestrator guarantees either full completion or full compensation.</div>
+    </div>
+
+    <h2 id="strangler">7 · Strangler fig modernization</h2>
+    <p><strong>Services:</strong> APIM · Functions/Container Apps · legacy system. <strong>Problem:</strong> replacing a monolith without a big-bang cutover.</p>
+    <div class="diagram">
+      <pre class="mermaid">
+flowchart LR
+    C[Clients] --> G[APIM façade<br/>stable contract]
+    G -->|/orders migrated| N[New microservice<br/>Container Apps]
+    G -->|/invoices not yet| L[Legacy monolith / SOAP]
+    N -.eventually all routes.-> G
+      </pre>
+      <div class="caption">The gateway owns the contract; routes flip from legacy to new one at a time, invisibly to clients.</div>
+    </div>
+
+    <h2 id="claim-check">8 · Claim check &amp; load leveling</h2>
+    <p><strong>Services:</strong> Service Bus · Blob Storage · Functions. <strong>Problem:</strong> large payloads and bursty traffic overwhelming consumers.</p>
+    <div class="diagram">
+      <pre class="mermaid">
+flowchart LR
+    P[Producer] -->|1. upload payload| BLOB[(Blob Storage)]
+    P -->|2. send reference| Q[(Service Bus queue)]
+    Q -->|steady drain| W[Workers]
+    W -->|3. fetch payload| BLOB
+      </pre>
+      <div class="caption">The bus carries claim tickets, not payloads; the queue absorbs bursts so workers process at a sustainable rate.</div>
+    </div>
+
+    <h2 id="choosing">Choosing compute &amp; orchestration quickly</h2>
+    <table>
+      <tr><th>Need</th><th>Reach for</th></tr>
+      <tr><td>Connector-heavy business workflow, mixed audience</td><td>Logic Apps</td></tr>
+      <tr><td>Code-first orchestration, developer-owned</td><td>Durable Functions</td></tr>
+      <tr><td>Event handler / small API, scale to zero</td><td>Functions (Flex)</td></tr>
+      <tr><td>Container microservices, Dapr, jobs, GPU</td><td>Container Apps</td></tr>
+      <tr><td>Classic web app / API from code</td><td>App Service</td></tr>
+      <tr><td>Any API or model exposed to anyone</td><td>APIM in front, always</td></tr>
+    </table>
+
+    <h2 id="links">Key references</h2>
+    <ul>
+      <li><a href="https://learn.microsoft.com/azure/architecture/patterns/" target="_blank" rel="noopener">Cloud design patterns catalog</a></li>
+      <li><a href="https://learn.microsoft.com/azure/architecture/example-scenario/ai/generative-ai-gateway" target="_blank" rel="noopener">GenAI gateway reference architecture</a></li>
+      <li><a href="https://learn.microsoft.com/azure/logic-apps/logic-apps-serverless-overview" target="_blank" rel="noopener">Azure Integration Services overview</a></li>
+    </ul>
+
+  </div>
+</main>
+</body>
+</html>

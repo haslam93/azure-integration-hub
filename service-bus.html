@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Service Bus, Event Grid &amp; Event Hubs — Azure Integration Hub</title>
+<meta name="description" content="Deep dive on Azure messaging: Service Bus queues and topics, Event Grid pub/sub and MQTT, Event Hubs streaming — capabilities, patterns and use cases.">
+<script>
+  (() => {
+    const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+    let stored = null;
+    try { stored = localStorage.getItem("cpTheme"); } catch (e) {}
+    const theme = param || stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", theme);
+  })();
+</script>
+<link rel="stylesheet" href="assets/site.css">
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.3/dist/mermaid.min.js"></script>
+<script src="assets/site.js" defer></script>
+</head>
+<body>
+<main class="page">
+  <aside class="toc" data-auto></aside>
+  <div class="content">
+
+    <p class="eyebrow">Messaging &amp; events</p>
+    <h1>Service Bus, Event Grid &amp; Event Hubs</h1>
+    <p class="lede">The messaging backbone of Azure Integration Services. Rule of thumb: <strong>Service Bus for messages</strong> (commands, transactions, ordering), <strong>Event Grid for discrete events</strong> (reactive pub/sub), <strong>Event Hubs for event streams</strong> (telemetry firehose).</p>
+
+    <h2 id="picker">Which one when?</h2>
+    <table>
+      <tr><th></th><th>Service Bus</th><th>Event Grid</th><th>Event Hubs</th></tr>
+      <tr><td>Payload semantics</td><td>Message = intent/command ("process this order")</td><td>Event = fact ("blob was created")</td><td>Stream of events (millions/sec telemetry)</td></tr>
+      <tr><td>Consumer model</td><td>Competing consumers, pull, peek-lock</td><td>Push to subscribers (webhooks, Functions, queues) + pull; MQTT</td><td>Partitioned consumer groups, offset replay</td></tr>
+      <tr><td>Key features</td><td>Queues, topics/subscriptions, sessions (FIFO), transactions, dead-letter, scheduling, dedup, large messages (Premium)</td><td>Filtering/routing, CloudEvents schema, retry with dead-letter, system events from 30+ Azure services, MQTT broker for IoT</td><td>Kafka-compatible endpoint, capture to storage, retention/replay, Schema Registry</td></tr>
+      <tr><td>Typical consumers</td><td>Functions, Logic Apps, Container Apps workers</td><td>Functions, Logic Apps, webhooks, Service Bus</td><td>Stream Analytics, Fabric/Databricks, Functions</td></tr>
+    </table>
+
+    <h2 id="servicebus">Service Bus in depth</h2>
+    <div class="diagram">
+      <pre class="mermaid">
+flowchart LR
+    P[Producers] -->|send| T[Topic: orders]
+    T --> S1["Subscription: billing<br/>filter: amount &gt; 0"]
+    T --> S2["Subscription: shipping<br/>filter: physical = true"]
+    T --> S3[Subscription: audit<br/>no filter]
+    S1 --> C1[Billing worker<br/>peek-lock · complete/abandon]
+    S2 --> C2[Shipping worker]
+    S3 --> C3[Audit store]
+    C1 -.max deliveries exceeded.-> DLQ[(Dead-letter queue)]
+      </pre>
+      <div class="caption">Topics fan out with per-subscription SQL filters; peek-lock + dead-lettering give at-least-once processing with a safety net.</div>
+    </div>
+    <ul class="checklist">
+      <li><strong>Sessions</strong> = FIFO ordering + state per session key (per-order, per-device).</li>
+      <li><strong>Scheduled delivery &amp; deferral</strong> for time-based flows; <strong>duplicate detection</strong> for idempotency.</li>
+      <li><strong>Premium</strong>: dedicated capacity, VNet/private endpoints, 100 MB messages, geo-DR — the enterprise default.</li>
+      <li>Consumers should be idempotent and handle <code>abandon</code>/retry storms gracefully.</li>
+    </ul>
+
+    <h2 id="eventgrid">Event Grid in depth</h2>
+    <div class="diagram">
+      <pre class="mermaid">
+flowchart LR
+    subgraph Sources
+        SRC1[Azure services<br/>Blob · ACR · Key Vault · APIM]
+        SRC2[Custom apps<br/>CloudEvents]
+        SRC3[MQTT devices<br/>IoT fleet]
+    end
+    EG[Event Grid<br/>topics · namespaces · filters]
+    subgraph Handlers
+        H1[Functions]
+        H2[Logic Apps]
+        H3[Service Bus queue]
+        H4[Webhooks / partner]
+    end
+    SRC1 --> EG
+    SRC2 --> EG
+    SRC3 --> EG
+    EG -->|subject/type filters| H1
+    EG --> H2
+    EG --> H3
+    EG --> H4
+      </pre>
+      <div class="caption">Discrete-event router: filtered push (or pull) delivery with retries and dead-lettering; MQTT broker capability brings device fleets into the same fabric.</div>
+    </div>
+
+    <h2 id="eventhubs">Event Hubs in depth</h2>
+    <ul class="checklist">
+      <li><strong>Partitioned log</strong>: producers write to partitions; consumer groups read independently with offsets — replay is a feature, not a hack.</li>
+      <li><strong>Kafka protocol support</strong>: point existing Kafka apps at Event Hubs without code changes.</li>
+      <li><strong>Capture</strong>: automatic archival to Blob/ADLS for batch analytics and RAG ingestion.</li>
+      <li>Feeds real-time paths: Stream Analytics, Fabric eventstreams, Functions with checkpointing.</li>
+    </ul>
+
+    <h2 id="use-cases">Detailed use cases</h2>
+    <div class="card-grid">
+      <div class="card"><div class="card-kicker">Use case</div><h3>Order processing backbone</h3><p>API accepts order → Service Bus topic → billing/shipping/audit subscriptions process independently. Sessions keep per-order FIFO; DLQ isolates poison messages.</p></div>
+      <div class="card"><div class="card-kicker">Use case</div><h3>Load leveling</h3><p>Spiky front-end traffic lands in a queue; fixed-size workers drain at sustainable rate — the database never melts.</p></div>
+      <div class="card"><div class="card-kicker">Use case</div><h3>Reactive automation</h3><p>Blob created → Event Grid → Function generates thumbnail; Key Vault secret near expiry → Event Grid → Logic App rotates and notifies.</p></div>
+      <div class="card"><div class="card-kicker">Use case</div><h3>IoT command &amp; telemetry</h3><p>MQTT devices publish to Event Grid namespaces; routing sends alerts to Service Bus for guaranteed handling and streams bulk telemetry to Event Hubs.</p></div>
+      <div class="card"><div class="card-kicker">Use case</div><h3>Clickstream analytics</h3><p>Web/app events → Event Hubs → Stream Analytics for real-time dashboards + Capture to data lake for ML training sets.</p></div>
+      <div class="card"><div class="card-kicker">Use case</div><h3>Cross-service saga</h3><p>Services exchange events via topics; compensating handlers undo committed steps when a downstream step fails — no distributed transactions needed.</p></div>
+    </div>
+
+    <h2 id="patterns">Patterns cheat sheet</h2>
+    <ul class="checklist">
+      <li><strong>Competing consumers</strong> — N workers on one queue for elastic throughput.</li>
+      <li><strong>Publish/subscribe</strong> — topics decouple producers from unknown future consumers.</li>
+      <li><strong>Claim check</strong> — store big payloads in Blob, send the reference through the bus.</li>
+      <li><strong>Queue-based load leveling</strong> — buffer bursts, protect downstream systems.</li>
+      <li><strong>Outbox / transactional messaging</strong> — commit DB write + message send atomically to avoid ghost events.</li>
+      <li><strong>Dead-letter operations</strong> — monitor, inspect, resubmit; a DLQ nobody reads is a data-loss bug.</li>
+    </ul>
+
+    <h2 id="links">Key references</h2>
+    <ul>
+      <li><a href="https://learn.microsoft.com/azure/service-bus-messaging/" target="_blank" rel="noopener">Service Bus documentation</a></li>
+      <li><a href="https://learn.microsoft.com/azure/event-grid/" target="_blank" rel="noopener">Event Grid documentation</a></li>
+      <li><a href="https://learn.microsoft.com/azure/event-hubs/" target="_blank" rel="noopener">Event Hubs documentation</a></li>
+      <li><a href="https://learn.microsoft.com/azure/architecture/guide/technology-choices/messaging" target="_blank" rel="noopener">Messaging technology choice guide</a></li>
+    </ul>
+
+  </div>
+</main>
+</body>
+</html>

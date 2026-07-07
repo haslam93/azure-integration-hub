@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Azure Functions — Azure Integration Hub</title>
+<meta name="description" content="Deep dive on Azure Functions: triggers and bindings, hosting plans including Flex Consumption, Durable Functions patterns, AI integrations and use cases.">
+<script>
+  (() => {
+    const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+    let stored = null;
+    try { stored = localStorage.getItem("cpTheme"); } catch (e) {}
+    const theme = param || stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", theme);
+  })();
+</script>
+<link rel="stylesheet" href="assets/site.css">
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.3/dist/mermaid.min.js"></script>
+<script src="assets/site.js" defer></script>
+</head>
+<body>
+<main class="page">
+  <aside class="toc" data-auto></aside>
+  <div class="content">
+
+    <p class="eyebrow">Serverless compute</p>
+    <h1>Azure Functions</h1>
+    <p class="lede">Event-driven, serverless code: write the function, declare what triggers it and what data it binds to, and the platform handles servers, scale (including to zero) and connections. The unit of design is the <strong>event</strong>, not the server.</p>
+
+    <h2 id="triggers">Triggers &amp; bindings</h2>
+    <p><strong>Triggers</strong> start execution (exactly one per function). <strong>Bindings</strong> declaratively connect inputs/outputs so your code receives a queue message or writes a Cosmos DB doc without SDK plumbing.</p>
+
+    <div class="diagram">
+      <pre class="mermaid">
+flowchart LR
+    subgraph Triggers
+        H[HTTP request]
+        Q[Service Bus / Storage queue]
+        E[Event Grid / Event Hubs]
+        Ti[Timer / cron]
+        CD[Cosmos DB change feed]
+        B[Blob created]
+    end
+    F["Function code<br/>C# · Python · JS/TS · Java · PowerShell"]
+    subgraph Output bindings
+        O1[Cosmos DB]
+        O2[Service Bus]
+        O3[Blob / Table]
+        O4[SignalR]
+        O5[HTTP response]
+    end
+    H --> F
+    Q --> F
+    E --> F
+    Ti --> F
+    CD --> F
+    B --> F
+    F --> O1
+    F --> O2
+    F --> O3
+    F --> O4
+    F --> O5
+      </pre>
+      <div class="caption">One trigger in, any number of bindings out — glue code without the glue.</div>
+    </div>
+
+    <h2 id="hosting">Hosting plans</h2>
+    <table>
+      <tr><th>Plan</th><th>Scale</th><th>Choose when</th></tr>
+      <tr><td><strong>Flex Consumption</strong></td><td>To zero; fast scale-out per-function; instance memory sizes; <strong>VNet support</strong></td><td>The new default for serverless — always-ready instances kill cold starts, and you finally get networking on a consumption model.</td></tr>
+      <tr><td>Consumption (classic)</td><td>To zero</td><td>Legacy default; being superseded by Flex.</td></tr>
+      <tr><td>Premium (Elastic)</td><td>Pre-warmed instances, no cold start</td><td>Steady traffic + serverless bursts, longer executions, VNet.</td></tr>
+      <tr><td>Dedicated (App Service plan)</td><td>Manual/autoscale, no scale to zero</td><td>Reuse existing App Service capacity; predictable cost.</td></tr>
+      <tr><td>Container Apps hosting</td><td>KEDA-based</td><td>Run Functions as containers alongside microservices in the same Container Apps environment (Dapr, GPU, one ops model).</td></tr>
+    </table>
+
+    <h2 id="durable">Durable Functions</h2>
+    <p>Code-first orchestration on top of Functions: orchestrator functions await activities, sleep for days, and survive restarts via event-sourced state. The core serverless workflow patterns:</p>
+
+    <div class="diagram">
+      <pre class="mermaid">
+flowchart TB
+    subgraph Chaining[Function chaining]
+        A1[F1] --> A2[F2] --> A3[F3]
+    end
+    subgraph FanOut[Fan-out / fan-in]
+        B0[Orchestrator] --> B1[Work 1]
+        B0 --> B2[Work 2]
+        B0 --> B3[Work N]
+        B1 --> BA[Aggregate]
+        B2 --> BA
+        B3 --> BA
+    end
+    subgraph Human[Human interaction]
+        C1[Request approval] --> C2{Wait for event<br/>or 72h timeout}
+        C2 -->|approved| C3[Proceed]
+        C2 -->|timeout| C4[Escalate]
+    end
+      </pre>
+      <div class="caption">Chaining, fan-out/fan-in, async HTTP APIs (202 + status), monitors, human interaction and entity patterns — all in plain code.</div>
+    </div>
+
+    <ul class="checklist">
+      <li><strong>Async request-reply</strong>: HTTP starter returns 202 + status URL; orchestration runs minutes/hours; client polls. Pairs perfectly with APIM.</li>
+      <li><strong>Durable entities</strong>: small stateful objects (per-device, per-user counters/aggregators).</li>
+      <li><strong>Saga / compensation</strong>: orchestrator calls compensating activities when a step fails mid-transaction.</li>
+    </ul>
+
+    <h2 id="ai">Functions in AI architectures</h2>
+    <ul class="checklist">
+      <li><strong>Agent tools</strong>: HTTP functions registered as tools for AI Foundry agents (or exposed as MCP tools via APIM) — deterministic actions the model can invoke.</li>
+      <li><strong>Remote MCP servers</strong>: build MCP servers on Functions with the MCP tool trigger — serverless tool hosting with auth and scale handled.</li>
+      <li><strong>RAG ingestion</strong>: blob trigger → chunk/embed → push to AI Search; change-feed triggers keep indexes fresh.</li>
+      <li><strong>Real-time AI</strong>: Event Hubs trigger for streaming enrichment/inference at scale.</li>
+    </ul>
+
+    <h2 id="use-cases">Detailed use cases</h2>
+    <div class="card-grid">
+      <div class="card"><div class="card-kicker">Use case</div><h3>Queue-driven order processing</h3><p>Service Bus trigger with peek-lock, retries, and dead-lettering; output bindings write results to Cosmos DB and emit events — reliable, elastic backend workers.</p></div>
+      <div class="card"><div class="card-kicker">Use case</div><h3>Lightweight APIs &amp; webhooks</h3><p>HTTP-triggered microservice endpoints behind APIM; scale to zero between calls; Flex Consumption keeps p99 latency respectable.</p></div>
+      <div class="card"><div class="card-kicker">Use case</div><h3>File/media pipeline</h3><p>Blob trigger on upload → validate → resize/transcode/OCR → store + notify. Fan-out for large batches with Durable Functions.</p></div>
+      <div class="card"><div class="card-kicker">Use case</div><h3>Scheduled jobs</h3><p>Timer triggers replace cron VMs: cleanup, report generation, data refresh — with logs, retries and no patching.</p></div>
+      <div class="card"><div class="card-kicker">Use case</div><h3>Stream processing</h3><p>Event Hubs trigger processes IoT/telemetry in batches; checkpointing and partition-parallel scale built in.</p></div>
+      <div class="card"><div class="card-kicker">Use case</div><h3>Long-running approvals</h3><p>Durable human-interaction pattern: kick off, wait for external event (approval webhook) with timeout escalation, resume exactly where it left off.</p></div>
+    </div>
+
+    <h2 id="best-practices">Best practices</h2>
+    <ul class="checklist">
+      <li>Prefer <strong>Flex Consumption</strong> for new apps; use always-ready instances for latency-sensitive HTTP.</li>
+      <li>Keep functions <strong>idempotent</strong> — every trigger type can deliver at-least-once.</li>
+      <li>Use <strong>managed identity</strong> in bindings (identity-based connections), not connection strings.</li>
+      <li>One responsibility per function; compose with Durable Functions or queues, not giant handlers.</li>
+      <li>Set <code>maxConcurrentCalls</code>/batch sizes deliberately for queue/stream triggers; measure, don't guess.</li>
+    </ul>
+
+    <h2 id="links">Key references</h2>
+    <ul>
+      <li><a href="https://learn.microsoft.com/azure/azure-functions/" target="_blank" rel="noopener">Functions documentation</a></li>
+      <li><a href="https://learn.microsoft.com/azure/azure-functions/flex-consumption-plan" target="_blank" rel="noopener">Flex Consumption plan</a></li>
+      <li><a href="https://learn.microsoft.com/azure/azure-functions/durable/durable-functions-overview" target="_blank" rel="noopener">Durable Functions patterns</a></li>
+      <li><a href="https://learn.microsoft.com/azure/azure-functions/functions-triggers-bindings" target="_blank" rel="noopener">Triggers &amp; bindings reference</a></li>
+    </ul>
+
+  </div>
+</main>
+</body>
+</html>

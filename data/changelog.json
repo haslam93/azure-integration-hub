@@ -1,0 +1,602 @@
+{
+  "lastUpdated": "2026-07-07T11:36:31+00:00",
+  "entries": [
+    {
+      "id": "562497",
+      "date": "2026-06-16",
+      "title": "[In preview] Public Preview: New project templates and template gallery for Azure Functions in VS Code",
+      "summary": "The Azure Functions extension for VS Code now provides a redesigned Create New Project experience in public preview, featuring a rich, visual template gallery that replaces the multi-step Quick Pick wizard with a searchable, filterable view of project tem",
+      "link": "https://azure.microsoft.com/updates?id=562497",
+      "services": [
+        "functions"
+      ],
+      "status": "preview",
+      "source": "azure-updates"
+    },
+    {
+      "id": "565171",
+      "date": "2026-06-08",
+      "title": "[In preview] Public Preview: Microsoft Foundry agent security capabilities in Microsoft Defender for Cloud are transitioning to a Microsoft Agent 365 license",
+      "summary": "Starting July 1, 2026, Microsoft Foundry agent security capabilities previously available through Microsoft Defender for Cloud will transition to a Microsoft Agent 365 license. Agent protection in Defender will be powered by Agent 365 observability logs a",
+      "link": "https://azure.microsoft.com/updates?id=565171",
+      "services": [
+        "ai-foundry"
+      ],
+      "status": "preview",
+      "source": "azure-updates"
+    },
+    {
+      "id": "563451",
+      "date": "2026-06-04",
+      "title": "[In preview] Public Preview: APIM Support for Foundry Models in Azure AI Search",
+      "summary": "Microsoft Foundry brings Azure API Management support to all Foundry model integrations in Azure AI Search, now in public preview. Enterprise platform engineers and AI solution teams running large-scale RAG pipelines can place Foundry and Azure OpenAI mod",
+      "link": "https://azure.microsoft.com/updates?id=563451",
+      "services": [
+        "apim",
+        "ai-foundry"
+      ],
+      "status": "preview",
+      "source": "azure-updates"
+    },
+    {
+      "id": "563716",
+      "date": "2026-06-03",
+      "title": "[In preview] Public Preview: Agent-to-agent (A2A) support for Prompt agents and Hosted agents in Foundry",
+      "summary": "Microsoft Foundry Agent Service adds agent-to-agent (A2A) communication in public preview for Prompt agents and Hosted agents that use the responses protocol. Agents can call other agents by name through a managed endpoint, with identity, content safety,",
+      "link": "https://azure.microsoft.com/updates?id=563716",
+      "services": [
+        "ai-foundry"
+      ],
+      "status": "preview",
+      "source": "azure-updates"
+    },
+    {
+      "id": "563197",
+      "date": "2026-06-02",
+      "title": "[In preview] Public Preview: Code-first observability for Foundry Agents in VS Code",
+      "summary": "Microsoft Foundry brings code-first observability to agent developers in public preview, delivered as an observe skill inside the Foundry Plugin for VS Code Copilot Chat. Developers run the full evaluation-driven optimization loop from the editor through",
+      "link": "https://azure.microsoft.com/updates?id=563197",
+      "services": [
+        "ai-foundry"
+      ],
+      "status": "preview",
+      "source": "azure-updates"
+    },
+    {
+      "id": "562853",
+      "date": "2026-06-02",
+      "title": "[In preview] Public Preview: Azure API Management introduces a Unified Model API for multi-model AI applications.",
+      "summary": "As organizations adopt multiple LLM providers, developers often need to handle different API formats, SDKs, and integration patterns for each model vendor. This increases application complexity and makes provider switching, failover, and governance more d",
+      "link": "https://azure.microsoft.com/updates?id=562853",
+      "services": [
+        "apim"
+      ],
+      "status": "preview",
+      "source": "azure-updates"
+    },
+    {
+      "id": "562894",
+      "date": "2026-06-02",
+      "title": "[Launched] Generally Available: Azure API Management Premium v2 and Standard v2 now support wildcard custom hostnames.",
+      "summary": "As API estates grow, managing individual custom domains and certificates for every subdomain can quickly become operationally complex and difficult to scale. Without wildcard support, every new subdomain — whether payments.api.contoso.com, inventory.api.c",
+      "link": "https://azure.microsoft.com/updates?id=562894",
+      "services": [
+        "apim"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
+    {
+      "id": "563601",
+      "date": "2026-06-02",
+      "title": "[Launched] Generally Available: Voice Live integration with Microsoft Foundry Agent Service",
+      "summary": "Microsoft Foundry Agent Service is now generally available for Voice Live integration, allowing developers to connect real-time speech-to-text and text-to-speech to a Foundry Agent without writing their own audio pipeline. Existing agent capabilities — in",
+      "link": "https://azure.microsoft.com/updates?id=563601",
+      "services": [
+        "ai-foundry"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
+    {
+      "id": "564532",
+      "date": "2026-06-02",
+      "title": "[Launched] Generally Available: Azure Event Grid - MQTT v5 Subscription Identifier",
+      "summary": "Azure Event Grid Standard Namespace now supports MQTT v5 subscription identifier capabilities in GA. Now each MQTT subscription can include an identifier that is delivered with incoming messages, enabling applications to route events immediately based on",
+      "link": "https://azure.microsoft.com/updates?id=564532",
+      "services": [
+        "event-grid"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
+    {
+      "id": "562365",
+      "date": "2026-06-02",
+      "title": "[Launched] Generally Available: Rolling updates in Flex Consumption",
+      "summary": "Rolling updates are now generally available in the Flex Consumption plan, delivering zero-downtime deployments with a simple configuration change.Instead of forcefully restarting all instances during code or configuration updates, the platform gracefully",
+      "link": "https://azure.microsoft.com/updates?id=562365",
+      "services": [
+        "functions"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
+    {
+      "id": "563616",
+      "date": "2026-06-02",
+      "title": "[In preview] Public Preview: Foundry Memory preview refresh",
+      "summary": "Microsoft Foundry refreshes the Foundry Memory public preview with a redesigned storage model, new retrieval controls, and tighter integration with the Foundry Agent Service tool surface. Agents using Memory can now write, search, and update user-scoped a",
+      "link": "https://azure.microsoft.com/updates?id=563616",
+      "services": [
+        "ai-foundry"
+      ],
+      "status": "preview",
+      "source": "azure-updates"
+    },
+    {
+      "id": "563596",
+      "date": "2026-06-02",
+      "title": "[Launched] Public Preview: Hosted Agents in Microsoft Foundry Agent Service",
+      "summary": "Microsoft Foundry Agent Service reaches preview for Hosted Agents, the container-based runtime that lets developers bring their own agent code in any framework and deploy it to Microsoft-managed infrastructure. Each Hosted Agent runs in a per-session VM-i",
+      "link": "https://azure.microsoft.com/updates?id=563596",
+      "services": [
+        "ai-foundry"
+      ],
+      "status": "preview",
+      "source": "azure-updates"
+    },
+    {
+      "id": "563591",
+      "date": "2026-06-02",
+      "title": "[In preview] Public Preview: Purview sensitivity labels in Azure AI Search knowledge sources",
+      "summary": "Azure AI Search adds Microsoft Purview sensitivity label support to knowledge sources in public preview. Labels applied at the source system flow through ingestion into Azure AI Search and into the knowledge bases that ground Foundry agents and copilots,",
+      "link": "https://azure.microsoft.com/updates?id=563591",
+      "services": [
+        "ai-foundry"
+      ],
+      "status": "preview",
+      "source": "azure-updates"
+    },
+    {
+      "id": "563456",
+      "date": "2026-06-02",
+      "title": "[In preview] Public Preview: Toolbox connectors and triggers in Microsoft Foundry",
+      "summary": "Microsoft Foundry adds connectors and time-based triggers to the Foundry Tools toolbox in public preview, giving enterprise developers and automation engineers a native way to build event-driven AI agents. Foundry agents today are invoked only through dir",
+      "link": "https://azure.microsoft.com/updates?id=563456",
+      "services": [
+        "ai-foundry"
+      ],
+      "status": "preview",
+      "source": "azure-updates"
+    },
+    {
+      "id": "563426",
+      "date": "2026-06-02",
+      "title": "[In preview] Public Preview: Trace Replay and trace visualizations for Foundry agents",
+      "summary": "Microsoft Foundry observability adds Trace Replay and new trace visualizations in public preview, giving agent developers a faster way to debug multi-step runs. The replay view rewinds a captured trace step by step, showing the model, tool, and inter-agen",
+      "link": "https://azure.microsoft.com/updates?id=563426",
+      "services": [
+        "ai-foundry"
+      ],
+      "status": "preview",
+      "source": "azure-updates"
+    },
+    {
+      "id": "563307",
+      "date": "2026-06-02",
+      "title": "[Launched] Generally Available: Adaptive custom translation in the Azure AI Foundry NextGen playground",
+      "summary": "Adaptive Custom Translation (AdaptCT) is generally available in the Azure AI Foundry NextGen playground for Azure Translator. AdaptCT enables enterprises to adapt translations to domain‑specific terminology using small datasets—eliminating the need for tr",
+      "link": "https://azure.microsoft.com/updates?id=563307",
+      "services": [
+        "ai-foundry"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
+    {
+      "id": "562939",
+      "date": "2026-06-02",
+      "title": "[In preview] Public Preview: Azure Logic Apps now enables developers to invoke Microsoft Foundry Agents directly from workflows.",
+      "summary": "Organizations building AI agents often face a disconnect between where agents are built and where business processes are automated. Now, with improved integration between Azure AI Foundry and Azure Logic Apps, developers can now more easily operationalize",
+      "link": "https://azure.microsoft.com/updates?id=562939",
+      "services": [
+        "logic-apps",
+        "ai-foundry"
+      ],
+      "status": "preview",
+      "source": "azure-updates"
+    },
+    {
+      "id": "562929",
+      "date": "2026-06-02",
+      "title": "[In preview] Public Preview: Knowledge as a Service with Azure Logic Apps.",
+      "summary": "Most RAG implementations today are complex. Teams must build ingestion pipelines, manage chunking and embeddings, configure vector stores, wire up retrieval layers, and then operate the entire system in production. With Azure Logic Apps, RAG becomes a na",
+      "link": "https://azure.microsoft.com/updates?id=562929",
+      "services": [
+        "logic-apps"
+      ],
+      "status": "preview",
+      "source": "azure-updates"
+    },
+    {
+      "id": "562924",
+      "date": "2026-06-02",
+      "title": "[In preview] Public Preview: Azure Logic Apps Automation SKU for agentic business process automation.",
+      "summary": "As organizations move toward agentic automation, developers increasingly need a simpler way to combine workflows, APIs, and AI agents into production-ready business processes. Today, building these systems often requires stitching together multiple Azure",
+      "link": "https://azure.microsoft.com/updates?id=562924",
+      "services": [
+        "logic-apps"
+      ],
+      "status": "preview",
+      "source": "azure-updates"
+    },
+    {
+      "id": "562914",
+      "date": "2026-06-02",
+      "title": "[Launched] Generally Available: Azure API Center now provides a data plane MCP server for enterprise-wide discovery of APIs and AI assets.",
+      "summary": "As organizations adopt MCP-based tooling and AI agents at scale, developers need a simpler way to discover and connect to the growing ecosystem of enterprise MCP servers, tools, APIs, and AI assets. With this update, Azure API Center introduces a data pl",
+      "link": "https://azure.microsoft.com/updates?id=562914",
+      "services": [
+        "apim"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
+    {
+      "id": "562909",
+      "date": "2026-06-02",
+      "title": "[Launched] Generally Available: Azure API Center now supports agent registration, agent assessment, and Git-based synchronization.",
+      "summary": "As organizations increasingly build autonomous AI agents to automate workflows and orchestrate enterprise tasks, developers need a centralized way to discover, govern, and reuse these capabilities across teams. With this update, Azure API Center enables",
+      "link": "https://azure.microsoft.com/updates?id=562909",
+      "services": [
+        "apim"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
+    {
+      "id": "562899",
+      "date": "2026-06-02",
+      "title": "[Launched] Generally Available: Azure API Management Premium v2 now supports multiple custom domains",
+      "summary": "Organizations often need to expose APIs, developer portals, and management endpoints under different branded or organizational domain names- — for example, api.contoso.com for external partners, apis.hrportal.contoso.com for an internal HR platform, and d",
+      "link": "https://azure.microsoft.com/updates?id=562899",
+      "services": [
+        "apim"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
+    {
+      "id": "562885",
+      "date": "2026-06-02",
+      "title": "[Launched] Public Preview: Azure API Management now supports token metrics for all token types",
+      "summary": "As organizations adopt advanced AI models, understanding token consumption is becoming more complex. Traditional metrics focused primarily on prompt and completion tokens often fail to capture newer token categories such as cached, reasoning, or thinking",
+      "link": "https://azure.microsoft.com/updates?id=562885",
+      "services": [
+        "apim"
+      ],
+      "status": "preview",
+      "source": "azure-updates"
+    },
+    {
+      "id": "562880",
+      "date": "2026-06-02",
+      "title": "[Launched] Generally Available: Azure API Management now supports content safety controls for MCP and A2A APIs.",
+      "summary": "As organizations deploy more agentic applications and MCP-based tools, enforcing consistent safety and compliance policies across agent interactions becomes increasingly important. Many teams today rely on fragmented or custom implementations for content",
+      "link": "https://azure.microsoft.com/updates?id=562880",
+      "services": [
+        "apim"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
+    {
+      "id": "562874",
+      "date": "2026-06-02",
+      "title": "[In preview] Public preview: Connector Namespace",
+      "summary": "Integrating apps with SaaS and line-of-business systems today means writing custom API client code, managing credentials, and handling retries, pagination, and webhooks for every service. Connector Namespace is a fully managed service providing pre-built",
+      "link": "https://azure.microsoft.com/updates?id=562874",
+      "services": [
+        "logic-apps"
+      ],
+      "status": "preview",
+      "source": "azure-updates"
+    },
+    {
+      "id": "562868",
+      "date": "2026-06-02",
+      "title": "[Launched] Generally Available: Azure Logic Apps MCP Server.",
+      "summary": "As organizations adopt AI agents and MCP-based tooling, integration teams often need to build and maintain custom API layers just to make existing workflows callable by agents. This additional plumbing increases development effort, operational complexity,",
+      "link": "https://azure.microsoft.com/updates?id=562868",
+      "services": [
+        "logic-apps"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
+    {
+      "id": "562863",
+      "date": "2026-06-02",
+      "title": "[In preview] Public Preview: Azure Logic Apps Codeful Workflows with Logic Apps Standard SDK.",
+      "summary": "Modern integration and automation teams increasingly want the flexibility of writing workflows directly in code while still benefiting from managed orchestration, enterprise connectors, and cloud-scale operational capabilities. Traditional workflow models",
+      "link": "https://azure.microsoft.com/updates?id=562863",
+      "services": [
+        "logic-apps"
+      ],
+      "status": "preview",
+      "source": "azure-updates"
+    },
+    {
+      "id": "562858",
+      "date": "2026-06-02",
+      "title": "[Launched] Generally Available: Azure API Management now supports AI gateway capabilities for Anthropic and Vertex AI models.",
+      "summary": "As organizations integrate external AI providers into production applications, platform teams need consistent ways to secure, govern, and observe model interactions across providers. Without centralized controls and telemetry, managing compliance, trouble",
+      "link": "https://azure.microsoft.com/updates?id=562858",
+      "services": [
+        "apim"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
+    {
+      "id": "562848",
+      "date": "2026-06-02",
+      "title": "[Launched] Generally Available: Azure API Management workspaces now support the built-in gateway",
+      "summary": "Organizations using workspace-based API management models previously needed a dedicated workspace gateway and Premium tier deployment to take advantage of API Management workspaces increasing both cost and operational complexity. With this update, Azure",
+      "link": "https://azure.microsoft.com/updates?id=562848",
+      "services": [
+        "apim"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
+    {
+      "id": "562843",
+      "date": "2026-06-02",
+      "title": "[Launched] Generally Available: Azure API Management adds support for Agent-to-Agent (A2A) APIs",
+      "summary": "As organizations build more agentic applications, agent-to-agent communication is becoming a critical part of enterprise AI systems. But in many environments, agent traffic operates outside existing API governance layers — making it difficult to apply con",
+      "link": "https://azure.microsoft.com/updates?id=562843",
+      "services": [
+        "apim"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
+    {
+      "id": "562569",
+      "date": "2026-06-02",
+      "title": "[In preview] Public Preview: Microsoft Defender for Cloud support for Azure Container Apps (Serverless Containers Posture)",
+      "summary": "Customers can now bring Azure Container Apps environments into Microsoft Defender for Cloud’s Serverless Containers Posture experience, helping security teams extend posture management across more of their container estate from a single workflow. This mak",
+      "link": "https://azure.microsoft.com/updates?id=562569",
+      "services": [
+        "container-apps"
+      ],
+      "status": "preview",
+      "source": "azure-updates"
+    },
+    {
+      "id": "562564",
+      "date": "2026-06-02",
+      "title": "[Launched] Generally Available: Confidential Compute support on Azure Container Apps",
+      "summary": "Customers running regulated or sensitive containerized workloads often need stronger protection for data while it is actively being processed, especially in scenarios that require higher isolation and stricter compliance controls. Confidential Compute in",
+      "link": "https://azure.microsoft.com/updates?id=562564",
+      "services": [
+        "container-apps"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
+    {
+      "id": "562559",
+      "date": "2026-06-02",
+      "title": "[Launched] Generally Available: Monitor HTTP traffic in Azure Container Apps",
+      "summary": "In addition to platform-level logs, Azure Container Apps now adds a dedicated Azure Monitor diagnostic setting category, ContainerAppHTTPLogs, that exposes detailed HTTP access logs for incoming traffic and is designed for high-volume request data. With t",
+      "link": "https://azure.microsoft.com/updates?id=562559",
+      "services": [
+        "container-apps"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
+    {
+      "id": "562554",
+      "date": "2026-06-02",
+      "title": "[Launched] Generally Available: Additional support for OpenTelemetry destinations (New Relic, Dynatrace, Elastic)",
+      "summary": "Azure Container Apps enhances its OpenTelemetry (OTel) capabilities by expanding support for third-party observability platforms. This update introduces additional endpoint options for commonly used monitoring tools such as New Relic, Dynatrace, and Elast",
+      "link": "https://azure.microsoft.com/updates?id=562554",
+      "services": [
+        "container-apps"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
+    {
+      "id": "562511",
+      "date": "2026-06-02",
+      "title": "[Launched] Generally Available: Override Scale Rules in Azure Functions on Azure Container Apps",
+      "summary": "Azure Functions on Container Apps has traditionally used platform-managed scaling, where triggers are automatically translated into KEDA scale rules. With the new allowScalingRuleOverride property, customers can now choose to override platform-managed sca",
+      "link": "https://azure.microsoft.com/updates?id=562511",
+      "services": [
+        "functions",
+        "container-apps"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
+    {
+      "id": "562502",
+      "date": "2026-06-02",
+      "title": "[In preview] Public Preview: Go language support on Azure Functions",
+      "summary": "Azure Functions now supports Go as a first-class language option in public preview. With this release, developers can author event-driven serverless apps in Go using the Azure Functions Go programming model and SDK, while still benefiting from Azure Funct",
+      "link": "https://azure.microsoft.com/updates?id=562502",
+      "services": [
+        "functions"
+      ],
+      "status": "preview",
+      "source": "azure-updates"
+    },
+    {
+      "id": "562492",
+      "date": "2026-06-02",
+      "title": "[Launched] Generally Available: Built-in Grafana dashboards for Azure Functions",
+      "summary": "Azure Functions now provides built-in Grafana dashboards. Customers now get a zero-setup, single pane of glass for the health, performance, and scale of their function apps directly in the Azure portal: no Grafana instance to provision, no data sources to",
+      "link": "https://azure.microsoft.com/updates?id=562492",
+      "services": [
+        "functions"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
+    {
+      "id": "562487",
+      "date": "2026-06-02",
+      "title": "[In preview] Public Preview: Copilot-assisted coding & agent skills to build, deploy, and run Azure Functions faster in VS Code, CLI, and azd",
+      "summary": "Developers are already using AI coding assistants to build Azure Functions apps today, but the quality of the help varies widely. It depends on which underlying model the assistant is using and how recent its training data is, which means developers often",
+      "link": "https://azure.microsoft.com/updates?id=562487",
+      "services": [
+        "functions"
+      ],
+      "status": "preview",
+      "source": "azure-updates"
+    },
+    {
+      "id": "562482",
+      "date": "2026-06-02",
+      "title": "[In preview] Public Preview: Serverless agents runtime for Azure Functions",
+      "summary": "Azure Functions now supports building AI agents as a first-class workload using a markdown-first programming model in public preview. With this release, developers can author event-driven serverless agents in natural language. The serverless agents runtim",
+      "link": "https://azure.microsoft.com/updates?id=562482",
+      "services": [
+        "functions"
+      ],
+      "status": "preview",
+      "source": "azure-updates"
+    },
+    {
+      "id": "562442",
+      "date": "2026-06-02",
+      "title": "[In preview] Public Preview: Azure Functions now includes managed connectors to integrate with 1400+ of your favorite systems",
+      "summary": "Azure Functions now includes managed connectors - the same 1,400+ connector ecosystem behind Logic Apps and Power Platform - as first-class triggers and operations. This enables customers to build integrated systems across the broader ecosystem such as Of",
+      "link": "https://azure.microsoft.com/updates?id=562442",
+      "services": [
+        "logic-apps",
+        "functions"
+      ],
+      "status": "preview",
+      "source": "azure-updates"
+    },
+    {
+      "id": "562099",
+      "date": "2026-06-02",
+      "title": "[Launched] Generally Available: Azure Functions now supports hosting MCP Apps",
+      "summary": "Developers building Model Context Protocol (MCP) servers often rely on plain text responses even when user interactions required richer experiences, such as visual data exploration, complex configuration, real-time status monitoring, or multi-step workflo",
+      "link": "https://azure.microsoft.com/updates?id=562099",
+      "services": [
+        "functions"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
+    {
+      "id": "561262",
+      "date": "2026-06-02",
+      "title": "[In preview] Public Preview: Azure Container Apps Sandboxes",
+      "summary": "Teams building agentic applications, multi-tenant platforms, development environments, and CI/CD systems have often had to stitch together custom infrastructure to run untrusted code safely, preserve state across sessions, and handle bursty demand without",
+      "link": "https://azure.microsoft.com/updates?id=561262",
+      "services": [
+        "container-apps"
+      ],
+      "status": "preview",
+      "source": "azure-updates"
+    },
+    {
+      "id": "seed-apim-mcp",
+      "date": "2025-05-19",
+      "title": "APIM can expose REST APIs as remote MCP servers (preview)",
+      "summary": "Publish existing APIM-managed APIs as Model Context Protocol tools so AI agents (Foundry, GitHub Copilot, any MCP client) consume governed tools with gateway policies in front.",
+      "link": "https://learn.microsoft.com/azure/api-management/export-rest-mcp-server",
+      "services": [
+        "apim",
+        "ai-foundry"
+      ],
+      "status": "preview",
+      "source": "seed"
+    },
+    {
+      "id": "seed-logicapps-agent-workflows",
+      "date": "2025-05-19",
+      "title": "Logic Apps agent workflows (agent loop) in preview",
+      "summary": "Build AI agents inside Logic Apps Standard: an agent loop action reasons with Azure OpenAI models and invokes any of 1,400+ connectors as tools, with full run history.",
+      "link": "https://learn.microsoft.com/azure/logic-apps/agent-workflows-concepts",
+      "services": [
+        "logic-apps",
+        "ai-foundry"
+      ],
+      "status": "preview",
+      "source": "seed"
+    },
+    {
+      "id": "seed-functions-flex-ga",
+      "date": "2024-11-19",
+      "title": "Azure Functions Flex Consumption plan generally available",
+      "summary": "The new serverless default: per-function scaling, always-ready instances to eliminate cold starts, instance memory choices and VNet integration on a consumption billing model.",
+      "link": "https://learn.microsoft.com/azure/azure-functions/flex-consumption-plan",
+      "services": [
+        "functions"
+      ],
+      "status": "ga",
+      "source": "seed"
+    },
+    {
+      "id": "seed-aca-serverless-gpu",
+      "date": "2024-11-19",
+      "title": "Serverless GPUs in Azure Container Apps",
+      "summary": "NVIDIA GPU workload profiles that scale to zero — run open-source model inference and AI batch jobs without owning a GPU cluster.",
+      "link": "https://learn.microsoft.com/azure/container-apps/gpu-serverless-overview",
+      "services": [
+        "container-apps",
+        "ai-foundry"
+      ],
+      "status": "ga",
+      "source": "seed"
+    },
+    {
+      "id": "seed-apim-genai-policies",
+      "date": "2024-05-21",
+      "title": "APIM GenAI gateway capabilities generally available",
+      "summary": "Token limit, token metric emission, load balancing pools with circuit breaker, and semantic caching policies for Azure OpenAI endpoints — the foundation of the AI Gateway pattern.",
+      "link": "https://learn.microsoft.com/azure/api-management/genai-gateway-capabilities",
+      "services": [
+        "apim",
+        "ai-foundry"
+      ],
+      "status": "ga",
+      "source": "seed"
+    },
+    {
+      "id": "seed-aca-dynamic-sessions",
+      "date": "2024-05-21",
+      "title": "Container Apps dynamic sessions announced",
+      "summary": "Hyper-V isolated, on-demand code interpreter sessions for safely running LLM-generated code at scale — the standard sandbox for agent code execution.",
+      "link": "https://learn.microsoft.com/azure/container-apps/sessions",
+      "services": [
+        "container-apps",
+        "ai-foundry"
+      ],
+      "status": "ga",
+      "source": "seed"
+    },
+    {
+      "id": "seed-apim-workspaces",
+      "date": "2024-03-27",
+      "title": "APIM workspaces with dedicated gateways generally available",
+      "summary": "Federated API management: decentralized teams own APIs, products and subscriptions in isolated workspaces with optional dedicated workspace gateways under central governance.",
+      "link": "https://learn.microsoft.com/azure/api-management/workspaces-overview",
+      "services": [
+        "apim"
+      ],
+      "status": "ga",
+      "source": "seed"
+    }
+  ]
+}

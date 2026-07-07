@@ -1,0 +1,53 @@
+name: Weekly Azure updates sync
+
+on:
+  schedule:
+    - cron: "0 6 * * 1" # Mondays 06:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Refresh changelog from Azure Updates RSS
+        id: refresh
+        run: python scripts/update_changelog.py
+
+      - name: Commit changelog updates
+        id: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- data/changelog.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git add data/changelog.json
+            git commit -m "chore: weekly Azure updates changelog sync"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Open content-refresh issue for new updates
+        if: steps.refresh.outputs.new_count != '0' && steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TITLE="Content refresh: $(date -u +%Y-%m-%d) — ${{ steps.refresh.outputs.new_count }} new Azure update(s)"
+          URL=$(gh issue create \
+            --title "$TITLE" \
+            --body-file new_updates.md \
+            --label "content-refresh")
+          echo "Created $URL"
+          # Best effort: hand the refresh to Copilot coding agent if available
+          gh issue edit "$URL" --add-assignee "copilot" || \
+            echo "Copilot coding agent not available; issue left unassigned."

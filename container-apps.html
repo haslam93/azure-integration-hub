@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Azure Container Apps — Azure Integration Hub</title>
+<meta name="description" content="Deep dive on Azure Container Apps: environments, KEDA scaling, Dapr, revisions, jobs, dynamic sessions, GPU workloads, patterns and use cases.">
+<script>
+  (() => {
+    const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+    let stored = null;
+    try { stored = localStorage.getItem("cpTheme"); } catch (e) {}
+    const theme = param || stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", theme);
+  })();
+</script>
+<link rel="stylesheet" href="assets/site.css">
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.3/dist/mermaid.min.js"></script>
+<script src="assets/site.js" defer></script>
+</head>
+<body>
+<main class="page">
+  <aside class="toc" data-auto></aside>
+  <div class="content">
+
+    <p class="eyebrow">Serverless containers</p>
+    <h1>Azure Container Apps</h1>
+    <p class="lede">Kubernetes-powered containers without Kubernetes operations: bring any container, get HTTPS ingress, KEDA event-driven scale (including to zero), traffic-split revisions, Dapr, jobs and GPUs — with the cluster fully managed for you.</p>
+
+    <h2 id="how">How it works</h2>
+    <p>Apps live in an <strong>environment</strong> — a secure boundary sharing a VNet, logging and Dapr configuration. Each app runs <strong>revisions</strong> (immutable snapshots) with traffic-splitting between them.</p>
+
+    <div class="diagram">
+      <pre class="mermaid">
+flowchart TB
+    subgraph ENV[Container Apps environment · VNet]
+        ING[Managed ingress<br/>HTTPS · TCP · traffic split]
+        subgraph AppA[App: storefront-api]
+            R1[Revision v2 · 90%]
+            R2[Revision v3 · 10% canary]
+        end
+        AppB[App: order-worker<br/>scales 0→N on queue length]
+        AppC[Job: nightly-report<br/>scheduled / event-driven]
+        DAPR[Dapr sidecars<br/>pub-sub · state · service invocation]
+    end
+    U[Clients / APIM] --> ING
+    ING --> R1
+    ING --> R2
+    SB[(Service Bus)] -->|KEDA scaler| AppB
+    AppA <-.-> DAPR
+    AppB <-.-> DAPR
+      </pre>
+      <div class="caption">Environment = shared boundary; apps scale independently; KEDA watches event sources; revisions enable canary/blue-green.</div>
+    </div>
+
+    <h2 id="capabilities">Core capabilities</h2>
+    <div class="card-grid">
+      <div class="card"><h3>KEDA autoscaling</h3><p>Scale on HTTP concurrency, CPU/memory, or 60+ event sources (Service Bus, Event Hubs, Kafka, Cosmos DB…). Scale to zero when idle; pay only while running.</p></div>
+      <div class="card"><h3>Revisions &amp; traffic split</h3><p>Every deploy creates an immutable revision. Split traffic (90/10 canary), test by label URL, roll back instantly.</p></div>
+      <div class="card"><h3>Dapr integration</h3><p>Managed Dapr sidecars for service discovery/invocation (mTLS), pub/sub over Service Bus, state stores, bindings and resiliency policies — microservice plumbing without SDK lock-in.</p></div>
+      <div class="card"><h3>Jobs</h3><p>Finite-run containers: manual, scheduled (cron) or event-driven (queue-triggered batch). Perfect for CI runners, batch ETL, per-message processors.</p></div>
+      <div class="card"><h3>Dynamic sessions</h3><p>On-demand, sandboxed code-interpreter sessions (Hyper-V isolated) at scale — the standard way to safely run LLM-generated Python for agents.</p></div>
+      <div class="card"><h3>Serverless GPUs</h3><p>GPU workload profiles that scale to zero — inference for open-source models without owning a GPU cluster.</p></div>
+      <div class="card"><h3>Workload profiles</h3><p>Mix consumption and dedicated (memory-optimized/GPU) compute in one environment.</p></div>
+      <div class="card"><h3>Functions &amp; landing zone</h3><p>Host Azure Functions images natively; use the ACA landing zone accelerator for enterprise setups.</p></div>
+    </div>
+
+    <h2 id="compare">Container Apps vs AKS vs App Service</h2>
+    <table>
+      <tr><th>Question</th><th>Pick</th></tr>
+      <tr><td>Microservices/event-driven containers, no cluster ops wanted</td><td><strong>Container Apps</strong></td></tr>
+      <tr><td>Need raw Kubernetes API, custom operators/CRDs, service mesh control</td><td>AKS</td></tr>
+      <tr><td>Classic web app/API from code, minimal container interest</td><td>App Service</td></tr>
+      <tr><td>Single event-driven function, minimal footprint</td><td>Functions (Flex)</td></tr>
+    </table>
+
+    <h2 id="use-cases">Detailed use cases</h2>
+    <div class="card-grid">
+      <div class="card"><div class="card-kicker">Use case</div><h3>Microservice backends behind APIM</h3><p>Each bounded context = one container app. APIM fronts the environment; Dapr handles service-to-service auth and pub/sub; revisions give safe canaries per service.</p></div>
+      <div class="card"><div class="card-kicker">Use case</div><h3>Queue-drained workers</h3><p>KEDA scales workers 0→100 based on Service Bus queue depth, then back to zero. Cost tracks the backlog exactly.</p></div>
+      <div class="card"><div class="card-kicker">Use case</div><h3>Agent code execution</h3><p>Dynamic sessions give each AI agent an isolated Python sandbox for code interpretation — thousands of parallel sessions, sub-second allocation, no jailbreak blast radius.</p></div>
+      <div class="card"><div class="card-kicker">Use case</div><h3>Self-hosted model inference</h3><p>Serve Llama/Mistral/embedding models on serverless GPUs; scale to zero overnight; front with APIM AI Gateway for token policies.</p></div>
+      <div class="card"><div class="card-kicker">Use case</div><h3>Event-driven batch jobs</h3><p>Event-driven jobs pick one message per execution for heavyweight processing (video transcode, report render) with clean retry semantics.</p></div>
+      <div class="card"><div class="card-kicker">Use case</div><h3>Lift containerized apps off VMs</h3><p>Any Linux container runs as-is: get TLS, scale, zero-downtime deploys and log streaming without writing Kubernetes manifests.</p></div>
+    </div>
+
+    <h2 id="best-practices">Best practices</h2>
+    <ul class="checklist">
+      <li>Use <strong>workload profiles environments</strong> (newer default) for VNet control and mixed compute.</li>
+      <li>Scale rules: match the scaler to the real signal (queue length, not CPU) and set sensible min/max replicas.</li>
+      <li>Adopt <strong>Dapr pub/sub over Service Bus</strong> for inter-service messaging instead of direct HTTP chains.</li>
+      <li>Use managed identity for registry pulls and downstream Azure resources.</li>
+      <li>Keep images small; enable health probes so revisions only receive traffic when ready.</li>
+    </ul>
+
+    <h2 id="links">Key references</h2>
+    <ul>
+      <li><a href="https://learn.microsoft.com/azure/container-apps/" target="_blank" rel="noopener">Container Apps documentation</a></li>
+      <li><a href="https://learn.microsoft.com/azure/container-apps/dapr-overview" target="_blank" rel="noopener">Dapr in Container Apps</a></li>
+      <li><a href="https://learn.microsoft.com/azure/container-apps/sessions" target="_blank" rel="noopener">Dynamic sessions</a></li>
+      <li><a href="https://learn.microsoft.com/azure/container-apps/jobs" target="_blank" rel="noopener">Jobs</a></li>
+    </ul>
+
+  </div>
+</main>
+</body>
+</html>

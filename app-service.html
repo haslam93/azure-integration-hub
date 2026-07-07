@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Azure App Service — Azure Integration Hub</title>
+<meta name="description" content="Deep dive on Azure App Service: plans, deployment slots, networking, sidecars, capabilities, use cases and how it compares to Container Apps and Functions.">
+<script>
+  (() => {
+    const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+    let stored = null;
+    try { stored = localStorage.getItem("cpTheme"); } catch (e) {}
+    const theme = param || stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", theme);
+  })();
+</script>
+<link rel="stylesheet" href="assets/site.css">
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.3/dist/mermaid.min.js"></script>
+<script src="assets/site.js" defer></script>
+</head>
+<body>
+<main class="page">
+  <aside class="toc" data-auto></aside>
+  <div class="content">
+
+    <p class="eyebrow">Web apps &amp; APIs</p>
+    <h1>Azure App Service</h1>
+    <p class="lede">The workhorse PaaS for HTTP workloads: push code (or a container) in .NET, Java, Node, Python, PHP and get TLS, custom domains, autoscale, auth, slots and CI/CD — with the OS, patching and load balancers fully managed.</p>
+
+    <h2 id="how">How it works</h2>
+    <div class="diagram">
+      <pre class="mermaid">
+flowchart LR
+    DEV[Code / container<br/>GitHub Actions · azd · zip deploy] --> SLOT2
+    subgraph PLAN[App Service plan · shared compute]
+        subgraph APP[Web app]
+            SLOT1[Production slot<br/>100% traffic]
+            SLOT2[Staging slot<br/>warm-up · smoke tests]
+        end
+        APP2[Another app<br/>same plan]
+    end
+    U[Users] --> FD[Front Door / App Gateway<br/>optional WAF + global LB]
+    FD --> SLOT1
+    SLOT2 -->|swap: zero downtime| SLOT1
+    SLOT1 --> VNI[VNet integration] --> BE[(SQL · Service Bus ·<br/>private APIs)]
+      </pre>
+      <div class="caption">Plan = compute; apps share it; slots enable zero-downtime swaps; VNet integration reaches private backends.</div>
+    </div>
+
+    <h2 id="capabilities">Core capabilities</h2>
+    <div class="card-grid">
+      <div class="card"><h3>Deployment slots</h3><p>Deploy to staging, warm up, run smoke tests, swap to production instantly — and swap back if anything's wrong. Auto-swap and traffic %-routing for A/B tests.</p></div>
+      <div class="card"><h3>Built-in auth (Easy Auth)</h3><p>Entra ID, Google, GitHub… authentication at the platform layer, no code changes; tokens flow to the app via headers.</p></div>
+      <div class="card"><h3>Networking</h3><p>Private endpoints inbound, VNet integration outbound, access restrictions, hybrid connections to on-prem endpoints without VPN.</p></div>
+      <div class="card"><h3>Autoscale</h3><p>Rule-based or automatic scaling per plan; scale out on schedule or metrics.</p></div>
+      <div class="card"><h3>Sidecars</h3><p>Attach sidecar containers (OpenTelemetry collectors, caches, even small local LLMs) next to your main app.</p></div>
+      <div class="card"><h3>WebJobs &amp; ops</h3><p>Background tasks alongside the web app; diagnostics, log streaming, Kudu console, health checks with instance replacement.</p></div>
+    </div>
+
+    <h2 id="plans">Plans at a glance</h2>
+    <table>
+      <tr><th>Plan</th><th>Use</th></tr>
+      <tr><td>Free / Basic</td><td>Dev/test, small sites.</td></tr>
+      <tr><td>Standard / Premium v3/v4</td><td>Production: slots, autoscale, VNet, zone redundancy; Pv3/Pv4 best price-performance.</td></tr>
+      <tr><td>App Service Environment v3</td><td>Fully isolated, VNet-injected, at-scale compliance workloads.</td></tr>
+    </table>
+
+    <h2 id="use-cases">Detailed use cases</h2>
+    <div class="card-grid">
+      <div class="card"><div class="card-kicker">Use case</div><h3>Line-of-business web apps</h3><p>Internal portals with Easy Auth (Entra ID), private endpoints, and slot-based releases — boring in the best way.</p></div>
+      <div class="card"><div class="card-kicker">Use case</div><h3>Public APIs behind APIM</h3><p>App Service hosts the API; APIM adds products, keys, rate limits; access restrictions ensure only the gateway reaches the app.</p></div>
+      <div class="card"><div class="card-kicker">Use case</div><h3>.NET/Java modernization</h3><p>Lift ASP.NET and Java (JBoss/Tomcat) apps off IIS/VMs with minimal change; hybrid connections bridge to on-prem databases during migration.</p></div>
+      <div class="card"><div class="card-kicker">Use case</div><h3>Chat frontends for AI apps</h3><p>Web app hosts the UI + orchestration calling Azure OpenAI through APIM; sidecar collects OTel traces; slots let you ship prompt changes safely.</p></div>
+    </div>
+
+    <h2 id="compare">App Service vs the alternatives</h2>
+    <ul class="checklist">
+      <li><strong>App Service</strong>: HTTP app from code, platform-managed everything — fastest path for classic web workloads.</li>
+      <li><strong>Container Apps</strong>: microservices, event-driven scale-to-zero, Dapr, jobs — when the unit is a container fleet.</li>
+      <li><strong>Functions</strong>: single-purpose event handlers, pay-per-execution.</li>
+      <li><strong>Static Web Apps</strong>: SPA/static frontends with global CDN + managed Functions API.</li>
+    </ul>
+
+    <h2 id="best-practices">Best practices</h2>
+    <ul class="checklist">
+      <li>Always release via <strong>staging slot + swap</strong>; enable health check endpoint.</li>
+      <li>Use <strong>managed identity</strong> + Key Vault references in app settings — zero secrets in config.</li>
+      <li>Enable <strong>Always On</strong>, HTTP/2, and run on Linux Pv3/Pv4 unless Windows-specific.</li>
+      <li>Front internet apps with Front Door/App Gateway + WAF; lock app access to the fronting service.</li>
+      <li>Application Insights auto-instrumentation on day one.</li>
+    </ul>
+
+    <h2 id="links">Key references</h2>
+    <ul>
+      <li><a href="https://learn.microsoft.com/azure/app-service/" target="_blank" rel="noopener">App Service documentation</a></li>
+      <li><a href="https://learn.microsoft.com/azure/app-service/deploy-staging-slots" target="_blank" rel="noopener">Deployment slots</a></li>
+      <li><a href="https://learn.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/zone-redundant" target="_blank" rel="noopener">Zone-redundant web app baseline architecture</a></li>
+    </ul>
+
+  </div>
+</main>
+</body>
+</html>

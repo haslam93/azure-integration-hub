@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Changelog — Azure Integration Hub</title>
+<meta name="description" content="Living changelog of Azure API Management, Logic Apps, Functions, Container Apps, Service Bus, Event Grid, Event Hubs and App Service updates, refreshed weekly.">
+<script>
+  (() => {
+    const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+    let stored = null;
+    try { stored = localStorage.getItem("cpTheme"); } catch (e) {}
+    const theme = param || stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", theme);
+  })();
+</script>
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body>
+<main class="page no-toc">
+  <div class="content">
+
+    <p class="eyebrow">Living changelog</p>
+    <h1>What's new across the integration stack</h1>
+    <p class="lede">Automatically refreshed every week from the official <a href="https://azure.microsoft.com/updates/" target="_blank" rel="noopener">Azure Updates</a> feed, filtered to API Management, Logic Apps, Functions, Container Apps, Service Bus, Event Grid, Event Hubs, App Service and AI Foundry.</p>
+    <p class="updated-stamp" id="changelog-updated">Loading…</p>
+
+    <div class="changelog-controls" id="changelog-filters"></div>
+    <div id="changelog-list"><p class="updated-stamp">Loading changelog…</p></div>
+
+  </div>
+</main>
+</body>
+</html>

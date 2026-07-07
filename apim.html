@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Azure API Management — Azure Integration Hub</title>
+<meta name="description" content="Deep dive on Azure API Management: gateway architecture, policy pipeline, tiers, AI Gateway for Azure OpenAI and AI Foundry, self-hosted gateway, use cases and best practices.">
+<script>
+  (() => {
+    const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+    let stored = null;
+    try { stored = localStorage.getItem("cpTheme"); } catch (e) {}
+    const theme = param || stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", theme);
+  })();
+</script>
+<link rel="stylesheet" href="assets/site.css">
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.3/dist/mermaid.min.js"></script>
+<script src="assets/site.js" defer></script>
+</head>
+<body>
+<main class="page">
+  <aside class="toc" data-auto></aside>
+  <div class="content">
+
+    <p class="eyebrow">API platform</p>
+    <h1>Azure API Management</h1>
+    <p class="lede">APIM is the front door for every API you expose — REST, GraphQL, gRPC, WebSocket, SOAP and, increasingly, <strong>LLM and agent endpoints</strong>. It decouples consumers from backends with a programmable gateway, a management plane, and a developer portal.</p>
+
+    <h2 id="architecture">How it works: core architecture</h2>
+    <p>APIM has three building blocks that scale and deploy independently:</p>
+    <div class="card-grid">
+      <div class="card"><h3>Gateway (data plane)</h3><p>Accepts API calls, verifies keys/JWTs, enforces quotas and policies, transforms requests/responses, caches, and emits logs, traces and metrics. Deployable in Azure, on-premises, or in any Kubernetes cluster (self-hosted gateway).</p></div>
+      <div class="card"><h3>Management plane</h3><p>Azure portal, ARM/Bicep/Terraform, CLI, REST API and APIOps pipelines to define APIs, products, policies, users and subscriptions.</p></div>
+      <div class="card"><h3>Developer portal</h3><p>Auto-generated, customizable site where consumers discover APIs, read docs, try operations, and self-serve subscription keys.</p></div>
+    </div>
+
+    <div class="diagram">
+      <pre class="mermaid">
+flowchart LR
+    subgraph Consumers
+        C1[Web / mobile apps]
+        C2[Partner systems]
+        C3[Internal services]
+        C4[AI agents / copilots]
+    end
+    subgraph APIM[API Management]
+        GW[Gateway<br/>policies · auth · cache · rate limits]
+        DP[Developer portal]
+        MP[Management plane]
+    end
+    subgraph Backends
+        B1[App Service / AKS /<br/>Container Apps]
+        B2[Azure Functions]
+        B3[Logic Apps]
+        B4[Azure OpenAI /<br/>AI Foundry]
+        B5[On-prem & SaaS APIs]
+    end
+    C1 --> GW
+    C2 --> GW
+    C3 --> GW
+    C4 --> GW
+    GW --> B1
+    GW --> B2
+    GW --> B3
+    GW --> B4
+    GW --> B5
+    MP -.configures.-> GW
+    DP -.onboards.-> Consumers
+      </pre>
+      <div class="caption">APIM as the single front door: one gateway, many heterogeneous backends, consistent policy enforcement.</div>
+    </div>
+
+    <h2 id="policies">The policy pipeline</h2>
+    <p>Policies are XML-defined statements executed sequentially in four sections. They can apply at <strong>global, workspace, product, API, or operation</strong> scope, and compose across scopes via <code>&lt;base /&gt;</code>.</p>
+
+    <div class="diagram">
+      <pre class="mermaid">
+sequenceDiagram
+    participant Client
+    participant GW as APIM Gateway
+    participant BE as Backend
+    Client->>GW: Request
+    Note over GW: INBOUND<br/>validate-jwt · rate-limit · quota ·<br/>ip-filter · rewrite-uri · set-header ·<br/>cache-lookup · mock-response
+    GW->>BE: Forward (BACKEND section:<br/>retry · forward-request · timeout)
+    BE-->>GW: Response
+    Note over GW: OUTBOUND<br/>set-body · redact fields ·<br/>cache-store · CORS headers
+    GW-->>Client: Response
+    Note over GW: ON-ERROR<br/>custom error shaping · logging ·<br/>trace to App Insights
+      </pre>
+      <div class="caption">Every call flows through inbound → backend → outbound, with on-error catching failures anywhere in the pipeline.</div>
+    </div>
+
+    <h3>Policies you will actually use</h3>
+    <table>
+      <tr><th>Category</th><th>Policy</th><th>What it does</th></tr>
+      <tr><td rowspan="3">Security</td><td><code>validate-jwt</code> / <code>validate-azure-ad-token</code></td><td>Enforce OAuth 2.0 / Entra ID tokens, audiences, claims.</td></tr>
+      <tr><td><code>ip-filter</code>, <code>check-header</code></td><td>Allow/deny by IP, require headers.</td></tr>
+      <tr><td><code>authentication-managed-identity</code></td><td>Gateway authenticates to backends with its managed identity — no secrets.</td></tr>
+      <tr><td rowspan="2">Throttling</td><td><code>rate-limit-by-key</code></td><td>Sliding-window rate limits per subscription, IP, user or any expression.</td></tr>
+      <tr><td><code>quota-by-key</code></td><td>Long-period call/bandwidth quotas (monetization tiers).</td></tr>
+      <tr><td rowspan="2">Transformation</td><td><code>set-body</code>, <code>set-header</code>, <code>rewrite-uri</code></td><td>Reshape requests/responses; XML↔JSON conversion; liquid templates.</td></tr>
+      <tr><td><code>return-response</code>, <code>mock-response</code></td><td>Short-circuit calls — great for façades and API-first development.</td></tr>
+      <tr><td>Caching</td><td><code>cache-lookup</code> / <code>cache-store</code></td><td>Built-in or external Redis cache for responses and values.</td></tr>
+      <tr><td rowspan="4">AI / GenAI</td><td><code>llm-token-limit</code></td><td>Token-based rate limiting for LLM APIs (prompt + completion tokens), per key/consumer.</td></tr>
+      <tr><td><code>llm-emit-token-metric</code></td><td>Emit token consumption metrics to App Insights for chargeback and cost visibility.</td></tr>
+      <tr><td><code>llm-semantic-cache-lookup/store</code></td><td>Serve semantically similar prompts from cache — cut latency and token spend.</td></tr>
+      <tr><td><code>llm-content-safety</code></td><td>Screen prompts through Azure AI Content Safety before they reach the model.</td></tr>
+      <tr><td>Resilience</td><td><code>retry</code>, <code>limit-concurrency</code>, backend circuit breaker &amp; load-balanced pools</td><td>Retries with conditions, concurrency caps, automatic failover across backend pools with priority/weight rules.</td></tr>
+    </table>
+
+    <h3>Example: JWT validation + spike protection</h3>
+    <pre><code>&lt;inbound&gt;
+  &lt;base /&gt;
+  &lt;validate-azure-ad-token tenant-id="{{tenant-id}}"&gt;
+    &lt;audiences&gt;&lt;audience&gt;api://my-api&lt;/audience&gt;&lt;/audiences&gt;
+    &lt;required-claims&gt;
+      &lt;claim name="roles" match="any"&gt;&lt;value&gt;Orders.Read&lt;/value&gt;&lt;/claim&gt;
+    &lt;/required-claims&gt;
+  &lt;/validate-azure-ad-token&gt;
+  &lt;rate-limit-by-key calls="100" renewal-period="60"
+      counter-key="@(context.Subscription.Id)" /&gt;
+  &lt;set-header name="X-Correlation-Id" exists-action="skip"&gt;
+    &lt;value&gt;@(Guid.NewGuid().ToString())&lt;/value&gt;
+  &lt;/set-header&gt;
+&lt;/inbound&gt;</code></pre>
+
+    <h2 id="ai-gateway">AI Gateway: fronting Azure OpenAI &amp; AI Foundry</h2>
+    <p>This is the fastest-moving part of APIM. The same gateway that protects REST APIs now acts as a <strong>GenAI gateway</strong> in front of Azure OpenAI, Azure AI Foundry model deployments, and third-party/self-hosted LLMs — giving you one governed entry point for every model and agent in the company.</p>
+
+    <ul class="checklist">
+      <li><strong>One-click import</strong> of Azure OpenAI and AI Foundry endpoints as APIs (OpenAI-compatible or Azure AI Model Inference API), with keyless managed-identity auth to the backend.</li>
+      <li><strong>Token governance</strong> — per-team token limits (<code>llm-token-limit</code>) and token metrics (<code>llm-emit-token-metric</code>) for chargeback across cost centers.</li>
+      <li><strong>Model load balancing &amp; failover</strong> — backend pools spread traffic across regional deployments (round-robin, weighted, priority) and the circuit breaker skips throttled (429) deployments; PTU-first with PAYG spillover is the canonical setup.</li>
+      <li><strong>Semantic caching</strong> — embedding-based cache so repeated/similar prompts don't hit the model at all.</li>
+      <li><strong>Content safety</strong> — inspect prompts centrally before they reach any model.</li>
+      <li><strong>MCP support</strong> — expose existing APIM-managed APIs as <strong>MCP servers (tools)</strong> and gateway remote MCP servers, so agents in AI Foundry, GitHub Copilot or any MCP client consume governed tools with APIM policies (auth, rate limits, observability) in front.</li>
+      <li><strong>Foundry integration</strong> — AI Foundry can front its model deployments with an <em>AI Gateway</em>; agents built in Foundry Agent Service call tools published through APIM, keeping enterprise APIs governed while agents act on them.</li>
+    </ul>
+
+    <div class="diagram">
+      <pre class="mermaid">
+flowchart TB
+    subgraph Clients
+        A1[Apps & copilots]
+        A2[AI Foundry Agents]
+        A3[MCP clients<br/>GitHub Copilot · Claude · VS Code]
+    end
+    subgraph APIM[APIM · AI Gateway]
+        P1[llm-token-limit<br/>llm-emit-token-metric]
+        P2[llm-semantic-cache]
+        P3[llm-content-safety]
+        P4[Backend pool<br/>load balancing + circuit breaker]
+        MCP[MCP server façade<br/>REST APIs exposed as tools]
+    end
+    subgraph Models[Model backends]
+        M1[Azure OpenAI<br/>PTU deployment]
+        M2[Azure OpenAI<br/>PAYG deployment]
+        M3[AI Foundry<br/>model deployments<br/>DeepSeek · Llama · Mistral]
+    end
+    subgraph Tools[Enterprise APIs]
+        T1[Orders API]
+        T2[Inventory API]
+    end
+    A1 --> P1
+    A2 --> P1
+    A3 --> MCP
+    A2 --> MCP
+    P1 --> P2 --> P3 --> P4
+    P4 -->|priority 1| M1
+    P4 -->|priority 2 spillover| M2
+    P4 --> M3
+    MCP --> T1
+    MCP --> T2
+      </pre>
+      <div class="caption">The AI Gateway pattern: token policies, semantic cache and safety checks in the pipeline; pooled model backends with PTU-first spillover; enterprise APIs published to agents as MCP tools.</div>
+    </div>
+
+    <div class="callout"><strong>Why this matters:</strong> without a gateway, every team hardcodes model endpoints and keys, cost is invisible, and 429s cascade. With APIM in front, you rotate models without touching apps, meter tokens per consumer, and give agents a governed tool surface instead of raw API keys.</div>
+
+    <h2 id="tiers">Tiers &amp; deployment options</h2>
+    <table>
+      <tr><th>Tier</th><th>Best for</th><th>Notes</th></tr>
+      <tr><td>Consumption</td><td>Serverless, spiky traffic, PoCs</td><td>Per-call pricing, auto-scale, no VNet injection.</td></tr>
+      <tr><td>Basic v2 / Standard v2 / Premium v2</td><td>New deployments (default choice)</td><td>Fast provisioning/scaling, VNet integration (outbound) and, on Premium v2, VNet injection; replaces classic tiers over time.</td></tr>
+      <tr><td>Premium (classic)</td><td>Multi-region, availability zones, full VNet injection</td><td>Multi-region gateways behind one management plane; internal mode for private APIs.</td></tr>
+      <tr><td>Self-hosted gateway</td><td>Hybrid, on-prem, multi-cloud, edge</td><td>Container image of the gateway running in your Kubernetes/Arc cluster, federated to the cloud management plane.</td></tr>
+      <tr><td>Workspaces (Premium)</td><td>Federated API management</td><td>Teams get isolated workspaces (APIs, products, subscriptions) with optional dedicated workspace gateways — platform team keeps central governance.</td></tr>
+    </table>
+
+    <div class="diagram">
+      <pre class="mermaid">
+flowchart LR
+    subgraph Azure
+        MPlane[APIM management plane<br/>+ developer portal]
+        CGW[Cloud gateway]
+    end
+    subgraph OnPrem[On-premises / other cloud / edge]
+        SHGW[Self-hosted gateway<br/>container in K8s]
+        LB[Local backends]
+    end
+    Client1[Cloud clients] --> CGW
+    Client2[Local clients] --> SHGW
+    SHGW --> LB
+    SHGW -.config sync & telemetry.-> MPlane
+    MPlane -.configures.-> CGW
+      </pre>
+      <div class="caption">Self-hosted gateway: keep traffic local for latency/compliance while managing everything from one control plane.</div>
+    </div>
+
+    <h2 id="use-cases">Detailed use cases</h2>
+    <div class="card-grid">
+      <div class="card"><div class="card-kicker">Use case</div><h3>Enterprise AI gateway</h3><p>All Azure OpenAI / Foundry traffic flows through APIM. Token limits per product tier, token metrics per team for chargeback, semantic cache for FAQ-style prompts, load-balanced PTU + PAYG pools. Apps get one stable endpoint; platform team swaps models freely.</p></div>
+      <div class="card"><div class="card-kicker">Use case</div><h3>Agent tool hub (MCP)</h3><p>Expose the existing order, inventory and CRM APIs as MCP servers through APIM. Foundry agents and GitHub Copilot consume them with Entra ID auth, per-tool rate limits, and full tracing — no raw credentials in agent configs.</p></div>
+      <div class="card"><div class="card-kicker">Use case</div><h3>Legacy modernization façade</h3><p>Put APIM in front of a SOAP/on-prem ERP. Policies convert SOAP↔REST/JSON, mock unfinished operations, and let you strangler-fig migrate backends to Functions/Container Apps with zero client changes.</p></div>
+      <div class="card"><div class="card-kicker">Use case</div><h3>API monetization</h3><p>Products define Bronze/Silver/Gold tiers with quotas and rate limits; the developer portal handles onboarding and key self-service; token/call metrics feed billing.</p></div>
+      <div class="card"><div class="card-kicker">Use case</div><h3>Microservices BFF &amp; routing</h3><p>One API surface routes operations to many microservices (Container Apps/AKS), centralizes CORS, JWT validation and response shaping — services stay thin.</p></div>
+      <div class="card"><div class="card-kicker">Use case</div><h3>Hybrid &amp; sovereign APIs</h3><p>Self-hosted gateways in factories/hospitals keep sensitive traffic on-site, while the cloud management plane governs policy and observability across all locations.</p></div>
+    </div>
+
+    <h2 id="best-practices">Best practices</h2>
+    <ul class="checklist">
+      <li>Adopt <strong>APIOps</strong>: APIs and policies in Git, deployed via CI/CD (APIOps toolkit / Bicep), never hand-edited in production.</li>
+      <li>Use <strong>managed identity</strong> from gateway to backends; never store backend keys in policy when avoidable — use named values + Key Vault when you must.</li>
+      <li>Version APIs explicitly (path or header versioning) and use <strong>revisions</strong> for non-breaking changes.</li>
+      <li>Always return a <code>Retry-After</code> on 429s from token limits; clients behave better.</li>
+      <li>Front every LLM endpoint with the AI Gateway policies from day one — retrofitting cost controls is painful.</li>
+      <li>Send gateway logs/traces to <strong>Application Insights + Log Analytics</strong>; alert on 4xx/5xx ratios and token consumption anomalies.</li>
+      <li>Prefer <strong>v2 tiers</strong> for new instances; Premium classic only when you need multi-region or full VNet injection today.</li>
+    </ul>
+
+    <h2 id="links">Key references</h2>
+    <ul>
+      <li><a href="https://learn.microsoft.com/azure/api-management/" target="_blank" rel="noopener">APIM documentation</a></li>
+      <li><a href="https://learn.microsoft.com/azure/api-management/api-management-policies" target="_blank" rel="noopener">Policy reference index</a></li>
+      <li><a href="https://learn.microsoft.com/azure/api-management/genai-gateway-capabilities" target="_blank" rel="noopener">GenAI gateway capabilities</a></li>
+      <li><a href="https://learn.microsoft.com/azure/api-management/export-rest-mcp-server" target="_blank" rel="noopener">Expose APIs as MCP servers</a></li>
+      <li><a href="https://github.com/Azure-Samples/AI-Gateway" target="_blank" rel="noopener">AI-Gateway labs (Azure Samples)</a></li>
+      <li><a href="https://learn.microsoft.com/azure/architecture/example-scenario/ai/generative-ai-gateway" target="_blank" rel="noopener">GenAI gateway reference architecture</a></li>
+    </ul>
+
+  </div>
+</main>
+</body>
+</html>

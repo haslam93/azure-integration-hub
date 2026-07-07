@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Azure Integration Hub — Single Source of Truth</title>
+<meta name="description" content="Personal single source of truth for Azure API Management, Logic Apps, Functions, Container Apps, Service Bus and App Service: capabilities, architecture patterns, use cases and a living changelog.">
+<script>
+  (() => {
+    const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+    let stored = null;
+    try { stored = localStorage.getItem("cpTheme"); } catch (e) {}
+    const theme = param || stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", theme);
+  })();
+</script>
+<link rel="stylesheet" href="assets/site.css">
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.3/dist/mermaid.min.js"></script>
+<script src="assets/site.js" defer></script>
+</head>
+<body>
+<main class="page no-toc">
+  <div class="content">
+
+    <section class="hero">
+      <p class="eyebrow">Single source of truth</p>
+      <h1>Azure Integration Hub</h1>
+      <p class="lede">Everything that matters about <strong>Azure API Management, Logic Apps, Functions, Container Apps, Azure Integration Services (Service Bus, Event Grid, Event Hubs)</strong> and <strong>App Service</strong> — capabilities, the latest architecture patterns, detailed use cases, and a living changelog that refreshes itself every week from the official Azure Updates feed.</p>
+      <p>
+        <span class="pill">Capabilities</span>
+        <span class="pill">Architecture patterns</span>
+        <span class="pill">Use cases</span>
+        <span class="pill">AI Gateway &amp; Foundry</span>
+        <span class="pill">Weekly auto-updates</span>
+      </p>
+    </section>
+
+    <h2 id="services">Service deep dives</h2>
+    <div class="card-grid">
+      <a class="card" href="apim.html">
+        <div class="card-kicker">API platform</div>
+        <h3>API Management</h3>
+        <p>The gateway for every API — policy pipeline, tiers, self-hosted gateway, workspaces, and the AI Gateway that fronts Azure OpenAI and AI Foundry with token limits, semantic caching and MCP support.</p>
+      </a>
+      <a class="card" href="logic-apps.html">
+        <div class="card-kicker">Workflow &amp; iPaaS</div>
+        <h3>Logic Apps</h3>
+        <p>Low-code orchestration with 1,400+ connectors. Standard vs Consumption, stateful vs stateless, B2B/EDI, and AI agent workflows with the agent loop.</p>
+      </a>
+      <a class="card" href="functions.html">
+        <div class="card-kicker">Serverless compute</div>
+        <h3>Azure Functions</h3>
+        <p>Event-driven code with triggers and bindings. Flex Consumption, Durable Functions patterns, and Functions as tools for AI agents.</p>
+      </a>
+      <a class="card" href="container-apps.html">
+        <div class="card-kicker">Serverless containers</div>
+        <h3>Container Apps</h3>
+        <p>Microservices and jobs on serverless Kubernetes-backed infrastructure — KEDA scaling, Dapr, revisions, dynamic sessions and GPU workloads.</p>
+      </a>
+      <a class="card" href="service-bus.html">
+        <div class="card-kicker">Messaging &amp; events</div>
+        <h3>Service Bus, Event Grid &amp; Event Hubs</h3>
+        <p>The messaging backbone: queues, topics, sessions, dead-lettering, pub/sub eventing, CloudEvents, MQTT, and high-throughput streaming.</p>
+      </a>
+      <a class="card" href="app-service.html">
+        <div class="card-kicker">Web apps &amp; APIs</div>
+        <h3>App Service</h3>
+        <p>Fully managed web hosting — plans, deployment slots, VNet integration, sidecars, and where it fits versus Container Apps and Functions.</p>
+      </a>
+    </div>
+
+    <h2 id="patterns">Cross-service architecture patterns</h2>
+    <div class="card-grid">
+      <a class="card" href="patterns.html#ai-gateway">
+        <div class="card-kicker">Pattern</div>
+        <h3>AI Gateway (GenAI front door)</h3>
+        <p>APIM in front of Azure OpenAI / AI Foundry: token metering, model load balancing, semantic caching, MCP tool routing.</p>
+      </a>
+      <a class="card" href="patterns.html#api-led">
+        <div class="card-kicker">Pattern</div>
+        <h3>API-led connectivity</h3>
+        <p>System, process and experience API layers with APIM products, workspaces and policies as the contract surface.</p>
+      </a>
+      <a class="card" href="patterns.html#event-driven">
+        <div class="card-kicker">Pattern</div>
+        <h3>Event-driven architecture</h3>
+        <p>Event Grid + Service Bus + Functions/Container Apps for decoupled, elastic, resilient integrations.</p>
+      </a>
+      <a class="card" href="patterns.html#async-request-reply">
+        <div class="card-kicker">Pattern</div>
+        <h3>Async request-reply &amp; saga</h3>
+        <p>Long-running operations behind APIM with 202 + status polling; distributed transactions with Durable Functions or Logic Apps.</p>
+      </a>
+    </div>
+
+    <h2 id="latest">Latest updates</h2>
+    <p class="updated-stamp" id="changelog-updated">Loading…</p>
+    <div id="changelog-preview"><p class="updated-stamp">Loading changelog…</p></div>
+    <p><a href="changelog.html">See the full changelog →</a></p>
+
+    <h2 id="how">How this site stays current</h2>
+    <div class="diagram">
+      <pre class="mermaid">
+flowchart LR
+    A[GitHub Actions<br/>weekly cron] --> B[update_changelog.py]
+    B --> C[Azure Updates RSS feed]
+    C --> B
+    B --> D[data/changelog.json]
+    B --> E[GitHub Issue:<br/>content refresh needed]
+    D --> F[GitHub Pages site<br/>changelog + homepage]
+    E --> G[Copilot / me:<br/>update service pages,<br/>patterns, capabilities]
+      </pre>
+      <div class="caption">A weekly workflow pulls the official Azure Updates feed, refreshes the changelog automatically, and opens an issue summarizing what changed so the deep-dive pages get updated too.</div>
+    </div>
+
+  </div>
+</main>
+</body>
+</html>

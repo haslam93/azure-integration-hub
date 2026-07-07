@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Azure Logic Apps — Azure Integration Hub</title>
+<meta name="description" content="Deep dive on Azure Logic Apps: Standard vs Consumption, connectors, stateful vs stateless workflows, B2B, AI agent workflows, patterns and use cases.">
+<script>
+  (() => {
+    const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+    let stored = null;
+    try { stored = localStorage.getItem("cpTheme"); } catch (e) {}
+    const theme = param || stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", theme);
+  })();
+</script>
+<link rel="stylesheet" href="assets/site.css">
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.3/dist/mermaid.min.js"></script>
+<script src="assets/site.js" defer></script>
+</head>
+<body>
+<main class="page">
+  <aside class="toc" data-auto></aside>
+  <div class="content">
+
+    <p class="eyebrow">Workflow &amp; iPaaS</p>
+    <h1>Azure Logic Apps</h1>
+    <p class="lede">Logic Apps is Azure's integration platform as a service (iPaaS): visually designed, declaratively defined workflows with <strong>1,400+ connectors</strong> to SaaS, on-prem and Azure services. It shines wherever the problem is "connect system A to systems B, C and D with business rules in the middle".</p>
+
+    <h2 id="how">How it works</h2>
+    <p>A workflow = <strong>trigger</strong> (what starts it) + <strong>actions</strong> (what it does), defined in JSON (Workflow Definition Language) and edited in a visual designer. Connectors package the auth, retries and API details of external systems into reusable triggers/actions.</p>
+
+    <div class="diagram">
+      <pre class="mermaid">
+flowchart LR
+    T[Trigger<br/>HTTP · schedule · queue message ·<br/>file created · email · event]
+    T --> A1[Action: get data<br/>SQL · SAP · Salesforce]
+    A1 --> C{Condition /<br/>switch / loop}
+    C -->|approved| A2[Action: post to Teams<br/>+ update Dynamics]
+    C -->|rejected| A3[Action: send email<br/>+ dead-letter to Service Bus]
+    A2 --> R[Run history<br/>every step logged & replayable]
+    A3 --> R
+      </pre>
+      <div class="caption">Trigger → actions → control flow, with full run history for every execution.</div>
+    </div>
+
+    <h2 id="hosting">Consumption vs Standard</h2>
+    <table>
+      <tr><th></th><th>Consumption (multitenant)</th><th>Standard (single-tenant)</th></tr>
+      <tr><td>Pricing</td><td>Per action execution</td><td>Workflow Service Plan / App Service Environment v3; also <strong>hybrid deployment</strong> on your own Kubernetes (Arc)</td></tr>
+      <tr><td>Workflows per app</td><td>1</td><td>Many workflows per app</td></tr>
+      <tr><td>State</td><td>Stateful only</td><td><strong>Stateful or stateless</strong> (stateless = much faster, no run history persistence)</td></tr>
+      <tr><td>Networking</td><td>Public endpoints</td><td>VNet integration + private endpoints</td></tr>
+      <tr><td>Connectors</td><td>Managed connectors</td><td>Managed + <strong>built-in (in-process)</strong> connectors — lower latency, no data leaving the app for Service Bus, SQL, etc.</td></tr>
+      <tr><td>DevOps</td><td>ARM templates</td><td>Project-based: local dev in VS Code, containers, CI/CD like any app</td></tr>
+      <tr><td>Choose when</td><td>Simple, low-volume automations</td><td>Enterprise integration, predictable perf, private networking, many related workflows</td></tr>
+    </table>
+
+    <div class="callout"><strong>Default in 2025+:</strong> Standard for anything serious. Consumption remains great for lightweight event glue and citizen automation.</div>
+
+    <h2 id="ai">AI agent workflows</h2>
+    <p>Logic Apps Standard now supports <strong>agent workflows</strong>: an agent loop action powered by Azure OpenAI / Foundry models that reasons over a goal and chooses among <strong>tools you define as workflow actions</strong> — meaning every one of the 1,400+ connectors becomes a potential agent tool. Logic Apps can also act as tools for Foundry agents, and as remote MCP servers.</p>
+
+    <div class="diagram">
+      <pre class="mermaid">
+flowchart TB
+    G[Goal / prompt<br/>e.g. resolve this support ticket] --> AL[Agent loop<br/>Azure OpenAI model]
+    AL -->|reason + pick tool| T1[Tool: look up order<br/>SQL connector]
+    AL --> T2[Tool: check shipping<br/>HTTP/partner API]
+    AL --> T3[Tool: refund<br/>Stripe connector]
+    AL --> T4[Tool: notify<br/>Teams / Outlook]
+    T1 --> AL
+    T2 --> AL
+    T3 --> AL
+    T4 --> AL
+    AL --> Done[Structured outcome<br/>+ full run history of every step]
+      </pre>
+      <div class="caption">Agent loop: the model iteratively picks connector-backed tools until the goal is met — auditable like any other run.</div>
+    </div>
+
+    <h2 id="b2b">Enterprise integration &amp; B2B</h2>
+    <ul class="checklist">
+      <li><strong>Integration account</strong>: trading partners, agreements, schemas, maps for B2B.</li>
+      <li><strong>EDI</strong>: X12, EDIFACT, AS2 message processing.</li>
+      <li><strong>XML</strong>: validation, XSLT transforms, flat-file encode/decode (mainframe/legacy).</li>
+      <li><strong>Rules engine</strong>: decouple business rules from workflow logic (BizTalk-style rules in Standard).</li>
+      <li>The primary landing zone for <strong>BizTalk Server migrations</strong>.</li>
+    </ul>
+
+    <h2 id="use-cases">Detailed use cases</h2>
+    <div class="card-grid">
+      <div class="card"><div class="card-kicker">Use case</div><h3>Order-to-cash orchestration</h3><p>Order event arrives on Service Bus → validate against SAP → reserve inventory → create invoice in Dynamics → notify customer. Compensating actions on failure; every run auditable.</p></div>
+      <div class="card"><div class="card-kicker">Use case</div><h3>B2B partner onboarding</h3><p>AS2/X12 documents from trading partners are validated, mapped to internal JSON, and routed — replacing BizTalk with integration accounts and agreements.</p></div>
+      <div class="card"><div class="card-kicker">Use case</div><h3>Human-in-the-loop approvals</h3><p>Expense/access requests trigger adaptive cards in Teams or Outlook approvals; the workflow waits (days if needed), then branches on the response.</p></div>
+      <div class="card"><div class="card-kicker">Use case</div><h3>Agentic ticket triage</h3><p>Agent workflow reads new tickets, enriches from CRM + knowledge base, resolves simple cases autonomously via connectors, escalates the rest with a summary.</p></div>
+      <div class="card"><div class="card-kicker">Use case</div><h3>Scheduled data sync</h3><p>Nightly sync between SaaS systems (Salesforce ↔ SQL ↔ SharePoint) with paging, retries and error queues — no code to maintain.</p></div>
+      <div class="card"><div class="card-kicker">Use case</div><h3>Legacy file ingestion</h3><p>SFTP flat files → flat-file decode → XSLT map → REST calls into modern services; hybrid deployment keeps processing near on-prem systems.</p></div>
+    </div>
+
+    <h2 id="patterns">Patterns &amp; pairings</h2>
+    <ul class="checklist">
+      <li><strong>APIM + Logic Apps</strong>: expose workflows as governed, versioned APIs; hide connector complexity behind a clean contract.</li>
+      <li><strong>Service Bus + Logic Apps</strong>: peek-lock message handling for reliable, ordered, resumable processing (sessions for ordering).</li>
+      <li><strong>Functions + Logic Apps</strong>: drop to code (Functions) for compute-heavy or algorithmic steps; keep orchestration declarative.</li>
+      <li><strong>Choose Durable Functions instead</strong> when orchestration logic is genuinely code-first and developer-only; choose Logic Apps when connectors, visibility and mixed audiences matter.</li>
+    </ul>
+
+    <h2 id="links">Key references</h2>
+    <ul>
+      <li><a href="https://learn.microsoft.com/azure/logic-apps/" target="_blank" rel="noopener">Logic Apps documentation</a></li>
+      <li><a href="https://learn.microsoft.com/azure/logic-apps/single-tenant-overview-compare" target="_blank" rel="noopener">Standard vs Consumption comparison</a></li>
+      <li><a href="https://learn.microsoft.com/azure/logic-apps/agent-workflows-concepts" target="_blank" rel="noopener">AI agent workflows</a></li>
+      <li><a href="https://learn.microsoft.com/azure/connectors/introduction" target="_blank" rel="noopener">Connectors overview</a></li>
+    </ul>
+
+  </div>
+</main>
+</body>
+</html>
