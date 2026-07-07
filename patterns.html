@@ -161,6 +161,100 @@ flowchart LR
       <div class="caption">The bus carries claim tickets, not payloads; the queue absorbs bursts so workers process at a sustainable rate.</div>
     </div>
 
+    <h2 id="rag">9 · Serverless RAG pipeline</h2>
+    <p><strong>Services:</strong> Blob Storage · Event Grid · Functions · AI Search · APIM · Azure OpenAI / AI Foundry. <strong>Problem:</strong> grounding LLM answers in enterprise documents that change daily.</p>
+    <div class="diagram">
+      <pre class="mermaid">
+flowchart LR
+    DOC[Documents land in<br/>Blob Storage] --> EG[Event Grid<br/>BlobCreated]
+    EG --> ING[Functions<br/>chunk · embed · enrich]
+    ING --> IDX[(AI Search index<br/>vectors + keywords)]
+    U[App / copilot] --> APIM[APIM AI Gateway]
+    APIM --> ORCH[Orchestrator<br/>Container Apps / Functions]
+    ORCH -->|retrieve| IDX
+    ORCH -->|grounded prompt| AOAI[Azure OpenAI<br/>via APIM pool]
+    AOAI --> ORCH --> U
+      </pre>
+      <div class="caption">Event-driven ingestion keeps the index fresh with zero polling; every model call still flows through the AI Gateway for token governance.</div>
+    </div>
+
+    <h2 id="multi-agent">10 · Multi-agent enterprise automation</h2>
+    <p><strong>Services:</strong> AI Foundry Agent Service · Logic Apps agent workflows · APIM (MCP) · Container Apps dynamic sessions · Service Bus. <strong>Problem:</strong> automating a business process end-to-end where multiple specialized agents must plan, act on enterprise systems, and run code — safely.</p>
+    <div class="diagram">
+      <pre class="mermaid">
+flowchart TB
+    REQ[Business request<br/>e.g. month-end reconciliation] --> ORCH[Foundry orchestrator agent]
+    ORCH -->|delegate| A1[Data agent]
+    ORCH -->|delegate| A2[Process agent<br/>Logic Apps agent loop]
+    ORCH -->|delegate| A3[Analysis agent]
+    A1 -->|MCP tools| APIM[APIM<br/>governed tool hub]
+    APIM --> ERP[ERP / CRM / finance APIs]
+    A2 -->|connectors as tools| SAAS[SAP · Dynamics · Teams]
+    A3 -->|generated code| DS[Container Apps<br/>dynamic sessions sandbox]
+    ORCH -->|audit events| SB[(Service Bus<br/>audit + human escalation queue)]
+    SB --> HUM[Human review<br/>when confidence is low]
+      </pre>
+      <div class="caption">Specialized agents divide the work; APIM keeps every tool call governed; risky code runs in isolated sandboxes; Service Bus provides the audit trail and human-in-the-loop escape hatch.</div>
+    </div>
+
+    <h2 id="hybrid">11 · Hybrid integration platform</h2>
+    <p><strong>Services:</strong> APIM self-hosted gateway · Logic Apps Standard (hybrid) · Service Bus · Azure Arc. <strong>Problem:</strong> factories, hospitals or sovereign environments where data must stay local but governance must stay central.</p>
+    <div class="diagram">
+      <pre class="mermaid">
+flowchart LR
+    subgraph Cloud[Azure · control plane]
+        MP[APIM management plane]
+        MON[Azure Monitor<br/>central observability]
+        SB[(Service Bus<br/>cloud ↔ site bridge)]
+    end
+    subgraph Site[On-prem site · Arc-enabled K8s]
+        SH[Self-hosted APIM gateway]
+        LAH[Logic Apps hybrid<br/>local workflows]
+        LOB[(Local systems<br/>MES · ERP · devices)]
+    end
+    APPS[Site apps] --> SH --> LOB
+    LAH --> LOB
+    LAH <-->|reliable async| SB
+    SH -.config & telemetry.-> MP
+    LAH -.logs.-> MON
+      </pre>
+      <div class="caption">Traffic and data stay on-site; policy, config and observability stay central; Service Bus bridges cloud and edge asynchronously so outages don't lose work.</div>
+    </div>
+
+    <h2 id="iot-streaming">12 · Real-time IoT telemetry &amp; alerting</h2>
+    <p><strong>Services:</strong> Event Grid (MQTT) · Event Hubs · Stream Analytics / Fabric · Functions · Service Bus. <strong>Problem:</strong> millions of device signals needing both real-time reaction and historical analytics.</p>
+    <div class="diagram">
+      <pre class="mermaid">
+flowchart LR
+    DEV[Device fleet<br/>MQTT] --> EG[Event Grid<br/>MQTT broker + routing]
+    EG -->|bulk telemetry| EH[(Event Hubs<br/>partitioned stream)]
+    EG -->|critical alerts| SB[(Service Bus<br/>guaranteed delivery)]
+    EH --> SA[Stream Analytics /<br/>Fabric eventstream]
+    EH -->|Capture| DL[(Data lake<br/>history + ML training)]
+    SA --> RT[Real-time dashboards]
+    SB --> FN[Functions<br/>alert handler]
+    FN --> OPS[On-call · Teams · ticket]
+      </pre>
+      <div class="caption">One ingestion fabric, two lanes: the firehose streams to analytics while critical events take the guaranteed-delivery lane to action.</div>
+    </div>
+
+    <h2 id="multi-region">13 · Global multi-region API platform</h2>
+    <p><strong>Services:</strong> Front Door · APIM (multi-region) · Container Apps / App Service · Cosmos DB. <strong>Problem:</strong> serving a global audience with low latency and surviving a regional outage.</p>
+    <div class="diagram">
+      <pre class="mermaid">
+flowchart TB
+    U[Global users] --> FD[Azure Front Door<br/>WAF · TLS · anycast routing]
+    FD --> G1[APIM gateway<br/>West Europe]
+    FD --> G2[APIM gateway<br/>East US]
+    G1 --> B1[Container Apps / App Service<br/>West Europe]
+    G2 --> B2[Container Apps / App Service<br/>East US]
+    B1 <--> DB[(Cosmos DB<br/>multi-region writes)]
+    B2 <--> DB
+    G1 -.one management plane.- G2
+      </pre>
+      <div class="caption">Front Door steers users to the nearest healthy region; APIM Premium replicates gateways under one control plane; Cosmos DB keeps state consistent across regions.</div>
+    </div>
+
     <h2 id="choosing">Choosing compute &amp; orchestration quickly</h2>
     <table>
       <tr><th>Need</th><th>Reach for</th></tr>

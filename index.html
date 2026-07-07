@@ -38,31 +38,41 @@
     <h2 id="services">Service deep dives</h2>
     <div class="card-grid">
       <a class="card" href="apim.html">
+        <img class="svc-icon" src="assets/icons/apim.svg" alt="Azure API Management icon">
         <div class="card-kicker">API platform</div>
         <h3>API Management</h3>
         <p>The gateway for every API — policy pipeline, tiers, self-hosted gateway, workspaces, and the AI Gateway that fronts Azure OpenAI and AI Foundry with token limits, semantic caching and MCP support.</p>
       </a>
       <a class="card" href="logic-apps.html">
+        <img class="svc-icon" src="assets/icons/logic-apps.svg" alt="Azure Logic Apps icon">
         <div class="card-kicker">Workflow &amp; iPaaS</div>
         <h3>Logic Apps</h3>
         <p>Low-code orchestration with 1,400+ connectors. Standard vs Consumption, stateful vs stateless, B2B/EDI, and AI agent workflows with the agent loop.</p>
       </a>
       <a class="card" href="functions.html">
+        <img class="svc-icon" src="assets/icons/functions.svg" alt="Azure Functions icon">
         <div class="card-kicker">Serverless compute</div>
         <h3>Azure Functions</h3>
         <p>Event-driven code with triggers and bindings. Flex Consumption, Durable Functions patterns, and Functions as tools for AI agents.</p>
       </a>
       <a class="card" href="container-apps.html">
+        <img class="svc-icon" src="assets/icons/container-apps.svg" alt="Azure Container Apps icon">
         <div class="card-kicker">Serverless containers</div>
         <h3>Container Apps</h3>
         <p>Microservices and jobs on serverless Kubernetes-backed infrastructure — KEDA scaling, Dapr, revisions, dynamic sessions and GPU workloads.</p>
       </a>
       <a class="card" href="service-bus.html">
+        <div class="svc-icon-row">
+          <img class="svc-icon" src="assets/icons/service-bus.svg" alt="Azure Service Bus icon">
+          <img class="svc-icon" src="assets/icons/event-grid.svg" alt="Azure Event Grid icon">
+          <img class="svc-icon" src="assets/icons/event-hubs.svg" alt="Azure Event Hubs icon">
+        </div>
         <div class="card-kicker">Messaging &amp; events</div>
         <h3>Service Bus, Event Grid &amp; Event Hubs</h3>
         <p>The messaging backbone: queues, topics, sessions, dead-lettering, pub/sub eventing, CloudEvents, MQTT, and high-throughput streaming.</p>
       </a>
       <a class="card" href="app-service.html">
+        <img class="svc-icon" src="assets/icons/app-service.svg" alt="Azure App Service icon">
         <div class="card-kicker">Web apps &amp; APIs</div>
         <h3>App Service</h3>
         <p>Fully managed web hosting — plans, deployment slots, VNet integration, sidecars, and where it fits versus Container Apps and Functions.</p>
@@ -90,6 +100,16 @@
         <div class="card-kicker">Pattern</div>
         <h3>Async request-reply &amp; saga</h3>
         <p>Long-running operations behind APIM with 202 + status polling; distributed transactions with Durable Functions or Logic Apps.</p>
+      </a>
+      <a class="card" href="patterns.html#rag">
+        <div class="card-kicker">Pattern</div>
+        <h3>Serverless RAG pipeline</h3>
+        <p>Event Grid + Functions + AI Search + APIM AI Gateway: always-fresh document grounding for LLM apps.</p>
+      </a>
+      <a class="card" href="patterns.html#multi-agent">
+        <div class="card-kicker">Pattern</div>
+        <h3>Multi-agent automation</h3>
+        <p>Foundry agents + Logic Apps agent loop + APIM MCP tools + Container Apps sandboxes, with Service Bus audit and human escalation.</p>
       </a>
     </div>
 
