@@ -1,6 +1,93 @@
 {
-  "lastUpdated": "2026-07-07T12:16:03+00:00",
+  "lastUpdated": "2026-07-13T09:32:42+00:00",
   "entries": [
+    {
+      "id": "567203",
+      "date": "2026-07-07",
+      "title": "[Launched] Generally Available: Network Security Perimeter support for Azure Event Hubs",
+      "summary": "Azure Event Hubs now supports Network Security Perimeter (NSP), enabling organizations to define a logical network isolation boundary for PaaS resources and control public network access through perimeter-based access rules.With Network Security Perimeter",
+      "link": "https://azure.microsoft.com/updates?id=567203",
+      "services": [
+        "event-hubs"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
+    {
+      "id": "567212",
+      "date": "2026-07-07",
+      "title": "[Launched] Generally Available: Confidential Computing support for Azure Event Hubs Dedicated",
+      "summary": "Azure Event Hubs Dedicated now supports Confidential Computing, enabling organizations to protect streaming data while it is being processed in memory. By leveraging hardware-based trusted execution environments (TEEs), customers can help safeguard sensit",
+      "link": "https://azure.microsoft.com/updates?id=567212",
+      "services": [
+        "event-hubs"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/serverless/event-hubs-functions/security",
+      "date": "2026-07-07",
+      "title": "Updated architecture guidance: Secure Azure Functions with Event Hubs",
+      "summary": "Learn how to securely develop and deploy efficient and scalable code that runs on Azure Functions and responds to Event Hubs events.",
+      "link": "https://learn.microsoft.com/azure/architecture/serverless/event-hubs-functions/security",
+      "services": [
+        "functions",
+        "event-hubs"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/serverless/event-hubs-functions/performance-scale",
+      "date": "2026-07-07",
+      "title": "Updated architecture guidance: Performance and Scale Guidance for Event Hubs with Azure Functions",
+      "summary": "Learn how to plan for and deploy more efficient and scalable code that runs on Azure Functions and responds to Event Hubs events.",
+      "link": "https://learn.microsoft.com/azure/architecture/serverless/event-hubs-functions/performance-scale",
+      "services": [
+        "functions",
+        "event-hubs"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/serverless/event-hubs-functions/resilient-design",
+      "date": "2026-07-07",
+      "title": "Updated architecture guidance: Resilient Design Guidance for Event Hubs and Functions",
+      "summary": "Learn how to develop resilient and scalable code that runs on Azure Functions and responds to Azure Event Hubs events.",
+      "link": "https://learn.microsoft.com/azure/architecture/serverless/event-hubs-functions/resilient-design",
+      "services": [
+        "functions",
+        "event-hubs"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/example-scenario/integration/queues-events",
+      "date": "2026-07-07",
+      "title": "Updated architecture guidance: Use a Message Broker and Events to Integrate Enterprise Systems",
+      "summary": "Learn how to integrate enterprise back-end systems by using a message broker and events to decouple services for greater scalability and reliability.",
+      "link": "https://learn.microsoft.com/azure/architecture/example-scenario/integration/queues-events",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/guide/multitenant/service/event-hubs",
+      "date": "2026-07-07",
+      "title": "Updated architecture guidance: Multitenancy and Azure Event Hubs",
+      "summary": "Learn about Azure Event Hubs features and isolation models that you can use to implement an event-driven architecture for a multitenant system.",
+      "link": "https://learn.microsoft.com/azure/architecture/guide/multitenant/service/event-hubs",
+      "services": [
+        "event-hubs"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
     {
       "id": "https://learn.microsoft.com/azure/architecture/ai-ml/architecture/baseline-microsoft-foundry-chat",
       "date": "2026-06-18",
