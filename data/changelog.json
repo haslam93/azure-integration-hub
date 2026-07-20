@@ -1,6 +1,54 @@
 {
-  "lastUpdated": "2026-07-13T09:32:42+00:00",
+  "lastUpdated": "2026-07-20T09:19:29+00:00",
   "entries": [
+    {
+      "id": "567646",
+      "date": "2026-07-17",
+      "title": "[Launched] Generally Available: Azure Functions support for Python 3.14",
+      "summary": "You can now develop functions using Python 3.14 locally and deploy them to Azure Functions plans on Linux. Upgrade your apps to Python 3.14 to take advantage of enhanced security, a longer support window, and continued compatibility with the Azure Functio",
+      "link": "https://azure.microsoft.com/updates?id=567646",
+      "services": [
+        "functions"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
+    {
+      "id": "567651",
+      "date": "2026-07-17",
+      "title": "[Launched] Public Preview: Azure Functions Support for PowerShell 7.6",
+      "summary": "Azure Functions support for PowerShell 7.6 is now available in preview. You can now develop apps using PowerShell 7.6 locally and deploy them to Azure Functions plans. Learn more: What's new in PowerShell 7.6 Azure Functions PowerShell versions and their",
+      "link": "https://azure.microsoft.com/updates?id=567651",
+      "services": [
+        "functions"
+      ],
+      "status": "preview",
+      "source": "azure-updates"
+    },
+    {
+      "id": "564312",
+      "date": "2026-07-15",
+      "title": "Announcing: Multi-agent orchestration SDK with the Microsoft Foundry Agent Framework in C# and Python",
+      "summary": "Microsoft Foundry is now introducing Agent Framework, a unified multi-agent orchestration SDK for C# and Python. This release consolidates patterns previously spread across AutoGen and Semantic Kernel, giving developers a consistent set of abstractions fo",
+      "link": "https://azure.microsoft.com/updates?id=564312",
+      "services": [
+        "ai-foundry"
+      ],
+      "status": "",
+      "source": "azure-updates"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/web-apps/guides/multi-region-app-service/multi-region-app-service",
+      "date": "2026-07-10",
+      "title": "Updated architecture guidance: Multiple-region Architectures for Azure App Service Disaster Recovery",
+      "summary": "Learn about multiple-region architectures and how you can use them to deploy web apps across multiple regions for disaster recovery and replication.",
+      "link": "https://learn.microsoft.com/azure/architecture/web-apps/guides/multi-region-app-service/multi-region-app-service",
+      "services": [
+        "app-service"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
     {
       "id": "567203",
       "date": "2026-07-07",
