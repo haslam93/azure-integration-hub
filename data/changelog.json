@@ -1,6 +1,18 @@
 {
-  "lastUpdated": "2026-07-20T09:19:29+00:00",
+  "lastUpdated": "2026-07-27T09:56:35+00:00",
   "entries": [
+    {
+      "id": "567594",
+      "date": "2026-07-20",
+      "title": "[In preview] Public Preview: Protect sensitive generative AI telemetry in Application Insights and Microsoft Foundry",
+      "summary": "Azure Monitor Application Insights now stores generative AI content in a dedicated GenAIContent table (AppGenAIContent in Log Analytics), making it possible to apply newly available access controls to sensitive AI telemetry. Because Application Insights p",
+      "link": "https://azure.microsoft.com/updates?id=567594",
+      "services": [
+        "ai-foundry"
+      ],
+      "status": "preview",
+      "source": "azure-updates"
+    },
     {
       "id": "567646",
       "date": "2026-07-17",
@@ -26,6 +38,18 @@
       "source": "azure-updates"
     },
     {
+      "id": "https://learn.microsoft.com/azure/architecture/example-scenario/gateway/application-gateway-before-azure-firewall",
+      "date": "2026-07-16",
+      "title": "Updated architecture guidance: Implement a Zero Trust Network for Web Applications by Using Azure Firewall and Azure Application Gateway",
+      "summary": "Protect web apps by implementing Zero Trust security in virtual networks. Use Azure Firewall and Azure Application Gateway in networks to maximize protection.",
+      "link": "https://learn.microsoft.com/azure/architecture/example-scenario/gateway/application-gateway-before-azure-firewall",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
       "id": "564312",
       "date": "2026-07-15",
       "title": "Announcing: Multi-agent orchestration SDK with the Microsoft Foundry Agent Framework in C# and Python",
@@ -36,6 +60,30 @@
       ],
       "status": "",
       "source": "azure-updates"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant",
+      "date": "2026-07-14",
+      "title": "Updated architecture guidance: Baseline Highly Available Zone-Redundant App Services Web Application",
+      "summary": "Learn about a baseline reference architecture for a network secured, highly available, and zone-redundant Azure App Service web application.",
+      "link": "https://learn.microsoft.com/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant",
+      "services": [
+        "app-service"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/aws-professional/eks-to-aks/private-clusters",
+      "date": "2026-07-10",
+      "title": "Updated architecture guidance: Enhance Network Access Security to Kubernetes",
+      "summary": "Understand networking options to help securely access the Kubernetes API server, and compare options in Amazon EKS and Azure Kubernetes Service (AKS).",
+      "link": "https://learn.microsoft.com/azure/architecture/aws-professional/eks-to-aks/private-clusters",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
     },
     {
       "id": "https://learn.microsoft.com/azure/architecture/web-apps/guides/multi-region-app-service/multi-region-app-service",
