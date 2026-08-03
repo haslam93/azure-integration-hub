@@ -1,6 +1,18 @@
 {
-  "lastUpdated": "2026-07-27T09:56:35+00:00",
+  "lastUpdated": "2026-08-03T09:50:38+00:00",
   "entries": [
+    {
+      "id": "568184",
+      "date": "2026-07-27",
+      "title": "[In preview] Public Preview: AI Gateway in Azure API Management",
+      "summary": "The AI Gateway tier for Azure API Management is now available in public preview. Building on the AI gateway capabilities already available across API Management tiers, the new AI Gateway tier provides a dedicated experience optimized for AI workloads.As o",
+      "link": "https://azure.microsoft.com/updates?id=568184",
+      "services": [
+        "apim"
+      ],
+      "status": "preview",
+      "source": "azure-updates"
+    },
     {
       "id": "567594",
       "date": "2026-07-20",
