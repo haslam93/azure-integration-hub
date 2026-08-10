@@ -1,6 +1,66 @@
 {
-  "lastUpdated": "2026-08-03T09:50:38+00:00",
+  "lastUpdated": "2026-08-10T07:45:44+00:00",
   "entries": [
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/microservices/ci-cd-kubernetes",
+      "date": "2026-08-05",
+      "title": "Updated architecture guidance: Build a CI/CD pipeline for microservices on Kubernetes by using Azure DevOps and Helm",
+      "summary": "Learn about building a continuous integration and continuous delivery (CI/CD) pipeline for deploying microservices to Azure Kubernetes Service (AKS) by using Azure DevOps and Helm.",
+      "link": "https://learn.microsoft.com/azure/architecture/microservices/ci-cd-kubernetes",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/web-apps/app-service-environment/architectures/app-service-environment-high-availability-deployment",
+      "date": "2026-08-04",
+      "title": "Updated architecture guidance: High availability enterprise deployment that uses App Service Environment",
+      "summary": "Learn about the recommended architecture to deploy an enterprise application by using App Service Environment in multiple availability zones.",
+      "link": "https://learn.microsoft.com/azure/architecture/web-apps/app-service-environment/architectures/app-service-environment-high-availability-deployment",
+      "services": [
+        "app-service"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/guide/iot/how-to-connect-azure-data-explorer-to-solution",
+      "date": "2026-07-30",
+      "title": "New architecture guidance: Connect Azure Data Explorer to the reference solution",
+      "summary": "Learn how to ingest and analyze OPC UA PubSub industrial IoT data in Azure Data Explorer by using Event Hubs and KQL.",
+      "link": "https://learn.microsoft.com/azure/architecture/guide/iot/how-to-connect-azure-data-explorer-to-solution",
+      "services": [
+        "event-hubs"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/guide/iot/agentic-ai-for-the-solution",
+      "date": "2026-07-30",
+      "title": "New architecture guidance: Agentic AI for the reference solution",
+      "summary": "Learn how agentic AI augments the reference solution.",
+      "link": "https://learn.microsoft.com/azure/architecture/guide/iot/agentic-ai-for-the-solution",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/guide/iot/how-to-connect-dynamics-field-service-to-the-solution",
+      "date": "2026-07-30",
+      "title": "New architecture guidance: Connect Microsoft Dynamics 365 Field Service to the reference solution",
+      "summary": "Learn how to use Azure Logic Apps, Azure Data Explorer, and Microsoft Dataverse to create customer assets and IoT alerts in Dynamics 365 Field Service from industrial OPC UA telemetry.",
+      "link": "https://learn.microsoft.com/azure/architecture/guide/iot/how-to-connect-dynamics-field-service-to-the-solution",
+      "services": [
+        "logic-apps"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
     {
       "id": "568184",
       "date": "2026-07-27",
