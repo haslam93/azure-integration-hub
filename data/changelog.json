@@ -1,12 +1,62 @@
 {
-  "lastUpdated": "2026-08-10T07:45:44+00:00",
+  "lastUpdated": "2026-08-17T06:59:26+00:00",
   "entries": [
+    {
+      "id": "568979",
+      "date": "2026-08-12",
+      "title": "[In preview] Public Preview: Markdown for Agents in Azure App Service",
+      "summary": "Today, we are announcing the public preview of Markdown for Agents in Azure App Service. This feature gives AI agents and other tools a cleaner way to consume content from an App Service app. When a client requests Markdown, App Service can automatically",
+      "link": "https://azure.microsoft.com/updates?id=568979",
+      "services": [
+        "app-service"
+      ],
+      "status": "preview",
+      "source": "azure-updates"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/serverless/event-hubs-functions/observability",
+      "date": "2026-08-06",
+      "title": "Updated architecture guidance: Monitor Azure Functions and Event Hubs",
+      "summary": "Learn how to monitor an Azure Functions topology that uses Event Hubs.",
+      "link": "https://learn.microsoft.com/azure/architecture/serverless/event-hubs-functions/observability",
+      "services": [
+        "functions",
+        "event-hubs"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/serverless/event-hubs-functions/event-hubs-functions",
+      "date": "2026-08-05",
+      "title": "Updated architecture guidance: Integrate Event Hubs with serverless functions on Azure",
+      "summary": "Learn how to architect, develop, and deploy efficient and scalable code that runs on Azure Functions and responds to Event Hubs events.",
+      "link": "https://learn.microsoft.com/azure/architecture/serverless/event-hubs-functions/event-hubs-functions",
+      "services": [
+        "functions",
+        "event-hubs"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
     {
       "id": "https://learn.microsoft.com/azure/architecture/microservices/ci-cd-kubernetes",
       "date": "2026-08-05",
       "title": "Updated architecture guidance: Build a CI/CD pipeline for microservices on Kubernetes by using Azure DevOps and Helm",
       "summary": "Learn about building a continuous integration and continuous delivery (CI/CD) pipeline for deploying microservices to Azure Kubernetes Service (AKS) by using Azure DevOps and Helm.",
       "link": "https://learn.microsoft.com/azure/architecture/microservices/ci-cd-kubernetes",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/guide/technology-choices/vector-search",
+      "date": "2026-08-04",
+      "title": "Updated architecture guidance: Choose an Azure service for vector search",
+      "summary": "Compare capabilities, indexing methods, and integration options to determine which Azure vector search service best fits your application.",
+      "link": "https://learn.microsoft.com/azure/architecture/guide/technology-choices/vector-search",
       "services": [
         "architecture"
       ],
