@@ -1,6 +1,54 @@
 {
-  "lastUpdated": "2026-08-17T06:59:26+00:00",
+  "lastUpdated": "2026-08-24T07:02:25+00:00",
   "entries": [
+    {
+      "id": "568952",
+      "date": "2026-08-18",
+      "title": "[Launched] Generally Available: Managed Instance on Azure App Service",
+      "summary": "Managed Instance on Azure App Service is now generally available. Managed Instance helps organizations migrate web applications to Azure App Service with minimal configuration and no code changes. Applications running on-premises or in virtual machines ca",
+      "link": "https://azure.microsoft.com/updates?id=568952",
+      "services": [
+        "app-service"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/idempotent-consumer",
+      "date": "2026-08-14",
+      "title": "New architecture guidance: Idempotent consumer pattern",
+      "summary": "Use the Idempotent Consumer pattern to safely process duplicate messages from at-least-once delivery so that repeated processing has the same effect as processing once.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/idempotent-consumer",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hybrid-vpn-connectivity",
+      "date": "2026-08-12",
+      "title": "New architecture guidance: Azure VPN Gateway site-to-site connectivity for hybrid networks",
+      "summary": "This architecture shows how to establish encrypted layer-3 connectivity between your on-premises network and Azure virtual networks by using Azure VPN Gateway.",
+      "link": "https://learn.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hybrid-vpn-connectivity",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/priority-queue",
+      "date": "2026-08-12",
+      "title": "Updated architecture guidance: Priority queue pattern",
+      "summary": "Prioritize requests sent to services so that requests with a higher priority are received and processed more quickly than those with a lower priority.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/priority-queue",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
     {
       "id": "568979",
       "date": "2026-08-12",
@@ -12,6 +60,30 @@
       ],
       "status": "preview",
       "source": "azure-updates"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/ai-ml/guide/data-science-and-machine-learning",
+      "date": "2026-08-10",
+      "title": "Updated architecture guidance: AI and machine learning products",
+      "summary": "Compare Microsoft AI and machine learning products for building, deploying, and managing AI applications, agents, and machine learning models.",
+      "link": "https://learn.microsoft.com/azure/architecture/ai-ml/guide/data-science-and-machine-learning",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/solution-ideas/articles/secure-sql-managed-instance-managed-hardware-security-module",
+      "date": "2026-08-10",
+      "title": "Updated architecture guidance: Cross-region resiliency for SQL TDE with Azure Key Vault Managed HSM",
+      "summary": "Learn about a resilient deployment pattern for SQL Managed Instance. This solution highlights how Key Vault Managed HSM stores customer-managed TDE protector keys.",
+      "link": "https://learn.microsoft.com/azure/architecture/solution-ideas/articles/secure-sql-managed-instance-managed-hardware-security-module",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
     },
     {
       "id": "https://learn.microsoft.com/azure/architecture/serverless/event-hubs-functions/observability",
