@@ -1,6 +1,30 @@
 {
-  "lastUpdated": "2026-08-24T07:02:25+00:00",
+  "lastUpdated": "2026-08-31T13:02:18+00:00",
   "entries": [
+    {
+      "id": "567334",
+      "date": "2026-08-24",
+      "title": "Retirement: Support for Node 22 LTS ends on April 30, 2027",
+      "summary": "On April 30 2027, support for Node 22 LTS will end. Your apps that are hosted on App Service will continue to run, but security updates will no longer be available, and we’ll no longer provide customer service for Node 22 LTS. Required action: To avoid po",
+      "link": "https://azure.microsoft.com/updates?id=567334",
+      "services": [
+        "app-service"
+      ],
+      "status": "retirement",
+      "source": "azure-updates"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/ai-ml/guide/secure-multitenant-rag",
+      "date": "2026-08-21",
+      "title": "Updated architecture guidance: Design a secure multitenant RAG inferencing solution",
+      "summary": "Learn about the considerations and recommendations for improved security that you should consider when you design a multitenant RAG inferencing solution.",
+      "link": "https://learn.microsoft.com/azure/architecture/ai-ml/guide/secure-multitenant-rag",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
     {
       "id": "568952",
       "date": "2026-08-18",
