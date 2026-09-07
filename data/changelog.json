@@ -1,6 +1,78 @@
 {
-  "lastUpdated": "2026-08-31T13:02:18+00:00",
+  "lastUpdated": "2026-09-07T11:54:29+00:00",
   "entries": [
+    {
+      "id": "570282",
+      "date": "2026-09-01",
+      "title": "[Launched] Generally Available: Microsoft Defender for Cloud support for Azure Container Apps (Serverless Containers Posture)",
+      "summary": "Customers can now bring Azure Container Apps environments into Microsoft Defender for Cloud’s Serverless Containers Posture experience, helping security teams extend posture management across more of their container estate from a single workflow. This mak",
+      "link": "https://azure.microsoft.com/updates?id=570282",
+      "services": [
+        "container-apps"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/reference-architectures/containers/aks-microservices/aks-microservices",
+      "date": "2026-08-25",
+      "title": "Updated architecture guidance: Microservices Architecture on Azure Kubernetes Service",
+      "summary": "Learn about the infrastructure and DevOps considerations to deploy and run a microservices architecture on Azure Kubernetes Service (AKS).",
+      "link": "https://learn.microsoft.com/azure/architecture/reference-architectures/containers/aks-microservices/aks-microservices",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/example-scenario/aks-front-door/aks-front-door",
+      "date": "2026-08-24",
+      "title": "Updated architecture guidance: Use Azure Front Door to Secure AKS Workloads",
+      "summary": "Learn how to secure AKS workloads by using end-to-end TLS encryption, Azure Front Door Premium, an Azure Private Link service, and a Gateway API ingress implementation.",
+      "link": "https://learn.microsoft.com/azure/architecture/example-scenario/aks-front-door/aks-front-door",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/example-scenario/serverless/microservices-with-container-apps",
+      "date": "2026-08-24",
+      "title": "Updated architecture guidance: Deploy Microservices to Azure Container Apps",
+      "summary": "Learn how to replatform and deploy existing Kubernetes microservice application workloads to run in Azure Container Apps.",
+      "link": "https://learn.microsoft.com/azure/architecture/example-scenario/serverless/microservices-with-container-apps",
+      "services": [
+        "container-apps"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/example-scenario/serverless/microservices-with-container-apps-dapr",
+      "date": "2026-08-24",
+      "title": "Updated architecture guidance: Deploy Microservices with Azure Container Apps and Dapr",
+      "summary": "Build a serverless microservices solution on Azure Container Apps by using Distributed Application Runtime (Dapr) and Kubernetes event-driven autoscaling (KEDA).",
+      "link": "https://learn.microsoft.com/azure/architecture/example-scenario/serverless/microservices-with-container-apps-dapr",
+      "services": [
+        "container-apps"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/reference-architectures/containers/aks-microservices/aks-microservices-advanced",
+      "date": "2026-08-24",
+      "title": "Updated architecture guidance: Advanced Azure Kubernetes Service (AKS) Microservices Architecture",
+      "summary": "Learn about a scalable, secure AKS microservices architecture that builds on recommended AKS microservices baseline architectures and implementations.",
+      "link": "https://learn.microsoft.com/azure/architecture/reference-architectures/containers/aks-microservices/aks-microservices-advanced",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
     {
       "id": "567334",
       "date": "2026-08-24",
