@@ -1,6 +1,43 @@
 {
-  "lastUpdated": "2026-09-07T11:54:29+00:00",
+  "lastUpdated": "2026-09-14T12:10:10+00:00",
   "entries": [
+    {
+      "id": "570940",
+      "date": "2026-09-10",
+      "title": "[Launched] Generally Available: TLS/SSL certificate and end-to-end TLS encryption support for Azure Functions Flex Consumption",
+      "summary": "Azure Functions Flex Consumption support for TLS/SSL certificates is now generally available through a new site-scoped certificate model. Each function app can hold up to 3 private (.pfx) and 3 public (.cer) certificates uploaded directly, imported from A",
+      "link": "https://azure.microsoft.com/updates?id=570940",
+      "services": [
+        "functions"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
+    {
+      "id": "570881",
+      "date": "2026-09-08",
+      "title": "[Launched] Generally Available: Azure Developer CLI (azd) Extension Framework",
+      "summary": "The Azure Developer CLI (azd) Extension Framework is now generally available. The framework enables developers, teams, and partners to extend Azure Developer CLI with custom capabilities that support their preferred application development workflows.With",
+      "link": "https://azure.microsoft.com/updates?id=570881",
+      "services": [
+        "functions",
+        "container-apps"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/guide/iot/scale-iot-solution-azure",
+      "date": "2026-09-02",
+      "title": "Updated architecture guidance: Scale out an Azure IoT Hub solution to support millions of devices",
+      "summary": "Learn how to scale out your Azure IoT Hub-based solution by using a scale-out pattern model, such as low-touch or zero-touch, to support millions of devices.",
+      "link": "https://learn.microsoft.com/azure/architecture/guide/iot/scale-iot-solution-azure",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
     {
       "id": "570282",
       "date": "2026-09-01",
@@ -12,6 +49,18 @@
       ],
       "status": "ga",
       "source": "azure-updates"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/sidecar",
+      "date": "2026-08-31",
+      "title": "Updated architecture guidance: Sidecar pattern",
+      "summary": "Deploy components of an application into a separate process or container to provide isolation and encapsulation.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/sidecar",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
     },
     {
       "id": "https://learn.microsoft.com/azure/architecture/reference-architectures/containers/aks-microservices/aks-microservices",
