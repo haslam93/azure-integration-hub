@@ -1,6 +1,42 @@
 {
-  "lastUpdated": "2026-09-14T12:10:10+00:00",
+  "lastUpdated": "2026-09-21T12:18:30+00:00",
   "entries": [
+    {
+      "id": "563536",
+      "date": "2026-09-18",
+      "title": "[In preview] Public Preview: Foundry Routines in Foundry Agent Service",
+      "summary": "In public preview, Foundry Agent Service adds Foundry Routines, a native trigger primitive for running published agents automatically. Production agents often need to run on a schedule or when a business event occurs, and today that means assembling exter",
+      "link": "https://azure.microsoft.com/updates?id=563536",
+      "services": [
+        "ai-foundry"
+      ],
+      "status": "preview",
+      "source": "azure-updates"
+    },
+    {
+      "id": "571826",
+      "date": "2026-09-18",
+      "title": "[Launched] Generally Available: Enable and disable controls for Microsoft Foundry agents in Agent 365",
+      "summary": "Microsoft Foundry now exposes enable and disable actions for Foundry agent objects within the Agent 365 governance surface in Microsoft Admin Center, generally available. Administrators can control whether a Foundry agent is available for use across their",
+      "link": "https://azure.microsoft.com/updates?id=571826",
+      "services": [
+        "ai-foundry"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
+    {
+      "id": "571816",
+      "date": "2026-09-18",
+      "title": "[Launched] Generally Available: Publishing Microsoft Foundry agents to Microsoft 365 Copilot and Teams",
+      "summary": "Publishing Microsoft Foundry agents to Microsoft 365 Copilot and Teams is now generally available. An agent only delivers value once it reaches the people who need it, and Foundry developers previously had no native path to make their agents operational a",
+      "link": "https://azure.microsoft.com/updates?id=571816",
+      "services": [
+        "ai-foundry"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
     {
       "id": "570940",
       "date": "2026-09-10",
