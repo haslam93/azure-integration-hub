@@ -1,6 +1,54 @@
 {
-  "lastUpdated": "2026-09-21T12:18:30+00:00",
+  "lastUpdated": "2026-09-28T13:14:53+00:00",
   "entries": [
+    {
+      "id": "572770",
+      "date": "2026-09-23",
+      "title": "Retirement: Support for PowerShell 7.4 ends on November 10, 2026",
+      "summary": "Support for PowerShell 7.4 will end on November 10, 2026, please transition to PowerShell 7.6. Your Azure Function apps will continue to run, but security patches and updates will no longer be provided and customer support for PowerShell 7.4 will be disco",
+      "link": "https://azure.microsoft.com/updates?id=572770",
+      "services": [
+        "functions"
+      ],
+      "status": "retirement",
+      "source": "azure-updates"
+    },
+    {
+      "id": "572838",
+      "date": "2026-09-23",
+      "title": "Retirement: Support for .NET 8 and .NET 9 ends on November 10, 2026—upgrade your apps to .NET 10",
+      "summary": "Support for .NET 8 and .NET 9 will end on November 10, 2026. Please transition to .NET 10 by that date. Your Azure Function Apps will continue to operate, but security updates will no longer be provided, and support for .NET 8 and .NET 9 on Azure Function",
+      "link": "https://azure.microsoft.com/updates?id=572838",
+      "services": [
+        "functions"
+      ],
+      "status": "retirement",
+      "source": "azure-updates"
+    },
+    {
+      "id": "572771",
+      "date": "2026-09-22",
+      "title": "Retirement: Support for Node.js 22 ends on April 30, 2027",
+      "summary": "Support for Node.js 22 will end on April 30, 2027, please transition to Node.js 24 by that date. Your Azure Function apps will continue to run, but security patches and updates will no longer be provided and customer support for Node.js 22 will be discont",
+      "link": "https://azure.microsoft.com/updates?id=572771",
+      "services": [
+        "functions"
+      ],
+      "status": "retirement",
+      "source": "azure-updates"
+    },
+    {
+      "id": "572219",
+      "date": "2026-09-21",
+      "title": "[Launched] Generally Available: Azure Functions support for PowerShell 7.6",
+      "summary": "Azure Functions support for PowerShell 7.6 is now generally available. You can now develop apps using PowerShell 7.6 locally and deploy them to Azure Functions plans. Learn more: Updating your app to PowerShell 7.6 What's new in PowerShell 7.6? Azure",
+      "link": "https://azure.microsoft.com/updates?id=572219",
+      "services": [
+        "functions"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
     {
       "id": "563536",
       "date": "2026-09-18",
@@ -36,6 +84,66 @@
       ],
       "status": "ga",
       "source": "azure-updates"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/ai-ml/guide/azure-openai-gateway-monitoring",
+      "date": "2026-09-17",
+      "title": "Updated architecture guidance: Implement advanced monitoring for Foundry Models through a gateway",
+      "summary": "Learn how to implement advanced monitoring scenarios for Foundry Models, like chargeback and auditing, through a gateway.",
+      "link": "https://learn.microsoft.com/azure/architecture/ai-ml/guide/azure-openai-gateway-monitoring",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/aws-professional/analytics",
+      "date": "2026-09-16",
+      "title": "New architecture guidance: Compare AWS and Azure analytics services",
+      "summary": "Compare analytics services on Azure and AWS for data integration, data lakes, data engineering, data warehouses, real-time analytics, governance, and business intelligence.",
+      "link": "https://learn.microsoft.com/azure/architecture/aws-professional/analytics",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/aws-professional/messaging",
+      "date": "2026-09-16",
+      "title": "Updated architecture guidance: Compare AWS and Azure messaging services",
+      "summary": "Compare messaging service differences between Azure and AWS. Know Azure equivalents for Simple Email Service, Simple Queue Service, and messaging components.",
+      "link": "https://learn.microsoft.com/azure/architecture/aws-professional/messaging",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/pattern-implementations/network-secure-ingress",
+      "date": "2026-09-15",
+      "title": "Updated architecture guidance: Network secure ingress pattern implementation with Azure Front Door Premium tier",
+      "summary": "The pattern implementation for network secure ingress illustrates global routing, health-based origin failover, and attack mitigation at the edge.",
+      "link": "https://learn.microsoft.com/azure/architecture/pattern-implementations/network-secure-ingress",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/guide/iot/how-to-connect-on-premises-sap-to-the-solution",
+      "date": "2026-09-15",
+      "title": "Updated architecture guidance: Connect an on-premises SAP system to the OPC UA reference solution",
+      "summary": "Learn how to connect an on-premises SAP ERP system to the OPC UA reference solution by using Azure Logic Apps and Azure Data Explorer.",
+      "link": "https://learn.microsoft.com/azure/architecture/guide/iot/how-to-connect-on-premises-sap-to-the-solution",
+      "services": [
+        "logic-apps"
+      ],
+      "status": "",
+      "source": "architecture-center"
     },
     {
       "id": "570940",
@@ -1403,6 +1511,18 @@
       ],
       "status": "",
       "source": "architecture-center"
+    },
+    {
+      "id": "559242",
+      "date": "2026-05-13",
+      "title": "[Launched] Generally Available: Azure Container Apps Express",
+      "summary": "Azure Container Apps Express is now generally available. It is the simplest and fastest way to launch and scale powerful applications on Azure, from zero to hyperscale, without infrastructure decisions. It represents the first Azure compute platform purpo",
+      "link": "https://azure.microsoft.com/updates?id=559242",
+      "services": [
+        "container-apps"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
     },
     {
       "id": "https://learn.microsoft.com/azure/architecture/ai-ml/architecture/basic-microsoft-foundry-chat",
