@@ -1,6 +1,78 @@
 {
-  "lastUpdated": "2026-09-28T13:14:53+00:00",
+  "lastUpdated": "2026-10-05T13:57:43+00:00",
   "entries": [
+    {
+      "id": "570800",
+      "date": "2026-09-29",
+      "title": "Retirement: Functions on Azure Container Apps V1",
+      "summary": "The Functions on Azure Container Apps (ACA) V1 will be retired on September 29, 2027. After this date, existing Functions on ACA V1 Apps will stop running and no longer process requests or event-driven triggers. Action required Review your Azure environme",
+      "link": "https://azure.microsoft.com/updates?id=570800",
+      "services": [
+        "container-apps"
+      ],
+      "status": "retirement",
+      "source": "azure-updates"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/health-endpoint-monitoring",
+      "date": "2026-09-25",
+      "title": "Updated architecture guidance: Health Endpoint Monitoring pattern",
+      "summary": "Implement functional checks in an application that external tools can access at regular intervals through exposed endpoints.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/health-endpoint-monitoring",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/materialized-view",
+      "date": "2026-09-24",
+      "title": "Updated architecture guidance: Materialized View pattern",
+      "summary": "Generate prepopulated views over the data in one or more data stores when the data isn't ideally formatted for required query operations. This can help support efficient querying and data extraction, and improve application performance.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/materialized-view",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/claim-check",
+      "date": "2026-09-24",
+      "title": "Updated architecture guidance: Claim Check pattern",
+      "summary": "Store a large message payload in an external data store and send a reference called a claim check through a messaging system.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/claim-check",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/gateway-offloading",
+      "date": "2026-09-24",
+      "title": "Updated architecture guidance: Gateway Offloading pattern",
+      "summary": "Centralize shared capabilities, such as TLS termination and authentication, in a gateway to simplify backend services.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/gateway-offloading",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/index-table",
+      "date": "2026-09-24",
+      "title": "Updated architecture guidance: Index Table pattern",
+      "summary": "Find out how to use the Index Table pattern to improve query performance by creating indexes over data store fields that queries frequently reference.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/index-table",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
     {
       "id": "572770",
       "date": "2026-09-23",
