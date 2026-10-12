@@ -1,6 +1,78 @@
 {
-  "lastUpdated": "2026-10-05T13:57:43+00:00",
+  "lastUpdated": "2026-10-12T14:46:41+00:00",
   "entries": [
+    {
+      "id": "574204",
+      "date": "2026-10-08",
+      "title": "[In preview] Public Preview: Microsoft Agent 365 integration with Azure API Management",
+      "summary": "The integration between Microsoft Agent 365 and Azure API Management is now available in public preview, helping organizations connect centralized governance with runtime enforcement for MCP servers and tools.With this integration, organizations can:Disco",
+      "link": "https://azure.microsoft.com/updates?id=574204",
+      "services": [
+        "apim"
+      ],
+      "status": "preview",
+      "source": "azure-updates"
+    },
+    {
+      "id": "568178",
+      "date": "2026-10-06",
+      "title": "Retirement: Azure App Service on Azure Stack Hub",
+      "summary": "Azure App Service on Azure Stack Hub will be retired on September 30, 2029. Starting September 30, 2026, new installations will no longer be supported, and no new product releases, features, or enhancements will be made available. Existing supported deplo",
+      "link": "https://azure.microsoft.com/updates?id=568178",
+      "services": [
+        "app-service"
+      ],
+      "status": "retirement",
+      "source": "azure-updates"
+    },
+    {
+      "id": "568585",
+      "date": "2026-10-06",
+      "title": "Retirement: Support for Java 8, 11 and 17 will end on September 1, 2027",
+      "summary": "On September 1, 2027 support for Java 8, 11 and 17 will end. Your apps that are hosted on App Service will continue to run, but security updates will no longer be available, and we’ll no longer provide customer service for Java 8, 11 and 17.Required actio",
+      "link": "https://azure.microsoft.com/updates?id=568585",
+      "services": [
+        "app-service"
+      ],
+      "status": "retirement",
+      "source": "azure-updates"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/databases/architecture/event-driven-cache-updates-azure-managed-redis-cosmos-db",
+      "date": "2026-10-02",
+      "title": "New architecture guidance: Event-driven cache updates with Azure Managed Redis and Azure Cosmos DB",
+      "summary": "Find out how to update Azure Managed Redis asynchronously from committed changes in Azure Cosmos DB by using Azure Functions and the change feed.",
+      "link": "https://learn.microsoft.com/azure/architecture/databases/architecture/event-driven-cache-updates-azure-managed-redis-cosmos-db",
+      "services": [
+        "functions"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/troubleshoot-vpn",
+      "date": "2026-10-02",
+      "title": "Updated architecture guidance: Troubleshoot a hybrid VPN connection",
+      "summary": "Learn tips for how to troubleshoot a VPN gateway connection between an on-premises network and Azure.",
+      "link": "https://learn.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/troubleshoot-vpn",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/guide/multitenant/considerations/agentic-systems",
+      "date": "2026-09-29",
+      "title": "New architecture guidance: Considerations for multitenant agentic systems",
+      "summary": "Review considerations for multitenant agentic systems, including tenant isolation, identity management, tool-calling governance, and state isolation.",
+      "link": "https://learn.microsoft.com/azure/architecture/guide/multitenant/considerations/agentic-systems",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
     {
       "id": "570800",
       "date": "2026-09-29",
@@ -12,6 +84,18 @@
       ],
       "status": "retirement",
       "source": "azure-updates"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/scheduler-agent-supervisor",
+      "date": "2026-09-28",
+      "title": "Updated architecture guidance: Scheduler agent supervisor pattern",
+      "summary": "See how to coordinate a set of distributed actions as a single operation so the entire operation succeeds or fails as a whole.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/scheduler-agent-supervisor",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
     },
     {
       "id": "https://learn.microsoft.com/azure/architecture/patterns/health-endpoint-monitoring",
