@@ -1,6 +1,18 @@
 {
-  "lastUpdated": "2026-10-12T14:46:41+00:00",
+  "lastUpdated": "2026-10-19T12:31:38+00:00",
   "entries": [
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/patterns/static-content-hosting",
+      "date": "2026-10-08",
+      "title": "Updated architecture guidance: Static Content Hosting pattern",
+      "summary": "Deploy static content to a cloud-based storage service that can deliver them directly to the client.",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/static-content-hosting",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
     {
       "id": "574204",
       "date": "2026-10-08",
@@ -36,6 +48,30 @@
       ],
       "status": "retirement",
       "source": "azure-updates"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/databases/architecture/cache-aside-azure-managed-redis-postgresql",
+      "date": "2026-10-05",
+      "title": "New architecture guidance: Cache-aside caching using Azure Managed Redis and Azure Database for PostgreSQL",
+      "summary": "Design a cache-aside workload for an Azure web application that uses Azure Managed Redis to reduce repeated reads from Azure Database for PostgreSQL.",
+      "link": "https://learn.microsoft.com/azure/architecture/databases/architecture/cache-aside-azure-managed-redis-postgresql",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/ai-ml/guide/agentic-behavior-engineering",
+      "date": "2026-10-05",
+      "title": "New architecture guidance: Agentic behavior engineering",
+      "summary": "Learn about a platform-agnostic methodology for specifying, grounding, controlling, verifying, and observing the behavior of enterprise AI agents.",
+      "link": "https://learn.microsoft.com/azure/architecture/ai-ml/guide/agentic-behavior-engineering",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
     },
     {
       "id": "https://learn.microsoft.com/azure/architecture/databases/architecture/event-driven-cache-updates-azure-managed-redis-cosmos-db",
@@ -240,6 +276,18 @@
       ],
       "status": "ga",
       "source": "azure-updates"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/ai-ml/guide/generative-ai-gateway-monitoring",
+      "date": "2026-09-17",
+      "title": "Updated architecture guidance: Implement advanced monitoring for Foundry Models through a gateway",
+      "summary": "Learn how to implement advanced monitoring scenarios for Foundry Models, like chargeback and auditing, through a gateway.",
+      "link": "https://learn.microsoft.com/azure/architecture/ai-ml/guide/generative-ai-gateway-monitoring",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
     },
     {
       "id": "https://learn.microsoft.com/azure/architecture/ai-ml/guide/azure-openai-gateway-monitoring",
