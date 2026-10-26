@@ -1,6 +1,43 @@
 {
-  "lastUpdated": "2026-10-19T12:31:38+00:00",
+  "lastUpdated": "2026-10-26T12:28:48+00:00",
   "entries": [
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/web-apps/app-service/architectures/basic-web-app",
+      "date": "2026-10-14",
+      "title": "Updated architecture guidance: Basic web application",
+      "summary": "Learn about proven practices for deploying web applications that use Azure App Service and Azure SQL Database.",
+      "link": "https://learn.microsoft.com/azure/architecture/web-apps/app-service/architectures/basic-web-app",
+      "services": [
+        "app-service"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/guide/multitenant/service/api-management",
+      "date": "2026-10-13",
+      "title": "Updated architecture guidance: Use Azure API Management in a multitenant solution",
+      "summary": "Learn about Azure API Management features for multitenant solutions, including tenant isolation models, routing, authentication, caching, and rate limiting.",
+      "link": "https://learn.microsoft.com/azure/architecture/guide/multitenant/service/api-management",
+      "services": [
+        "apim"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/guide/multitenant/service/app-service",
+      "date": "2026-10-12",
+      "title": "Updated architecture guidance: Azure App Service and Azure Functions considerations for multitenancy",
+      "summary": "This article describes the features of Azure App Service and Azure Functions that are useful when you work with multitenant systems.",
+      "link": "https://learn.microsoft.com/azure/architecture/guide/multitenant/service/app-service",
+      "services": [
+        "functions",
+        "app-service"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
     {
       "id": "https://learn.microsoft.com/azure/architecture/patterns/static-content-hosting",
       "date": "2026-10-08",
