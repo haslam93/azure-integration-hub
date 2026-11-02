@@ -1,6 +1,78 @@
 {
-  "lastUpdated": "2026-10-26T12:28:48+00:00",
+  "lastUpdated": "2026-11-02T15:03:22+00:00",
   "entries": [
+    {
+      "id": "577689",
+      "date": "2026-10-28",
+      "title": "Announcing: Migrate Azure Container Apps logging destination from Log Analytics to Azure Monitor",
+      "summary": "The Log Analytics logging destination for Azure Container Apps is now a legacy logging option. Existing environments configured with the Log Analytics logging destination will continue to function normally. However, we recommend planning a migration to th",
+      "link": "https://azure.microsoft.com/updates?id=577689",
+      "services": [
+        "container-apps"
+      ],
+      "status": "",
+      "source": "azure-updates"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/best-practices/api-implementation",
+      "date": "2026-10-22",
+      "title": "Updated architecture guidance: RESTful web API implementation best practices",
+      "summary": "Learn about best practices for implementing a web API and publishing it to make it available to client applications.",
+      "link": "https://learn.microsoft.com/azure/architecture/best-practices/api-implementation",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/solution-ideas/articles/analytics-netapp-object-api",
+      "date": "2026-10-21",
+      "title": "New architecture guidance: Azure NetApp Files Object REST API for data and AI integration",
+      "summary": "Learn how to use the Azure NetApp Files Object REST API to connect enterprise file data to Microsoft Fabric and to Azure AI and analytics services.",
+      "link": "https://learn.microsoft.com/azure/architecture/solution-ideas/articles/analytics-netapp-object-api",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/guide/multitenant/service/service-bus",
+      "date": "2026-10-20",
+      "title": "Updated architecture guidance: Azure Service Bus considerations for multitenancy",
+      "summary": "Explore Azure Service Bus isolation models, authentication, and features for multitenant architectures. Learn best practices for tenant data separation.",
+      "link": "https://learn.microsoft.com/azure/architecture/guide/multitenant/service/service-bus",
+      "services": [
+        "service-bus"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/guide/multitenant/service/queue-storage",
+      "date": "2026-10-19",
+      "title": "Updated architecture guidance: Multitenancy and Azure Queue Storage",
+      "summary": "Explore Azure Queue Storage features and isolation models for multitenant solutions, including tenant-scoped access, encryption, and monitoring.",
+      "link": "https://learn.microsoft.com/azure/architecture/guide/multitenant/service/queue-storage",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
+    {
+      "id": "https://learn.microsoft.com/azure/architecture/guide/multitenant/service/queue-storage",
+      "date": "2026-10-19",
+      "title": "New architecture guidance: Multitenancy and Azure Queue Storage",
+      "summary": "Explore Azure Queue Storage features and isolation models for multitenant solutions, including tenant-scoped access, encryption, and monitoring.",
+      "link": "https://learn.microsoft.com/azure/architecture/guide/multitenant/service/queue-storage",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "architecture-center"
+    },
     {
       "id": "https://learn.microsoft.com/azure/architecture/web-apps/app-service/architectures/basic-web-app",
       "date": "2026-10-14",
