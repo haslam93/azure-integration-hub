@@ -1,6 +1,18 @@
 {
-  "lastUpdated": "2026-11-02T15:03:22+00:00",
+  "lastUpdated": "2026-11-09T15:33:33+00:00",
   "entries": [
+    {
+      "id": "579021",
+      "date": "2026-11-02",
+      "title": "[Launched] Generally Available: Geo-Replication on partitioned namespaces for Azure Service Bus Premium",
+      "summary": "Geo-Replication on partitioned namespaces for Azure Service Bus Premium is now generally available. You can now combine the throughput benefits of partitioning with the reliability of replicating your messages and metadata to a secondary Azure region. Par",
+      "link": "https://azure.microsoft.com/updates?id=579021",
+      "services": [
+        "service-bus"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
     {
       "id": "577689",
       "date": "2026-10-28",
