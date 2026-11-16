@@ -1,6 +1,30 @@
 {
-  "lastUpdated": "2026-11-09T15:33:33+00:00",
+  "lastUpdated": "2026-11-16T15:10:07+00:00",
   "entries": [
+    {
+      "id": "https://github.com/Azure-Samples/ai-hub-gateway-solution-accelerator/releases/tag/1.1.0",
+      "date": "2026-11-11",
+      "title": "Accelerator release: ai-hub-gateway-solution-accelerator — Release 1.1.0",
+      "summary": "New release in the official Azure-Samples/ai-hub-gateway-solution-accelerator accelerator repository.",
+      "link": "https://github.com/Azure-Samples/ai-hub-gateway-solution-accelerator/releases/tag/1.1.0",
+      "services": [
+        "architecture"
+      ],
+      "status": "",
+      "source": "accelerator"
+    },
+    {
+      "id": "578773",
+      "date": "2026-11-10",
+      "title": "[Launched] Generally Available: Azure Functions support for .NET 11",
+      "summary": "Azure Functions support for .NET 11 is now generally available.You can now build Azure Functions apps targeting .NET 11 using the isolated worker model, while continuing to use the Azure Functions programming model and host integration. Your serverless ap",
+      "link": "https://azure.microsoft.com/updates?id=578773",
+      "services": [
+        "functions"
+      ],
+      "status": "ga",
+      "source": "azure-updates"
+    },
     {
       "id": "579021",
       "date": "2026-11-02",
